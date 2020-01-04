@@ -14,13 +14,28 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <!-- Indispensable pour ajout des servlets dans src/main/java -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
       <version>2.4</version>
       <scope>provided</scope>
     </dependency>
-  </dependencies>
+  
+  <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+	<dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-core</artifactId>
+    	<version>5.2.0.RELEASE</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+	<dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-context</artifactId>
+    	<version>5.2.0.RELEASE</version>
+	</dependency>	
+   </dependencies>
+  
   <build>
     <finalName>p6JavaMono</finalName>
   </build>
