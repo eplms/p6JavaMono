@@ -25,6 +25,8 @@ public class Accueil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		
 		//Ligne d'appel de la jsp accueil qui se trouve dans WEB-INF
 		this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request,response);
 	}
