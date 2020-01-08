@@ -1,13 +1,31 @@
 package com.emmanuel.plumas.consumers;
 
+import java.io.Serializable;
 
-public class UserEntity {
-	 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+//Ne pas faire d'import org.hibernate
+
+//la classe UserEntity est mappée avec la table utilisateur
+@Entity
+@Table(name = "utilisateur")	
+public class UserEntity implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	private Long id;
 	private String identifiant;
 	private String password;
+	@Column (name="droitadministrateur")
 	private Boolean droitAdministrateur;
 	private String adresseMail;
+
 	public Long getId() {
 		return id;
 	}
