@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.emmanuel.plumas.consumers.UserEntity;
+import com.emmanuel.plumas.models.UserEntity;
 
 /**
  * Servlet implementation class Accueil
@@ -27,7 +27,7 @@ public class Accueil extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		EntityManagerFactory emf= Persistence.createEntityManagerFactory("weClimbDB");
+		EntityManagerFactory emf= Persistence.createEntityManagerFactory("WeClimbDB");
 		EntityManager em=emf.createEntityManager();
 		UserEntity u=em.find(UserEntity.class,(long) 1);
 		
