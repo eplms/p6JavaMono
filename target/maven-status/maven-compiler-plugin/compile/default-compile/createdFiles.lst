@@ -1,5 +1,6 @@
 com/emmanuel/plumas/models/UserEntity.class
 com/emmanuel/plumas/business/UserEntityService.class
+com/emmanuel/plumas/configuration/CustomSpringConfiguration.class
 com/emmanuel/plumas/configuration/ApplicationConfiguration.class
 com/emmanuel/plumas/consumers/IUserEntityRepository.class
 com/emmanuel/plumas/servlets/Bonjour.class
