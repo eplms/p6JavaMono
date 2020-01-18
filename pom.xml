@@ -15,11 +15,20 @@
       <scope>test</scope>
     </dependency>
     <!-- Indispensable pour ajout des servlets dans src/main/java -->
+   <!-- 
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
       <version>2.5</version>
-    </dependency>
+    </dependency>  -->
+  	<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+	<dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>javax.servlet-api</artifactId>
+    	<version>4.0.1</version>
+	</dependency>
+  	
+  
   
   <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 	<dependency>
@@ -40,6 +49,13 @@
 	    <artifactId>spring-web</artifactId>
 	    <version>5.2.0.RELEASE</version>
 	</dependency>
+	 <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-webmvc</artifactId>
+	    <version>5.2.0.RELEASE</version>
+	</dependency>
+	
 	
   	<dependency>
 		<groupId>org.springframework</groupId>

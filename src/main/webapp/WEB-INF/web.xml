@@ -21,7 +21,21 @@
         <param-name>contextClass</param-name>
         <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
     </context-param>
-   
+  
+  <!-- Dispatcher Servlet à la place du mapping des servlet sans MVC -->
+  <servlet>
+  		<servlet-name>dispatcher</servlet-name>
+  		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  		<servlet-name>dispatcher</servlet-name>
+  		<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  
+
+  <!-- Mapping des servlets si pas d'implémentation de MVC -->
+   <!-- 
   <servlet>
   	<servlet-name>Accueil</servlet-name>
   	<servlet-class>com.emmanuel.plumas.servlets.Accueil</servlet-class>
@@ -38,5 +52,5 @@
   	<servlet-name>Bonjour</servlet-name>
   	<url-pattern>/Bonjour</url-pattern>
   </servlet-mapping>
-  
+   -->
 </web-app>
