@@ -1,5 +1,7 @@
 package com.emmanuel.plumas.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -18,9 +20,9 @@ public class Localisation {
 	private LieuEntityService l;
 	@GetMapping(value="/localisation")
 	public String afficherLieu(ModelMap model) {
-	      LieuEntity nom=l.getLieu((long) 2);
+	      List <LieuEntity> nom=(List<LieuEntity>) l.getAllLieu();
 	      model.addAttribute("nom",nom);
-	    //spécifie le nom de la jsp à retourner en String, ici bonjour2.jsp
+	    //spécifie le nom de la jsp à retourner en String, ici localisation.jsp
 	     return "localisation";
 
 	}

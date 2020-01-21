@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +7,20 @@
 <body>
 	<h1>Bienvenue sur WeClimb, le site de l'escalade</h1>
 	
-	<p> Vous Ãªtes sur la page des localisations</p>
-	<p>La localisation est : ${ nom.ville }</p>
-	
+	<p>Voici les localisations des sites répertoriées :</p>
+	<table>
+		<tr>
+			<th>Code Postal</th>
+			<th>Ville</th>
+		</tr>
+		<c:forEach items="${nom}" var="commune">
+		<tr>
+			<td><c:out value="${commune.codePostal}"/></td>
+			<td><c:out value="${commune.ville}"/></td>
+		</tr>
+		
+		</c:forEach>
+	</table>
+		
 </body>
 </html>

@@ -29,6 +29,9 @@ public class UserEntity implements Serializable {
 	private Boolean droitAdministrateur;
 	private String adresseMail;
 	
+	
+		
+	
 	public Long getId() {
 		return id;
 	}
