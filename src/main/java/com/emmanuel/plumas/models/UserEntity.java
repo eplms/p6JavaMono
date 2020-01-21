@@ -1,12 +1,15 @@
 package com.emmanuel.plumas.models;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 //Ne pas faire d'import org.hibernate
@@ -25,7 +28,7 @@ public class UserEntity implements Serializable {
 	@Column (name="droitadministrateur")
 	private Boolean droitAdministrateur;
 	private String adresseMail;
-
+	
 	public Long getId() {
 		return id;
 	}
