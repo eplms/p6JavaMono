@@ -32,10 +32,11 @@
   		<url-pattern>/</url-pattern>
   </servlet-mapping>
   
+  <!-- Inclusion des lignes du fichier taglib.jsp à tous les fichiers jsp dans l'arbo indiquée -->
   <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
-            <include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
+            <include-prelude>/WEB-INF/jsp/taglib.jsp</include-prelude>
         </jsp-property-group>
     </jsp-config>
 

@@ -2,9 +2,12 @@ package com.emmanuel.plumas.models;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,15 +22,15 @@ public class LieuEntity implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	private Long id;
-	
 	private String ville;
-	
 	@Column (name="codepostal")
 	private int codePostal;
 	
-	 
+	@OneToMany(mappedBy="lieuEntity", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<SpotEntity> spotEntities; 
+	
+	
 	//setters et getters
-
 	public Long getId() {
 		return id;
 	}

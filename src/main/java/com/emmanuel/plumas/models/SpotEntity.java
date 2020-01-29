@@ -2,15 +2,18 @@ package com.emmanuel.plumas.models;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,6 +34,12 @@ public class SpotEntity implements Serializable{
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id_utilisateur")
 	private UserEntity userEntity;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="id_lieu")
+	private LieuEntity lieuEntity;
+	
+	@OneToMany(mappedBy="spotEntity", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<SecteurEntity> secteurEntities; 
 	
 	//getters et setters clés étrangère
 	public UserEntity getUserEntity() {
@@ -39,6 +48,14 @@ public class SpotEntity implements Serializable{
 	public void setUserEntity(UserEntity userEntity) {
 		this.userEntity = userEntity;
 	}
+	public LieuEntity getLieuEntity() {
+		return lieuEntity;
+	}
+	public void setLieuEntity(LieuEntity lieuEntity) {
+		this.lieuEntity = lieuEntity;
+	}
+	
+	
 	
 	//getters et setters clé primaire et attributs
 	public Long getId() {
@@ -65,6 +82,7 @@ public class SpotEntity implements Serializable{
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
+	
 	
 	
 	
