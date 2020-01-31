@@ -1,14 +1,17 @@
 package com.emmanuel.plumas.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +32,10 @@ public class SecteurEntity implements Serializable{
 	private SpotEntity spotEntity;
 	
 	
+	@OneToMany(mappedBy = "secteurEntity",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<VoieEntity> voieEntities;
+	
+	
 	// Getter et setter clé étrangère
 	public SpotEntity getSpotEntity() {
 		return spotEntity;
@@ -36,7 +43,12 @@ public class SecteurEntity implements Serializable{
 	public void setSpotEntity(SpotEntity spotEntity) {
 		this.spotEntity = spotEntity;
 	}
-	
+	public List<VoieEntity> getVoieEntities() {
+		return voieEntities;
+	}
+	public void setVoieEntities(List<VoieEntity> voieEntities) {
+		this.voieEntities = voieEntities;
+	}
 	
 	
 	//getters et setters attributs
@@ -58,6 +70,7 @@ public class SecteurEntity implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	
 	
 	

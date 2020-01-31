@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.emmanuel.plumas.consumers.ILieuEntityRepository;
 import com.emmanuel.plumas.models.LieuEntity;
-import com.emmanuel.plumas.models.UserEntity;
 
 @Service
 @Qualifier("LieuEntityService")
@@ -19,14 +18,14 @@ public class LieuEntityService {
 	private ILieuEntityRepository lieuRepository;
 	
 	public LieuEntity getLieu(Long id) {
-		LieuEntity l= lieuRepository.findById(id).get();
-		return l;
+		LieuEntity lieuEntity= lieuRepository.findById(id).get();
+		return lieuEntity;
 		
 	}
 	
 	public List<LieuEntity> getAllLieu() {
-		List<LieuEntity> u = (List<LieuEntity>) lieuRepository.findAll();
-		return u;
+		List<LieuEntity> listeLieu = (List<LieuEntity>) lieuRepository.findAll();
+		return listeLieu;
 			
 	}
 	

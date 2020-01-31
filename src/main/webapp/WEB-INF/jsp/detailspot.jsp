@@ -7,21 +7,28 @@
 <body>
 <h1>Bienvenue sur WeClimb, le site de l'escalade</h1>	
 	
-			
-			<p>Voici le détail du spot :  ${spot.nom}</p>
-			<p>Date de création du spot : ${spot.dateCreation}</p>
-			<table>
-				<tr>
-					<th>Secteur(s)</th>
-					<th>Description</th>
-				</tr>
-					<c:forEach items="${spot.secteurEntities}" var="secteur">
-						<tr>
-							<td><c:out value="${secteur.nom}"/></td>
-							<td><c:out value="${secteur.description}"/></td>
-						</tr>
-					</c:forEach>
-			</table>
+	<h2>Voici le détail du spot :  ${spot.nom}</h2>
+	<p>Date de création du spot : ${spot.dateCreation}</p>
+	
+	<c:forEach items="${spot.secteurEntities}" var="secteur">
+		<h2>Secteur : ${secteur.nom }</h2>    
+		<p>${secteur.description}</p>
+		<table>
+			<tr>
+				<th> Voie</th>
+				<th>Hauteur</th>
+				<th>Nombre de Points</th>
+			</tr>	
+			<c:forEach items="${secteur.voieEntities}" var="voie">
+				<tr>				
+					<td>${voie.nom }</td>
+					<td>${voie.hauteur }</td>
+					<td>${voie.nbrePoints}</td>
+				</tr>	
+			</c:forEach>
+		</table>
+	</c:forEach>
+					
 <footer>
 	<a href="/p6JavaMono/spot">Revenir à la liste des spots</a>
 </footer>	

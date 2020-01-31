@@ -9,19 +9,30 @@
 	
 			
 			<p>Voici le détail du spot :  ${spot.nom}</p>
-			<p>${spot.dateCreation}</p>
-			<table>
-				<tr>
-					<th>Secteur(s)</th>
-					<th>Description</th>
-				</tr>
-					<c:forEach items="${spot.secteurEntities}" var="secteur">
+			<p>Date de création du spot : ${spot.dateCreation}</p>
+			
+				<c:forEach items="${spot.secteurEntities}" var="secteur">
+					<p>Secteur : ${secteur.nom } </p>
+					<p>${secteur.description}</p>
+					<table>
 						<tr>
-							<td><c:out value="${secteur.nom}"/></td>
-							<td><c:out value="${secteur.description}"/></td>
-						</tr>
-					</c:forEach>
-			</table>
+							<th>Nom de la Voie</th>
+							<th>Hauteur</th>
+							<th>Nombre de Points</th>
+						</tr>	
+						<c:out value="${secteur.nom}"/>
+							<tr>				
+								<c:forEach items="${secteur.voieEntities}" var="voie">
+									<td>${voie.nom }</td>
+									<td>${voie.hauteur }</td>
+									<td>${voie.nbrePoints}</td>
+								</c:forEach>
+							</tr>	
+					</table>
+						
+				</c:forEach>
+
+					
 <footer>
 	<a href="/p6JavaMono/spot">Revenir à la liste des spots</a>
 </footer>	

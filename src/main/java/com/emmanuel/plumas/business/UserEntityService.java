@@ -16,8 +16,8 @@ public class UserEntityService {
 	private IUserEntityRepository userRepository;
 	
 	public UserEntity getUser(Long id) {
-		UserEntity u= userRepository.findById(id).get();
-		return u;
+		UserEntity userEntity= userRepository.findById(id).get();
+		return userEntity;
 	}
 	
 	
