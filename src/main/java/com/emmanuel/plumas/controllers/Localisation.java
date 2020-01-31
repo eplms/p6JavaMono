@@ -20,8 +20,8 @@ public class Localisation {
 	private LieuEntityService l;
 	@GetMapping(value="/localisation")
 	public String afficherLieu(ModelMap model) {
-	      List <LieuEntity> nom=(List<LieuEntity>) l.getAllLieu();
-	      model.addAttribute("nom",nom);
+	      List <LieuEntity> lieu=(List<LieuEntity>) l.getAllLieu();
+	      model.addAttribute("lieu",lieu);
 	    //spécifie le nom de la jsp à retourner en String, ici localisation.jsp
 	     return "localisation";
 

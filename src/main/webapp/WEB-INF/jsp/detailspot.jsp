@@ -8,19 +8,18 @@
 <h1>Bienvenue sur WeClimb, le site de l'escalade</h1>	
 	
 			
-			<p>Voici le détail du spot :  ${detail}</p>
+			<p>Voici le détail du spot :  ${spot.nom}</p>
+			<p>Date de création du spot : ${spot.dateCreation}</p>
 			<table>
 				<tr>
-					<th>Secteur</th>
+					<th>Secteur(s)</th>
 					<th>Description</th>
 				</tr>
-					<c:forEach items="${nomSecteur}" var="secteur">
-							<c:if test="${secteur.spotEntity.nom eq detail }">
-								<tr>
-									<td><c:out value="${secteur.nom}"/></td>
-									<td><c:out value="${secteur.description}"/></td>
-								</tr>
-							</c:if>		
+					<c:forEach items="${spot.secteurEntities}" var="secteur">
+						<tr>
+							<td><c:out value="${secteur.nom}"/></td>
+							<td><c:out value="${secteur.description}"/></td>
+						</tr>
 					</c:forEach>
 			</table>
 <footer>

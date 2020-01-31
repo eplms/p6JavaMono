@@ -28,6 +28,7 @@ public class SecteurEntity implements Serializable{
 	@JoinColumn(name="id_spot")
 	private SpotEntity spotEntity;
 	
+	
 	// Getter et setter clé étrangère
 	public SpotEntity getSpotEntity() {
 		return spotEntity;

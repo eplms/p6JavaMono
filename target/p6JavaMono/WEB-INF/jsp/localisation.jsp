@@ -13,7 +13,7 @@
 			<th>Code Postal</th>
 			<th>Ville</th>
 		</tr>
-		<c:forEach items="${nom}" var="commune">
+		<c:forEach items="${lieu}" var="commune">
 		<tr>
 			<td><c:out value="${commune.codePostal}"/></td>
 			<td><c:out value="${commune.ville}"/></td>

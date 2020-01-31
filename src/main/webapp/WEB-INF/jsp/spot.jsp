@@ -14,9 +14,9 @@
 			<th>Ville</th>
 			<th>Tag Officiel</th>
 		</tr>
-		<c:forEach items="${nomSpot}" var="spot">
+		<c:forEach items="${listeSpot}" var="spot">
 		<tr>
-			<td><a href= "/p6JavaMono/detailspot?detailspot=${spot.nom}"><c:out value="${spot.nom}"/></a></td>
+			<td><a href= "/p6JavaMono/detailspot?id=${spot.id}"><c:out value="${spot.nom}"/></a></td>
 			<td><c:out value="${spot.lieuEntity.ville}"/></td>
 			<td><c:out value="${spot.tagOfficiel}"/></td>
 		</tr>

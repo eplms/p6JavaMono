@@ -11,15 +11,16 @@
 	<table>
 		<tr>
 			<th>Nom</th>
+			<th>Ville</th>
 			<th>Tag Officiel</th>
-			<th>Créateur</th>
 		</tr>
 		<c:forEach items="${nomSpot}" var="spot">
 		<tr>
-			<td><c:out value="${spot.nom}"/></td>
+			<td><a href= "/p6JavaMono/detailspot?id=${spot.id}"><c:out value="${spot.nom}"/></a></td>
+			<td><c:out value="${spot.lieuEntity.ville}"/></td>
 			<td><c:out value="${spot.tagOfficiel}"/></td>
-			<td><c:out value="${spot.userEntity.identifiant}"/></td>
 		</tr>
 		
 		</c:forEach>
 	</table>
+	

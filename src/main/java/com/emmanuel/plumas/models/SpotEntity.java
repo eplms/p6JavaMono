@@ -54,7 +54,12 @@ public class SpotEntity implements Serializable{
 	public void setLieuEntity(LieuEntity lieuEntity) {
 		this.lieuEntity = lieuEntity;
 	}
-	
+	public List<SecteurEntity> getSecteurEntities() {
+		return secteurEntities;
+	}
+	public void setSecteurEntities(List<SecteurEntity> secteurEntities) {
+		this.secteurEntities = secteurEntities;
+	}
 	
 	
 	//getters et setters clé primaire et attributs
@@ -82,6 +87,7 @@ public class SpotEntity implements Serializable{
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
+	
 	
 	
 	
