@@ -13,4 +13,5 @@
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/controllers/Spot.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/models/UserEntity.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/models/SecteurEntity.java
+/Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/models/LongueurEntity.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/business/SpotEntityService.java

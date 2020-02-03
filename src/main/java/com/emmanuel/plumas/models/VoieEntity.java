@@ -1,15 +1,18 @@
 package com.emmanuel.plumas.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +33,9 @@ public class VoieEntity implements Serializable{
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id_secteur")
 	private SecteurEntity secteurEntity;
+		
+	@OneToMany(mappedBy="voieEntity",fetch=FetchType.EAGER, cascade=CascadeType.ALL )
+	private List<LongueurEntity> longueurEntities;
 	
 	// Setters et getters clés étrangères
 	public SecteurEntity getSecteurEntity() {
@@ -38,7 +44,12 @@ public class VoieEntity implements Serializable{
 	public void setSecteurEntity(SecteurEntity secteurEntity) {
 		this.secteurEntity = secteurEntity;
 	}
-	
+	public List<LongueurEntity> getLongueurEntities() {
+		return longueurEntities;
+	}
+	public void setLongueurEntities(List<LongueurEntity> longueurEntities) {
+		this.longueurEntities = longueurEntities;
+	}
 	
 	// Setters et Getters Attributs et clé primaire
 	public long getId() {
@@ -71,6 +82,7 @@ public class VoieEntity implements Serializable{
 	public void setNbrePoints(String nbrePoints) {
 		this.nbrePoints = nbrePoints;
 	}
+	
 	
 	
 	

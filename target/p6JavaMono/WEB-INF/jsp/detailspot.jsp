@@ -5,36 +5,43 @@
 <title>WeClimb</title>
 </head>
 <body>
+<header>
+	<a href="/p6JavaMono/spot">Revenir à la liste des spots</a>
+</header>
 <h1>Bienvenue sur WeClimb, le site de l'escalade</h1>	
 	
-			
-			<p>Voici le détail du spot :  ${spot.nom}</p>
-			<p>Date de création du spot : ${spot.dateCreation}</p>
-			
-				<c:forEach items="${spot.secteurEntities}" var="secteur">
-					<p>Secteur : ${secteur.nom } </p>
-					<p>${secteur.description}</p>
-					<table>
-						<tr>
-							<th>Nom de la Voie</th>
-							<th>Hauteur</th>
-							<th>Nombre de Points</th>
-						</tr>	
-						<c:out value="${secteur.nom}"/>
-							<tr>				
-								<c:forEach items="${secteur.voieEntities}" var="voie">
-									<td>${voie.nom }</td>
-									<td>${voie.hauteur }</td>
-									<td>${voie.nbrePoints}</td>
-								</c:forEach>
-							</tr>	
-					</table>
-						
-				</c:forEach>
-
+	<p>Voici le détail du spot :  ${spot.nom}</p>
+	<p>Date de création du spot : ${spot.dateCreation}</p>
+	
+	<c:forEach items="${spot.secteurEntities}" var="secteur">
+		<h2>Secteur : ${secteur.nom }</h2>    
+		<p>${secteur.description}</p>
+		<table>
+			<tr>
+				<th>Nom</th>
+				<th>Hauteur</th>
+				<th>Cotation</th>
+				<th>Nombre de Points</th>
+			</tr>	
+			<c:forEach items="${secteur.voieEntities}" var="voie">
+				<tr>				
+					<td>voie : ${voie.nom }</td>
+					<td>${voie.hauteur }</td>
+					<td>${voie.cotation }</td>
+					<td>${voie.nbrePoints}</td>
+				</tr>
+				<c:forEach items="${voie.longueurEntities}" var="longueur">
+				<tr>				
+					<td>longueur : ${longueur.nom }</td>
+					<td>${longueur.hauteur }</td>
+					<td>${longueur.cotation }</td>
+					<td>${longueur.nbrePoints}</td>
+				</tr>	
+			</c:forEach>	
+			</c:forEach>
+		</table>
+	</c:forEach>
 					
-<footer>
-	<a href="/p6JavaMono/spot">Revenir à la liste des spots</a>
-</footer>	
+	
 </body>
 </html>
