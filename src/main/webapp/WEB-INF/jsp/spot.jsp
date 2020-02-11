@@ -6,7 +6,9 @@
 </head>
 <body>
 	<h1>Bienvenue sur WeClimb, le site de l'escalade</h1>
-	
+	<c:if test="${!empty userConnection}">
+			<p>vous êtes connecté en tant que : ${userConnection.identifiant}</p>
+	</c:if>
 	<p>Voici les spots répertoriés :</p>
 	<table>
 		<tr>

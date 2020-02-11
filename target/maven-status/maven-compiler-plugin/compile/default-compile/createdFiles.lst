@@ -1,6 +1,7 @@
 com/emmanuel/plumas/models/LieuEntity.class
 com/emmanuel/plumas/business/UserEntityService.class
 com/emmanuel/plumas/consumers/ISpotEntityRepository.class
+com/emmanuel/plumas/controllers/connection.class
 com/emmanuel/plumas/configuration/ApplicationConfiguration.class
 com/emmanuel/plumas/controllers/Index.class
 com/emmanuel/plumas/models/SecteurEntity.class
@@ -14,4 +15,5 @@ com/emmanuel/plumas/configuration/CustomSpringConfiguration.class
 com/emmanuel/plumas/business/LieuEntityService.class
 com/emmanuel/plumas/models/VoieEntity.class
 com/emmanuel/plumas/models/LongueurEntity.class
+com/emmanuel/plumas/controllers/ConnectionUtilisateur.class
 com/emmanuel/plumas/business/SpotEntityService.class

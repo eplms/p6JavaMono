@@ -10,4 +10,8 @@ import com.emmanuel.plumas.models.UserEntity;
 @Qualifier("IUserEntityRepository")
 public interface IUserEntityRepository extends CrudRepository<UserEntity, Long>{
 	// Pas de déclaration de méthode nécessaire pour les méthodes classiques du crud
+	
+	/* Méthode déclarée à partir des mots clés find By et And et d'attribut
+	 Spring Data Jpa sait implémenter tout seul la méthode */
+	public UserEntity findByIdentifiantAndPassword(String identifiant, String password);
 }

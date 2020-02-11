@@ -4,7 +4,9 @@
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/controllers/Localisation.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/consumers/IUserEntityRepository.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/controllers/Index.java
+/Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/controllers/ConnectionUtilisateur.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/configuration/ApplicationConfiguration.java
+/Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/controllers/connection.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/consumers/ILieuEntityRepository.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/business/LieuEntityService.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/configuration/CustomSpringConfiguration.java
