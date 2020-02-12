@@ -14,4 +14,6 @@ public interface IUserEntityRepository extends CrudRepository<UserEntity, Long>{
 	/* Méthode déclarée à partir des mots clés find By et And et d'attribut
 	 Spring Data Jpa sait implémenter tout seul la méthode */
 	public UserEntity findByIdentifiantAndPassword(String identifiant, String password);
+	
+	public UserEntity findByIdentifiantOrAdresseMail(String identifiant, String adresseMail);
 }

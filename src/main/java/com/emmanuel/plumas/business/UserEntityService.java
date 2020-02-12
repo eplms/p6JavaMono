@@ -45,4 +45,17 @@ public class UserEntityService {
 		}
 		return utilisateurExistantBase;	
 	}
+	
+	public Boolean verifierCreationUser(UserEntity userEntity) {
+		boolean creationUtilisateurPossible=true;
+		UserEntity utilisateurBaseExistant=userRepository.findByIdentifiantOrAdresseMail(userEntity.getIdentifiant(), userEntity.getAdresseMail());
+		if(utilisateurBaseExistant!=null) {
+			creationUtilisateurPossible=false;
+		}
+		return creationUtilisateurPossible;
+	}
+	public void creerNouvelUser(UserEntity userEntity) {
+		userEntity.setDroitAdministrateur(false);
+		UserEntity userCree = userRepository.save(userEntity);
+	}
 }

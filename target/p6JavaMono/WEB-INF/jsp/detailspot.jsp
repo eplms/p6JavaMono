@@ -18,6 +18,7 @@
 		<p>${secteur.description}</p>
 		<table>
 			<tr>
+				<th></th>
 				<th>Nom</th>
 				<th>Hauteur</th>
 				<th>Cotation</th>
@@ -26,18 +27,22 @@
 			<c:forEach items="${secteur.voieEntities}" var="voie">
 				<tr>				
 					<td>voie : ${voie.nom }</td>
-					<td>${voie.hauteur }</td>
-					<td>${voie.cotation }</td>
-					<td>${voie.nbrePoints}</td>
+					<c:if test="${empty voie.longueurEntities}">
+						<td></td>
+						<td>${voie.hauteur }</td>
+						<td>${voie.cotation }</td>
+						<td>${voie.nbrePoints}</td>
+					</c:if>
 				</tr>
 				<c:forEach items="${voie.longueurEntities}" var="longueur">
-				<tr>				
-					<td>longueur : ${longueur.nom }</td>
-					<td>${longueur.hauteur }</td>
-					<td>${longueur.cotation }</td>
-					<td>${longueur.nbrePoints}</td>
-				</tr>	
-			</c:forEach>	
+					<tr>				
+						<td></td>
+						<td>longueur : ${longueur.nom }</td>
+						<td>${longueur.hauteur }</td>
+						<td>${longueur.cotation }</td>
+						<td>${longueur.nbrePoints}</td>
+					</tr>	
+				</c:forEach>	
 			</c:forEach>
 		</table>
 	</c:forEach>

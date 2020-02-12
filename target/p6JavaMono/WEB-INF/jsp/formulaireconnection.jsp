@@ -10,7 +10,7 @@
 	<h1>Bienvenue sur WeClimb, le site de l'escalade</h1>
 	
 	<h2>Formulaire de connection :</h2>
-	<form:form method="post" action="connectionutilisateur" modelAttribute="userconnection">
+	<form:form method="post" action="connectionutilisateur" modelAttribute="userConnection">
     <table>
       <tr>
         <td><form:label path="identifiant" />Identifiant</td>

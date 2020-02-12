@@ -13,7 +13,7 @@ import com.emmanuel.plumas.business.UserEntityService;
 import com.emmanuel.plumas.models.UserEntity;
 
 @Controller
-@SessionAttributes("userConnection")
+@SessionAttributes({"userConnection","userCreation"})
 public class ConnectionUtilisateur {
 
 	@Autowired
@@ -23,6 +23,11 @@ public class ConnectionUtilisateur {
 	
 	@ModelAttribute("userConnection")
 	public UserEntity getUserConnection() {
+		return new UserEntity();
+	}
+	
+	@ModelAttribute("userCreation")
+	public UserEntity getUserCreation() {
 		return new UserEntity();
 	}
 	
@@ -49,5 +54,29 @@ public class ConnectionUtilisateur {
 		//model.addAttribute("userconnecte",userConnecte.getIdentifiant());
 		// Pas de nécessité de passer l'attribut avec la ligne du dessus car c'est un attribut de cession
 		return "connectionreussie";
+	}
+	
+	@GetMapping("/inscription")
+	public String AfficherFormulaireInscription(ModelMap model) {
+		return "formulaireinscription";
+	}
+	
+	@PostMapping("/inscription")
+	public String recupererDonneesCreationUtilisateur( @ModelAttribute("userCreation") UserEntity userCreation,ModelMap model) {
+		boolean verifierCreationUtilisateurPossible=userEntityService.verifierCreationUser(userCreation);
+		if(verifierCreationUtilisateurPossible) {
+			userEntityService.creerNouvelUser(userCreation);
+			return "inscriptionreussie";
+		} else {
+			model.addAttribute("message1","l'Identifiant et/ou l'email existe déjà ");
+			model.addAttribute("message2"," Veuillez saisir à nouveau identifiant, mot de passe et mail");
+			return "formulaireinscription";
+		}
+		
+	}
+	
+	@GetMapping("/inscriptionreussie")
+	public String afficherInscriptionReussie(ModelMap model) {
+		return "inscriptionreussie";
 	}
 }
