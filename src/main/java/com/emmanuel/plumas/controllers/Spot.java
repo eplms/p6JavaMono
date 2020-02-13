@@ -8,12 +8,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.emmanuel.plumas.business.SpotEntityService;
 import com.emmanuel.plumas.models.SpotEntity;
+import com.emmanuel.plumas.models.UserEntity;
 
 
 @Controller
+@SessionAttributes("userConnection")
 public class Spot {
 
 	
@@ -24,11 +28,17 @@ public class Spot {
 	
 	
 	@GetMapping(value="/spot")
-	public String afficherListeSpots(ModelMap model) {
-	      List <SpotEntity> listeSpot=(List<SpotEntity>) spotEntityService.getAllSpot();
-	      model.addAttribute("listeSpot",listeSpot);
-	    //spécifie le nom de la jsp à retourner en String, ici spot.jsp
-	     return "spot";
+	public String afficherListeSpots(ModelMap model,@SessionAttribute("userConnection") UserEntity userConnection) {
+		//Vérification de la connection avant d'accéder à la liste des spots
+		if(userConnection.getIdentifiant()!=null) {
+			List <SpotEntity> listeSpot=(List<SpotEntity>) spotEntityService.getAllSpot();
+			model.addAttribute("listeSpot",listeSpot);
+			//spécifie le nom de la jsp à retourner en String, ici spot.jsp
+			return "spot";
+		}else {
+			//retour au formulaire de connection si l'utilisateur n'est pas connecté
+			return "formulaireconnection";
+		}
 	}
 		
 	@GetMapping(value="/detailspot")

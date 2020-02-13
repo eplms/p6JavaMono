@@ -50,7 +50,7 @@ public class ConnectionUtilisateur {
 	@GetMapping("/connectionreussie")
 	public String afficherConnectionReussie(ModelMap model) {
 		//model.addAttribute("userconnecte",userConnecte.getIdentifiant());
-		// Pas de nécessité de passer l'attribut avec la ligne du dessus car c'est un attribut de cession
+		// Pas de nécessité de passer l'attribut avec la ligne du dessus car c'est un attribut de session
 		return "connectionreussie";
 	}
 	
