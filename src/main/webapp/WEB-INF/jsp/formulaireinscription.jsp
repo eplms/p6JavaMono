@@ -16,7 +16,7 @@
 		<p><a href="connectionutilisateur">Aller sur la page de connection</a></p>
 	</c:if>
 	
-	<form:form method="post" action="inscription" modelAttribute="userCreation">
+	<form:form method="post" action="inscription" modelAttribute="userConnection">
 		<table>
 			<tr>
 				<td><form:label path="identifiant"/>Identifiant</td>
