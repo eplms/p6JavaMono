@@ -23,24 +23,23 @@ public class ConnectionUtilisateur {
 	@Qualifier("UserEntityService")
 	private UserEntityService userEntityService;
 	
-	
 	@ModelAttribute("userConnection")
 	public UserEntity getUserConnection() {
 		return new UserEntity();
 	}
 	
 	@GetMapping("/connectionutilisateur")
-	public String afficherFormulaireConnection() {
+	public String afficherFormulaireConnection(ModelMap model,SessionStatus status) {
+		status.setComplete();
 		return "formulaireconnection";
 	}
 	
 	@PostMapping("/connectionutilisateur")
-	public String recupererConnectionUtilisateur(@ModelAttribute("userConnection") UserEntity userConnecte,ModelMap model) {
-
+	public String recupererConnectionUtilisateur(@ModelAttribute("userConnection") UserEntity userConnecte,ModelMap model) {	
 		boolean utilisateurEnregistre = userEntityService.verifierUserEnregistre(userConnecte);
 		if (utilisateurEnregistre) {
 			return "connectionreussie";
-		}else {
+		} else {
 			model.addAttribute("message1","Identifiant et/ou mot de passe incorrect !");
 			model.addAttribute("message2","Veuillez saisir à nouveau votre identifiant et votre mot de passe");
 			return "formulaireconnection";
@@ -55,12 +54,10 @@ public class ConnectionUtilisateur {
 	}
 	
 	@GetMapping("/inscription")
-	public String AfficherFormulaireInscription(ModelMap model,SessionStatus status,HttpSession session) { 
+	public String AfficherFormulaireInscription(ModelMap model,SessionStatus status) { 
 		// Lignes permettant de supprimer un éventuel attribut de session userCreation
 		// permet de définir que la session est finie
 		status.setComplete();
-		// Invalide la session et vide l'attribut de session
-		session.invalidate();
 		return "formulaireinscription";
 	}
 	
@@ -81,5 +78,12 @@ public class ConnectionUtilisateur {
 	@GetMapping("/inscriptionreussie")
 	public String afficherInscriptionReussie(ModelMap model) {
 		return "inscriptionreussie";
+	}
+	
+	@GetMapping("/deconnection")
+	public String afficherDeconnection(ModelMap model, SessionStatus status, HttpSession session) {
+		status.setComplete();
+		session.invalidate();
+		return "deconnection";
 	}
 }

@@ -56,6 +56,6 @@ public class UserEntityService {
 	}
 	public void creerNouvelUser(UserEntity userEntity) {
 		userEntity.setDroitAdministrateur(false);
-		UserEntity userCree = userRepository.save(userEntity);
+		userRepository.save(userEntity);
 	}
 }

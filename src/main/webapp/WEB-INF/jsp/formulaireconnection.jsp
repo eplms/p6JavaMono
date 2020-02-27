@@ -29,6 +29,7 @@
 			<p>${message1}</p>
 			<p>${message2}</p>
 	</c:if>	
+	<a href="/p6JavaMono/">Revenir à la page d'accueil</a>
 	
 </body>
 </html>

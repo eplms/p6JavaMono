@@ -18,13 +18,11 @@ public class SpotEntityService {
 	private ISpotEntityRepository spotRepository;
 	
 	public SpotEntity getSpot(Long id) {
-		SpotEntity spot= spotRepository.findById(id).get();
-		return spot;
+		return spotRepository.findById(id).get();
 	}
 	
 	public List<SpotEntity> getAllSpot() {
-		List<SpotEntity> allSpot = (List<SpotEntity>) spotRepository.findAll();
-		return allSpot;		
+		return (List<SpotEntity>) spotRepository.findAll();		
 	}
 	
 }

@@ -35,6 +35,6 @@
       		</tr>
 		</table>	
 	</form:form>
-	
+	<a href="/p6JavaMono/">Revenir à la page d'accueil</a>
 </body>
 </html>

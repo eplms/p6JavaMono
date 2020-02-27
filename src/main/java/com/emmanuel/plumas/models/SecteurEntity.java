@@ -37,12 +37,14 @@ public class SecteurEntity implements Serializable{
 	
 	
 	// Getter et setter clé étrangère
+	
 	public SpotEntity getSpotEntity() {
 		return spotEntity;
 	}
 	public void setSpotEntity(SpotEntity spotEntity) {
 		this.spotEntity = spotEntity;
 	}
+	
 	public List<VoieEntity> getVoieEntities() {
 		return voieEntities;
 	}

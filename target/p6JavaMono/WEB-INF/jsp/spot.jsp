@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h1>Bienvenue sur WeClimb, le site de l'escalade</h1>
-	<c:if test="${!empty userConnection}">
+	<c:if test="${!empty userConnection.identifiant}">
 			<p>vous êtes connecté en tant que : ${userConnection.identifiant}</p>
 	</c:if>
 	<p>Voici les spots répertoriés :</p>
@@ -24,5 +24,7 @@
 		</tr>
 		
 		</c:forEach>
+		
 	</table>
-	
+	<a href="/p6JavaMono/">Revenir à la page d'accueil</a>
+</body>	

@@ -38,12 +38,12 @@ public class VoieEntity implements Serializable{
 	private List<LongueurEntity> longueurEntities;
 	
 	// Setters et getters clés étrangères
-	public SecteurEntity getSecteurEntity() {
+  	public SecteurEntity getSecteurEntity() {
 		return secteurEntity;
 	}
 	public void setSecteurEntity(SecteurEntity secteurEntity) {
 		this.secteurEntity = secteurEntity;
-	}
+	} 
 	public List<LongueurEntity> getLongueurEntities() {
 		return longueurEntities;
 	}
