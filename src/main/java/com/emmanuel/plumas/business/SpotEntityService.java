@@ -1,6 +1,8 @@
 package com.emmanuel.plumas.business;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,12 +19,15 @@ public class SpotEntityService {
 	@Qualifier("ISpotEntityRepository")
 	private ISpotEntityRepository spotRepository;
 	
-	public SpotEntity getSpot(Long id) {
+	public SpotEntity getSpot(long id) {
 		return spotRepository.findById(id).get();
 	}
 	
-	public List<SpotEntity> getAllSpot() {
-		return (List<SpotEntity>) spotRepository.findAll();		
+	public Set<SpotEntity> getAllSpot() {
+		List<SpotEntity> spotEntities =(List<SpotEntity>) spotRepository.findAll();
+		Set<SpotEntity> hashSetSpotEntities =new HashSet<SpotEntity>(spotEntities);
+		//return (List<SpotEntity>) spotRepository.findAll();
+		return hashSetSpotEntities;		
 	}
 	
 }

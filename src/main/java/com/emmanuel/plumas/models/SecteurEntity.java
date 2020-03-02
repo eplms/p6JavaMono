@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,25 +25,26 @@ public class SecteurEntity implements Serializable{
 	private String nom;
 	private String description;
 	
-	
+	/*
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id_spot")
 	private SpotEntity spotEntity;
+	*/
 	
-	
-	@OneToMany(mappedBy = "secteurEntity",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_secteur")
 	private List<VoieEntity> voieEntities;
 	
 	
 	// Getter et setter clé étrangère
-	
+	/*
 	public SpotEntity getSpotEntity() {
 		return spotEntity;
 	}
 	public void setSpotEntity(SpotEntity spotEntity) {
 		this.spotEntity = spotEntity;
 	}
-	
+	*/
 	public List<VoieEntity> getVoieEntities() {
 		return voieEntities;
 	}

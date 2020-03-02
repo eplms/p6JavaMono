@@ -1,7 +1,6 @@
 package com.emmanuel.plumas.controllers;
 
-import java.util.List;
-
+import java.util.Set;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,8 @@ public class Spot {
 		//Vérification de la connection avant d'accéder à la liste des spots
 		
 		if(httpSession.getAttribute("userConnection")!=null) {
-			List <SpotEntity> listeSpot=(List<SpotEntity>) spotEntityService.getAllSpot();
+			Set <SpotEntity> listeSpot= spotEntityService.getAllSpot();
+			//Collections.sort((List<SpotEntity>) listeSpot);
 			model.addAttribute("listeSpot",listeSpot);
 			//spécifie le nom de la jsp à retourner en String, ici spot.jsp
 			return "spot";

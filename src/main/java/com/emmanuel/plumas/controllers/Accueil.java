@@ -11,7 +11,7 @@ public class Accueil {
 
 	
 	@GetMapping(value="/")
-	public String afficherUser(ModelMap model) {
+	public String afficherAccueil(ModelMap model) {
 	     return "accueil";
 	}
 }

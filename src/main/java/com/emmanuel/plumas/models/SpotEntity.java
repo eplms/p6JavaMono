@@ -2,7 +2,7 @@ package com.emmanuel.plumas.models;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,8 +38,9 @@ public class SpotEntity implements Serializable{
 	@JoinColumn(name="id_lieu")
 	private LieuEntity lieuEntity;
 	
-	@OneToMany(mappedBy="spotEntity", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<SecteurEntity> secteurEntities; 
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_spot")
+	private Set<SecteurEntity> secteurEntities; 
 	
 	//getters et setters clés étrangère
 	public UserEntity getUserEntity() {
@@ -54,10 +55,10 @@ public class SpotEntity implements Serializable{
 	public void setLieuEntity(LieuEntity lieuEntity) {
 		this.lieuEntity = lieuEntity;
 	}
-	public List<SecteurEntity> getSecteurEntities() {
+	public Set<SecteurEntity> getSecteurEntities() {
 		return secteurEntities;
 	}
-	public void setSecteurEntities(List<SecteurEntity> secteurEntities) {
+	public void setSecteurEntities(Set<SecteurEntity> secteurEntities) {
 		this.secteurEntities = secteurEntities;
 	}
 	
@@ -87,9 +88,6 @@ public class SpotEntity implements Serializable{
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
-	
-	
-	
 	
 	
 	

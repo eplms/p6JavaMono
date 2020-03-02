@@ -2,13 +2,10 @@ package com.emmanuel.plumas.models;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +21,7 @@ public class LongueurEntity implements Serializable{
 	private String Cotation;
 	private int nbrePoints;
 	
+	/*
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id_voie")
 	private VoieEntity voieEntity;
@@ -35,7 +33,7 @@ public class LongueurEntity implements Serializable{
 	public void setVoieEntity(VoieEntity voieEntity) {
 		this.voieEntity = voieEntity;
 	}
-	
+	*/
 	
 	
 	//Getters et setters attributs et clé primaires
