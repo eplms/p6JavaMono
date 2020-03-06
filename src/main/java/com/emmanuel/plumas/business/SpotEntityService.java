@@ -1,8 +1,7 @@
 package com.emmanuel.plumas.business;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,11 +22,10 @@ public class SpotEntityService {
 		return spotRepository.findById(id).get();
 	}
 	
-	public Set<SpotEntity> getAllSpot() {
+	public TreeSet<SpotEntity> getAllSpot() {
 		List<SpotEntity> spotEntities =(List<SpotEntity>) spotRepository.findAll();
-		Set<SpotEntity> hashSetSpotEntities =new HashSet<SpotEntity>(spotEntities);
-		//return (List<SpotEntity>) spotRepository.findAll();
-		return hashSetSpotEntities;		
+		TreeSet<SpotEntity> spotEntitiesOrdonned = new TreeSet<SpotEntity>(spotEntities);
+		return spotEntitiesOrdonned;		
 	}
 	
 }

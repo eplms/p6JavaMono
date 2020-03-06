@@ -72,7 +72,6 @@ public class ConnectionUtilisateur {
 			model.addAttribute("message2"," Veuillez saisir à nouveau identifiant, mot de passe et mail");
 			return "formulaireinscription";
 		}
-		
 	}
 	
 	@GetMapping("/inscriptionreussie")

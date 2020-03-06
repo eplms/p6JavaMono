@@ -1,6 +1,7 @@
 package com.emmanuel.plumas.models;
 
 import java.io.Serializable;
+import java.lang.Comparable;
 import java.sql.Date;
 import java.util.Set;
 
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="spot")
-public class SpotEntity implements Serializable{
+public class SpotEntity implements Serializable,Comparable<SpotEntity>{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -87,6 +88,11 @@ public class SpotEntity implements Serializable{
 	}
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
+	}
+	@Override
+	public int compareTo(SpotEntity o) {
+		// TODO Auto-generated method stub
+		return this.getId().compareTo(o.getId());
 	}
 	
 	

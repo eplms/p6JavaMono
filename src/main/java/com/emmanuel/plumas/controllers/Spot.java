@@ -1,6 +1,7 @@
 package com.emmanuel.plumas.controllers;
 
-import java.util.Set;
+import java.util.TreeSet;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -24,13 +27,17 @@ public class Spot {
 	@Qualifier("SpotEntityService")
 	private SpotEntityService spotEntityService;
 	
+	@ModelAttribute("spotCreation")
+	public SpotEntity setSpotCreation() {
+		return new SpotEntity();
+	}
 	
 	@GetMapping(value="/spot")
 	public String afficherListeSpots(ModelMap model,HttpSession httpSession) {
 		//Vérification de la connection avant d'accéder à la liste des spots
 		
 		if(httpSession.getAttribute("userConnection")!=null) {
-			Set <SpotEntity> listeSpot= spotEntityService.getAllSpot();
+			TreeSet <SpotEntity> listeSpot= spotEntityService.getAllSpot();
 			//Collections.sort((List<SpotEntity>) listeSpot);
 			model.addAttribute("listeSpot",listeSpot);
 			//spécifie le nom de la jsp à retourner en String, ici spot.jsp
@@ -48,4 +55,17 @@ public class Spot {
 	    //spécifie le nom de la jsp à retourner en String, ici detailspot.jsp
 	     return "detailspot";
 	}
+	
+	@GetMapping(value="/creation")
+	public String afficherCreationSpot() {
+		return "creationspot";
+	}
+	
+	@PostMapping(value="/creation")
+	public String recupereCreationSpot(@ModelAttribute("spotCreation") SpotEntity spotEntity, ModelMap model) {
+		model.addAttribute("spotentity", spotEntity);
+		return "confirmationcreationspot";
+	}
+	
+	
 }

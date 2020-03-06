@@ -26,5 +26,7 @@
 		</c:forEach>
 		
 	</table>
-	<a href="/p6JavaMono/">Revenir à la page d'accueil</a>
+	<p><a href="/p6JavaMono/creation">Creer un nouveau spot</a></p>
+	<p><a href="/p6JavaMono/">Revenir à la page d'accueil</a></p>
+	
 </body>	

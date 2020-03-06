@@ -10,11 +10,19 @@
 	<h1>Bienvenue sur WeClimb, le site de l'escalade</h1>
 	
 	<h2> Accueil</h2>
-		
-	<a href="/p6JavaMono/inscription">Inscription</a>
-	<a href="/p6JavaMono/spot">Liste des spots</a>	
-	<a href="/p6JavaMono/connectionutilisateur">Connection</a>
+	
+	<table>
+		<tr>
+			<td>Utilisateurs</td>
+			<td><a href="/p6JavaMono/inscription">Inscription</a></td>
+			<td><a href="/p6JavaMono/connectionutilisateur">Connection</a></td>
+		</tr>
+		<tr>
+			<td>Spots</td>
+			<td><a href="/p6JavaMono/spot">Liste des spots</a></td>	
+			<td><a href="/p6JavaMono/creation">Creer un spot</a></td>
+		</tr>
+	</table>
 	<a href="/p6JavaMono/deconnection">Deconnection</a>	
-		
 </body>
 </html>
