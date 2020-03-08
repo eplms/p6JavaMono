@@ -1,5 +1,7 @@
 package com.emmanuel.plumas.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.TreeSet;
 
 import javax.servlet.http.HttpSession;
@@ -38,7 +40,6 @@ public class Spot {
 		
 		if(httpSession.getAttribute("userConnection")!=null) {
 			TreeSet <SpotEntity> listeSpot= spotEntityService.getAllSpot();
-			//Collections.sort((List<SpotEntity>) listeSpot);
 			model.addAttribute("listeSpot",listeSpot);
 			//spécifie le nom de la jsp à retourner en String, ici spot.jsp
 			return "spot";
@@ -63,6 +64,11 @@ public class Spot {
 	
 	@PostMapping(value="/creation")
 	public String recupereCreationSpot(@ModelAttribute("spotCreation") SpotEntity spotEntity, ModelMap model) {
+		/* Renseignement de la date du système lors de la création du spot */
+		Date dateCreationSpot = new Date();
+		spotEntity.setDateCreation(dateCreationSpot);
+		/* tagOfficiel mis en false par défaut */
+		spotEntity.setTagOfficiel(false);
 		model.addAttribute("spotentity", spotEntity);
 		return "confirmationcreationspot";
 	}
