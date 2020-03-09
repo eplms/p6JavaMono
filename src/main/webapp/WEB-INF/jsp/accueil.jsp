@@ -20,7 +20,6 @@
 		<tr>
 			<td>Spots</td>
 			<td><a href="/p6JavaMono/spot">Liste des spots</a></td>	
-			<td><a href="/p6JavaMono/creation">Creer un spot</a></td>
 		</tr>
 	</table>
 	<a href="/p6JavaMono/deconnection">Deconnection</a>	

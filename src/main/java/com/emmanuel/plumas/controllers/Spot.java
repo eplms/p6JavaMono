@@ -1,6 +1,5 @@
 package com.emmanuel.plumas.controllers;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TreeSet;
 
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.emmanuel.plumas.business.SpotEntityService;
 import com.emmanuel.plumas.models.SpotEntity;
+import com.emmanuel.plumas.models.UserEntity;
 
 
 @Controller
@@ -35,18 +35,11 @@ public class Spot {
 	}
 	
 	@GetMapping(value="/spot")
-	public String afficherListeSpots(ModelMap model,HttpSession httpSession) {
-		//Vérification de la connection avant d'accéder à la liste des spots
-		
-		if(httpSession.getAttribute("userConnection")!=null) {
+	public String afficherListeSpots(ModelMap model) {
 			TreeSet <SpotEntity> listeSpot= spotEntityService.getAllSpot();
 			model.addAttribute("listeSpot",listeSpot);
 			//spécifie le nom de la jsp à retourner en String, ici spot.jsp
 			return "spot";
-		}else {
-			//retour au formulaire de connection si l'utilisateur n'est pas connecté
-			return "redirect:/connectionutilisateur";
-		}
 	}
 		
 	@GetMapping(value="/detailspot")
@@ -58,19 +51,31 @@ public class Spot {
 	}
 	
 	@GetMapping(value="/creation")
-	public String afficherCreationSpot() {
-		return "creationspot";
+	public String afficherCreationSpot(HttpSession httpSession) {
+		//Vérification de la connection avant d'accéder à la page connection
+		if (httpSession.getAttribute("userConnection")!=null) {
+			return "creationspot";
+		}else {
+			//retour au formulaire de connection si l'utilisateu n'est pas connecté
+			return "redirect:/connectionutilisateur";
+		}
+		
 	}
 	
 	@PostMapping(value="/creation")
-	public String recupereCreationSpot(@ModelAttribute("spotCreation") SpotEntity spotEntity, ModelMap model) {
-		/* Renseignement de la date du système lors de la création du spot */
-		Date dateCreationSpot = new Date();
-		spotEntity.setDateCreation(dateCreationSpot);
-		/* tagOfficiel mis en false par défaut */
-		spotEntity.setTagOfficiel(false);
-		model.addAttribute("spotentity", spotEntity);
-		return "confirmationcreationspot";
+	public String recupereCreationSpot(@ModelAttribute("spotCreation") SpotEntity spotEntity, ModelMap model,HttpSession httpSession) {
+			/* Renseignement de la date du système lors de la création du spot */
+			Date dateCreationSpot = new Date();
+			spotEntity.setDateCreation(dateCreationSpot);
+			/* tagOfficiel mis en false par défaut */
+			spotEntity.setTagOfficiel(false);
+			/* Récupération de l'utilisateur dans la variable de session */
+			UserEntity userConnection=(UserEntity) httpSession.getAttribute("userConnection");
+			spotEntity.setUserEntity(userConnection);
+			
+			model.addAttribute("spotentity", spotEntity);
+			return "confirmationcreationspot";
+		
 	}
 	
 	
