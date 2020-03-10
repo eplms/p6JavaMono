@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.emmanuel.plumas.business.LieuEntityService;
 import com.emmanuel.plumas.business.SpotEntityService;
+import com.emmanuel.plumas.business.UserEntityService;
+import com.emmanuel.plumas.models.LieuEntity;
 import com.emmanuel.plumas.models.SpotEntity;
 import com.emmanuel.plumas.models.UserEntity;
 
@@ -28,6 +31,15 @@ public class Spot {
 	@Autowired
 	@Qualifier("SpotEntityService")
 	private SpotEntityService spotEntityService;
+	
+	@Autowired
+	@Qualifier ("LieuEntityService")
+	private LieuEntityService lieuEntityService;
+	
+	@Autowired
+	@Qualifier ("UserEntityService")
+	private UserEntityService userEntityService;
+	
 	
 	@ModelAttribute("spotCreation")
 	public SpotEntity setSpotCreation() {
@@ -64,17 +76,47 @@ public class Spot {
 	
 	@PostMapping(value="/creation")
 	public String recupereCreationSpot(@ModelAttribute("spotCreation") SpotEntity spotEntity, ModelMap model,HttpSession httpSession) {
-			/* Renseignement de la date du système lors de la création du spot */
-			Date dateCreationSpot = new Date();
-			spotEntity.setDateCreation(dateCreationSpot);
-			/* tagOfficiel mis en false par défaut */
-			spotEntity.setTagOfficiel(false);
-			/* Récupération de l'utilisateur dans la variable de session */
-			UserEntity userConnection=(UserEntity) httpSession.getAttribute("userConnection");
-			spotEntity.setUserEntity(userConnection);
-			
-			model.addAttribute("spotentity", spotEntity);
-			return "confirmationcreationspot";
+		
+		/* Renseignement de la date du système lors de la création du spot */
+		Date dateCreationSpot = new Date();
+		spotEntity.setDateCreation(dateCreationSpot);
+		
+		/* tagOfficiel mis en false par défaut */
+		spotEntity.setTagOfficiel(false);
+		
+		/* Récupération de l'utilisateur V2*/		
+		UserEntity userConnection=(UserEntity) httpSession.getAttribute("userConnection");
+		UserEntity userBase=userEntityService.recupererUserBase(userConnection);
+		spotEntity.setUserEntity(userBase);
+		
+		/* Récupération du lieu V2*/
+		boolean lieuExistant=lieuEntityService.verifierLieuExistant(spotEntity);
+		if(!lieuExistant) {		
+			lieuEntityService.creerNouveauLieu(spotEntity.getLieuEntity());				
+		}
+		LieuEntity lieuBase=lieuEntityService.recupererLieuBase(spotEntity);
+		spotEntity.setLieuEntity(lieuBase);
+		
+		/* Récupération de l'utilisateur dans la variable de session V1 */
+		/*
+		UserEntity userConnection=(UserEntity) httpSession.getAttribute("userConnection");
+		userConnection.setDroitAdministrateur(userEntityService.recupererDroitAdministrateur(userConnection));
+		userConnection.setAdresseMail(userEntityService.recupererAdresseMail(userConnection));
+		spotEntity.setUserEntity(userConnection);
+		*/
+		
+		/* Récupération et vérification du lieu V1*/
+		/*
+		boolean lieuExistant=lieuEntityService.verifierLieuExistantt(spotEntity);
+		if(!lieuExistant) {		
+			lieuEntityService.creerNouveauLieu(spotEntity.getLieuEntity());
+		}
+		*/
+		
+		/* Création de l'instance de Spot  dans la base */
+		spotEntityService.creerNouveauSpot(spotEntity);
+		model.addAttribute("spotentity", spotEntity);
+		return "confirmationcreationspot";
 		
 	}
 	

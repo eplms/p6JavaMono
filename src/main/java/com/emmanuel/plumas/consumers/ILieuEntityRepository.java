@@ -11,4 +11,6 @@ import com.emmanuel.plumas.models.LieuEntity;
 @Qualifier("ILieuEntityRepository")
 public interface ILieuEntityRepository extends CrudRepository<LieuEntity,Long>{
 
+	LieuEntity findByVille(String ville);
+
 }

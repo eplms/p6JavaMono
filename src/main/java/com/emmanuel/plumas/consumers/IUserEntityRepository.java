@@ -16,4 +16,6 @@ public interface IUserEntityRepository extends CrudRepository<UserEntity, Long>{
 	public UserEntity findByIdentifiantAndPassword(String identifiant, String password);
 	
 	public UserEntity findByIdentifiantOrAdresseMail(String identifiant, String adresseMail);
+
+	public UserEntity findByIdentifiant(String identifiant);
 }

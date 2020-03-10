@@ -32,10 +32,10 @@ public class SpotEntity implements Serializable,Comparable<SpotEntity>{
 	@Column(name="datecreation")
 	private Date dateCreation;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="id_utilisateur")
 	private UserEntity userEntity;
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="id_lieu")
 	private LieuEntity lieuEntity;
 	

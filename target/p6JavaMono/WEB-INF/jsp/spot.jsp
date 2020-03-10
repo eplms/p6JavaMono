@@ -26,5 +26,16 @@
 		</c:forEach>
 		
 	</table>
-	<a href="/p6JavaMono/">Revenir à la page d'accueil</a>
+	<c:choose>	
+		<c:when test="${!empty userConnection.identifiant}">
+			<p><a href="/p6JavaMono/creation">Creer un nouveau spot</a></p>
+		</c:when>
+		<c:when test="${empty userConnection.identifiant}">
+			<p>Il vous faut être inscrit et connecté pour créer un spot</p>
+			<p><a href="/p6JavaMono/connectionutilisateur">Connection</a></p>
+			<p><a href="/p6JavaMono/inscription">Inscription</a></p>
+		</c:when>
+	</c:choose>		
+	<p><a href="/p6JavaMono/">Revenir à la page d'accueil</a></p>
+	
 </body>	

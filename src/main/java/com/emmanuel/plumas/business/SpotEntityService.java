@@ -27,5 +27,9 @@ public class SpotEntityService {
 		TreeSet<SpotEntity> spotEntitiesOrdonned = new TreeSet<SpotEntity>(spotEntities);
 		return spotEntitiesOrdonned;		
 	}
+
+	public void creerNouveauSpot(SpotEntity spotEntity) {
+		spotRepository.save(spotEntity);
+	}
 	
 }
