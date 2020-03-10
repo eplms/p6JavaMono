@@ -1,3 +1,6 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +14,11 @@
 <h1>Bienvenue sur WeClimb, le site de l'escalade</h1>	
 	
 	<p>Voici le détail du spot :  ${spot.nom}</p>
-	<p>Date de création du spot : ${spot.dateCreation}</p>
+	<fmt:formatDate value="${spot.dateCreation}" var="dateFormatee" 
+                type="date" pattern="dd-MM-yyyy" />
+	<p>Date de création du spot : ${dateFormatee}</p>
+	
+	<p>Créateur du spot : ${spot.userEntity.identifiant}</p>
 	
 	<c:forEach items="${spot.secteurEntities}" var="secteur">
 		<h2>Secteur : ${secteur.nom }</h2>    

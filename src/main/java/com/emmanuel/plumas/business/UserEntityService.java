@@ -58,16 +58,7 @@ public class UserEntityService {
 		userEntity.setDroitAdministrateur(false);
 		userRepository.save(userEntity);
 	}
-	/*
-	public Boolean recupererDroitAdministrateur(UserEntity userConnection) {
-		return userRepository.findByIdentifiant(userConnection.getIdentifiant()).getDroitAdministrateur();
-	}
-
-	public String recupererAdresseMail(UserEntity userConnection) {
-		// TODO Auto-generated method stub
-		return userRepository.findByIdentifiant(userConnection.getIdentifiant()).getAdresseMail();
-	}
-	 */
+	
 	public UserEntity recupererUserBase(UserEntity userEntity) {
 		UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userEntity.getIdentifiant(), userEntity.getPassword());
 		return utilisateurBase;
