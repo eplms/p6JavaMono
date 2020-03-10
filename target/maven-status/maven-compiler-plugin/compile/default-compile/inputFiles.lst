@@ -5,9 +5,11 @@
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/consumers/IUserEntityRepository.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/controllers/ConnectionUtilisateur.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/configuration/ApplicationConfiguration.java
+/Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/consumers/ISecteurEntityRepository.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/consumers/ILieuEntityRepository.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/business/LieuEntityService.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/configuration/CustomSpringConfiguration.java
+/Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/business/SecteurEntityService.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/models/SpotEntity.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/consumers/ISpotEntityRepository.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/controllers/Spot.java

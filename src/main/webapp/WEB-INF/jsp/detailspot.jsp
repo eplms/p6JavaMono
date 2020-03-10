@@ -18,19 +18,19 @@
 	<p>Créateur du spot : ${spot.userEntity.identifiant}</p>
 	
 	<c:forEach items="${spot.secteurEntities}" var="secteur">
-		<h2>Secteur : ${secteur.nom }</h2>    
+		<h2><a href="/p6JavaMono/detailsecteur?id=${secteur.id}">Secteur : ${secteur.nom }</a></h2>    
 		<p>${secteur.description}</p>
 		<table>
 			<tr>
+				<th>Voie</th>
 				<th></th>
-				<th>Nom</th>
 				<th>Hauteur</th>
 				<th>Cotation</th>
 				<th>Nombre de Points</th>
 			</tr>	
 			<c:forEach items="${secteur.voieEntities}" var="voie">
 				<tr>				
-					<td>voie : ${voie.nom }</td>
+					<td>${voie.nom }</td>
 					<c:if test="${empty voie.longueurEntities}">
 						<td></td>
 						<td>${voie.hauteur }</td>

@@ -1,8 +1,7 @@
 package com.emmanuel.plumas.models;
 
 import java.io.Serializable;
-import java.util.List;
-
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,7 +32,7 @@ public class SecteurEntity implements Serializable{
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="id_secteur")
-	private List<VoieEntity> voieEntities;
+	private Set<VoieEntity> voieEntities;
 	
 	
 	// Getter et setter clé étrangère
@@ -45,10 +44,10 @@ public class SecteurEntity implements Serializable{
 		this.spotEntity = spotEntity;
 	}
 	*/
-	public List<VoieEntity> getVoieEntities() {
+	public Set<VoieEntity> getVoieEntities() {
 		return voieEntities;
 	}
-	public void setVoieEntities(List<VoieEntity> voieEntities) {
+	public void setVoieEntities(Set<VoieEntity> voieEntities) {
 		this.voieEntities = voieEntities;
 	}
 	

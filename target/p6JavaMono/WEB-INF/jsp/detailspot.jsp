@@ -18,7 +18,7 @@
 	<p>Créateur du spot : ${spot.userEntity.identifiant}</p>
 	
 	<c:forEach items="${spot.secteurEntities}" var="secteur">
-		<h2>Secteur : ${secteur.nom }</h2>    
+		<h2><a href="/p6JavaMono/detailsecteur?id=${secteur.id}">Secteur : ${secteur.nom }</a></h2>    
 		<p>${secteur.description}</p>
 		<table>
 			<tr>

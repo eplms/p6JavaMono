@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.emmanuel.plumas.business.LieuEntityService;
+import com.emmanuel.plumas.business.SecteurEntityService;
 import com.emmanuel.plumas.business.SpotEntityService;
 import com.emmanuel.plumas.business.UserEntityService;
 import com.emmanuel.plumas.models.LieuEntity;
+import com.emmanuel.plumas.models.SecteurEntity;
 import com.emmanuel.plumas.models.SpotEntity;
 import com.emmanuel.plumas.models.UserEntity;
 
@@ -40,6 +42,10 @@ public class Spot {
 	@Qualifier ("UserEntityService")
 	private UserEntityService userEntityService;
 	
+	@Autowired
+	@Qualifier("SecteurEntityService")
+	private SecteurEntityService secteurEntityService;
+	
 	
 	@ModelAttribute("spotCreation")
 	public SpotEntity setSpotCreation() {
@@ -60,6 +66,14 @@ public class Spot {
 	      model.addAttribute("spot",spot);
 	    //spécifie le nom de la jsp à retourner en String, ici detailspot.jsp
 	     return "detailspot";
+	}
+	
+	@GetMapping(value="/detailsecteur")
+	public String afficherDetailSecteur(ModelMap model, @RequestParam("id") String idSecteur) {
+	     SecteurEntity secteurEntity= secteurEntityService.getSecteur(new Long(idSecteur));
+	      model.addAttribute("secteur",secteurEntity);
+	    //spécifie le nom de la jsp à retourner en String, ici detailsecteur.jsp
+	     return "detailsecteur";
 	}
 	
 	@GetMapping(value="/creation")
