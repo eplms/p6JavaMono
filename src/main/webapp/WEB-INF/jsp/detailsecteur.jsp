@@ -6,7 +6,8 @@
 </head>
 <body>
 	<header>
-		<a href="/p6JavaMono/spot">Revenir à la liste des spots</a>
+		<p><a href="/p6JavaMono/spot">Revenir à la liste des spots</a></p>
+		<p><a href="/p6JavaMono/detailspot?id=${secteur.spotEntity.id}">Revenir au spot</a></p>
 	</header>
 	<h2>Secteur ${secteur.nom}</h2>
   
@@ -21,7 +22,7 @@
 			</tr>	
 			<c:forEach items="${secteur.voieEntities}" var="voie">
 				<tr>				
-					<td>${voie.nom }</td>
+					<td><a href="/p6JavaMono/detailvoie?id=${voie.id}">${voie.nom }</a></td>
 					<c:if test="${empty voie.longueurEntities}">
 						<td></td>
 						<td>${voie.hauteur }</td>

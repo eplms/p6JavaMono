@@ -19,10 +19,12 @@ import com.emmanuel.plumas.business.LieuEntityService;
 import com.emmanuel.plumas.business.SecteurEntityService;
 import com.emmanuel.plumas.business.SpotEntityService;
 import com.emmanuel.plumas.business.UserEntityService;
+import com.emmanuel.plumas.business.VoieEntityService;
 import com.emmanuel.plumas.models.LieuEntity;
 import com.emmanuel.plumas.models.SecteurEntity;
 import com.emmanuel.plumas.models.SpotEntity;
 import com.emmanuel.plumas.models.UserEntity;
+import com.emmanuel.plumas.models.VoieEntity;
 
 
 @Controller
@@ -45,6 +47,10 @@ public class Spot {
 	@Autowired
 	@Qualifier("SecteurEntityService")
 	private SecteurEntityService secteurEntityService;
+	
+	@Autowired
+	@Qualifier("VoieEntityService")
+	private VoieEntityService voieEntityService;
 	
 	
 	@ModelAttribute("spotCreation")
@@ -76,6 +82,13 @@ public class Spot {
 	     return "detailsecteur";
 	}
 	
+	@GetMapping(value="/detailvoie")
+	public String afficherDetailVoie(ModelMap model,@RequestParam("id") String idVoie) {
+		VoieEntity voieEntity=voieEntityService.getVoie(new Long(idVoie));
+		model.addAttribute("voie",voieEntity);
+		return "detailvoie";
+	}
+	
 	@GetMapping(value="/creation")
 	public String afficherCreationSpot(HttpSession httpSession) {
 		//Vérification de la connection avant d'accéder à la page connection
@@ -99,33 +112,17 @@ public class Spot {
 		spotEntity.setTagOfficiel(false);
 		
 		/* Récupération de l'utilisateur V2*/		
-		UserEntity userConnection=(UserEntity) httpSession.getAttribute("userConnection");
-		UserEntity userBase=userEntityService.recupererUserBase(userConnection);
-		spotEntity.setUserEntity(userBase);
+		UserEntity user=(UserEntity) httpSession.getAttribute("userConnection");
+		user=userEntityService.getUserByIdentifiantAndPassword(user);
+		spotEntity.setUserEntity(user);
 		
-		/* Récupération du lieu V2*/
-		boolean lieuExistant=lieuEntityService.verifierLieuExistant(spotEntity);
-		if(!lieuExistant) {		
-			lieuEntityService.creerNouveauLieu(spotEntity.getLieuEntity());				
-		}
-		LieuEntity lieuBase=lieuEntityService.recupererLieuBase(spotEntity);
-		spotEntity.setLieuEntity(lieuBase);
-		
-		/* Récupération de l'utilisateur dans la variable de session V1 */
-		/*
-		UserEntity userConnection=(UserEntity) httpSession.getAttribute("userConnection");
-		userConnection.setDroitAdministrateur(userEntityService.recupererDroitAdministrateur(userConnection));
-		userConnection.setAdresseMail(userEntityService.recupererAdresseMail(userConnection));
-		spotEntity.setUserEntity(userConnection);
-		*/
-		
-		/* Récupération et vérification du lieu V1*/
-		/*
-		boolean lieuExistant=lieuEntityService.verifierLieuExistantt(spotEntity);
-		if(!lieuExistant) {		
+		/* Récupération du lieu V3*/
+		LieuEntity lieu=lieuEntityService.getLieuByVilleAndCodePostal(spotEntity.getLieuEntity());
+		if(lieu==null) {		
 			lieuEntityService.creerNouveauLieu(spotEntity.getLieuEntity());
+			lieu=lieuEntityService.getLieuByVilleAndCodePostal(spotEntity.getLieuEntity());
 		}
-		*/
+		spotEntity.setLieuEntity(lieu);
 		
 		/* Création de l'instance de Spot  dans la base */
 		spotEntityService.creerNouveauSpot(spotEntity);

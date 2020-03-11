@@ -59,7 +59,7 @@ public class UserEntityService {
 		userRepository.save(userEntity);
 	}
 	
-	public UserEntity recupererUserBase(UserEntity userEntity) {
+	public UserEntity getUserByIdentifiantAndPassword(UserEntity userEntity) {
 		UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userEntity.getIdentifiant(), userEntity.getPassword());
 		return utilisateurBase;
 	}

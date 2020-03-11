@@ -1,7 +1,7 @@
 package com.emmanuel.plumas.models;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -30,14 +30,14 @@ public class VoieEntity implements Serializable{
 	private String nbrePoints;
 	
 	/*
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="id_secteur")
 	private SecteurEntity secteurEntity;
 	*/
 		
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL )
 	@JoinColumn(name="id_voie")
-	private List<LongueurEntity> longueurEntities;
+	private Set<LongueurEntity> longueurEntities;
 	
 	// Setters et getters clés étrangères
   	/*public SecteurEntity getSecteurEntity() {
@@ -46,10 +46,10 @@ public class VoieEntity implements Serializable{
 	public void setSecteurEntity(SecteurEntity secteurEntity) {
 		this.secteurEntity = secteurEntity;
 	} */
-	public List<LongueurEntity> getLongueurEntities() {
+	public Set<LongueurEntity> getLongueurEntities() {
 		return longueurEntities;
 	}
-	public void setLongueurEntities(List<LongueurEntity> longueurEntities) {
+	public void setLongueurEntities(Set<LongueurEntity> longueurEntities) {
 		this.longueurEntities = longueurEntities;
 	}
 	

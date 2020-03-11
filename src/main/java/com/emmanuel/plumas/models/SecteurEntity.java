@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,11 +25,11 @@ public class SecteurEntity implements Serializable{
 	private String nom;
 	private String description;
 	
-	/*
-	@ManyToOne(cascade=CascadeType.ALL)
+	
+	@ManyToOne
 	@JoinColumn(name="id_spot")
 	private SpotEntity spotEntity;
-	*/
+	
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="id_secteur")
@@ -36,14 +37,14 @@ public class SecteurEntity implements Serializable{
 	
 	
 	// Getter et setter clé étrangère
-	/*
+	
 	public SpotEntity getSpotEntity() {
 		return spotEntity;
 	}
 	public void setSpotEntity(SpotEntity spotEntity) {
 		this.spotEntity = spotEntity;
 	}
-	*/
+	
 	public Set<VoieEntity> getVoieEntities() {
 		return voieEntities;
 	}

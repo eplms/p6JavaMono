@@ -3,7 +3,6 @@ package com.emmanuel.plumas.models;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +24,7 @@ public class LieuEntity implements Serializable{
 	@Column (name="codepostal")
 	private int codePostal;
 	
-	@OneToMany(mappedBy="lieuEntity", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="lieuEntity", fetch=FetchType.EAGER)
 	private List<SpotEntity> spotEntities; 
 	
 	

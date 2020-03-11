@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.emmanuel.plumas.consumers.ILieuEntityRepository;
 import com.emmanuel.plumas.models.LieuEntity;
-import com.emmanuel.plumas.models.SpotEntity;
 
 @Service
 @Qualifier("LieuEntityService")
@@ -21,31 +20,18 @@ public class LieuEntityService {
 	public LieuEntity getLieu(Long id) {
 		LieuEntity lieuEntity= lieuRepository.findById(id).get();
 		return lieuEntity;
-		
 	}
 	
 	public List<LieuEntity> getAllLieu() {
 		List<LieuEntity> listeLieu = (List<LieuEntity>) lieuRepository.findAll();
-		return listeLieu;
-			
-	}
-
-	public boolean verifierLieuExistant(SpotEntity spotEntity) {
-		boolean lieuExistant=false;
-		LieuEntity lieuBase = lieuRepository.findByVille(spotEntity.getLieuEntity().getVille());
-		if(lieuBase!=null) {
-			lieuExistant=true;
-			}	
-		return lieuExistant;
-	}
-
-	public void creerNouveauLieu(LieuEntity lieuEntity) {
-		lieuRepository.save(lieuEntity);		
-	}
-
-	public LieuEntity recupererLieuBase(SpotEntity spotEntity) {
-		LieuEntity lieuBase=lieuRepository.findByVille(spotEntity.getLieuEntity().getVille());
-		return lieuBase;
+		return listeLieu;		
 	}
 	
+	public LieuEntity getLieuByVilleAndCodePostal (LieuEntity lieuEntity) {
+		return lieuRepository.findByVille(lieuEntity.getVille());
+	}
+	
+	public void creerNouveauLieu(LieuEntity lieuEntity) {
+		lieuRepository.save(lieuEntity);		
+	}	
 }
