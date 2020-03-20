@@ -7,6 +7,7 @@
 <body>
 <header>
 	<a href="/p6JavaMono/spot">Revenir à la liste des spots</a>
+	<a href="/p6JavaMono/">Revenir à la page d'accueil</a>
 </header>
 <h1>Bienvenue sur WeClimb, le site de l'escalade</h1>	
 	
@@ -17,6 +18,25 @@
 	
 	<p>Créateur du spot : ${spot.userEntity.identifiant}</p>
 	
+	<!-- Gestion des conditions de connection pour la créations de secteur -->
+	<c:choose>
+		<c:when test="${empty userConnection}">
+			<p>Vous n'êtes pas connecté</p>
+			<p><a href="/p6JavaMono/connectionutilisateur">Me connecter</a></p>
+			<p><a href="/p6JavaMono/spot">Revenir à la liste des spots</a></p>
+		</c:when>
+		<c:when test="${userConnection.identifiant eq spot.userEntity.identifiant}">
+			<p> Vous êtes connecté en tant que : ${userConnection.identifiant}</p>
+			<p><a href="/p6JavaMono/creationsecteur?idspot=${spot.id}">Créer un nouveau secteur sur ce spot</a></p>
+		</c:when>
+		<c:when test="${userConnection.identifiant ne spot.userEntity.identifiant}">
+			<p>Vous devez être connecté en tant créateur du spot pour pouvoir ajouter un secteur</p>
+			<p><a href="/p6JavaMono/connectionutilisateur">Me connecter avec un autre compte</a></p>
+			<p><a href="/p6JavaMono/spot">Revenir à la liste des spots</a></p>
+		</c:when>			
+	</c:choose>
+	
+	<!-- Affichage des secteurs, des voies et des longueurs -->
 	<c:forEach items="${spot.secteurEntities}" var="secteur">
 		<h2><a href="/p6JavaMono/detailsecteur?id=${secteur.id}">Secteur : ${secteur.nom }</a></h2>    
 		<p>${secteur.description}</p>
@@ -50,7 +70,6 @@
 			</c:forEach>
 		</table>
 	</c:forEach>
-					
 	
 </body>
 </html>

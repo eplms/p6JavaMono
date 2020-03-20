@@ -58,6 +58,11 @@ public class Spot {
 		return new SpotEntity();
 	}
 	
+	@ModelAttribute("secteurCreation")
+	public SecteurEntity setSecteurCreation() {
+		return new SecteurEntity();
+	}
+	
 	@GetMapping(value="/spot")
 	public String afficherListeSpots(ModelMap model) {
 			TreeSet <SpotEntity> listeSpot= spotEntityService.getAllSpot();
@@ -128,8 +133,28 @@ public class Spot {
 		spotEntityService.creerNouveauSpot(spotEntity);
 		model.addAttribute("spotentity", spotEntity);
 		return "confirmationcreationspot";
-		
 	}
 	
+	@GetMapping(value="/creationsecteur")
+	public String afficherFormulaireCreationSecteur(HttpSession httpSession,@RequestParam("idspot") Long idSpot, ModelMap model) {
+		/* Transmission à la jsp du spot dans lequel sera créé l'objet */
+		SpotEntity spot=spotEntityService.getSpot(idSpot);
+		UserEntity userConnecte= (UserEntity) httpSession.getAttribute("userConnection");
+		
+		if (userConnecte.getIdentifiant().equals(spot.getUserEntity().getIdentifiant())){
+			model.addAttribute("spot",spot);
+			return "creationsecteur";
+		} else {
+			return "redirect:/connectionutilisateur";
+		}
+	}
 	
+	@PostMapping(value="/creationsecteur")
+	public String recupererCreationSecteur(ModelMap model,@ModelAttribute("secteurCreation") SecteurEntity secteurEntity) {
+		//La récupération de l'idspot est suffisante
+		secteurEntityService.creerNouveauSecteur(secteurEntity);
+		
+		model.addAttribute("secteur", secteurEntity);
+		return "confirmationcreationsecteur";
+	}
 }

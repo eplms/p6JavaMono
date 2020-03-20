@@ -19,5 +19,9 @@ public class SecteurEntityService {
 	public SecteurEntity getSecteur(long id) {
 		return secteurRepository.findById(id).get();
 	}
+
+	public void creerNouveauSecteur(SecteurEntity secteurEntity) {
+		secteurRepository.save(secteurEntity);
+	}
 	
 }
