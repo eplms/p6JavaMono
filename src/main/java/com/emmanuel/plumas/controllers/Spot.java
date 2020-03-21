@@ -63,6 +63,11 @@ public class Spot {
 		return new SecteurEntity();
 	}
 	
+	@ModelAttribute("voieCreation")
+	public VoieEntity setVoieCreation() {
+		return new VoieEntity();
+	}
+	
 	@GetMapping(value="/spot")
 	public String afficherListeSpots(ModelMap model) {
 			TreeSet <SpotEntity> listeSpot= spotEntityService.getAllSpot();
@@ -157,4 +162,30 @@ public class Spot {
 		model.addAttribute("secteur", secteurEntity);
 		return "confirmationcreationsecteur";
 	}
+	
+	
+	@GetMapping(value="/creationvoie")
+	public String afficherFormulaireCreationVoie(HttpSession httpSession, ModelMap model,@RequestParam("idspot")Long idSpot, @RequestParam("idsecteur") Long idSecteur) {
+		SpotEntity spotEntity=spotEntityService.getSpot(idSpot);
+		SecteurEntity secteurEntity=secteurEntityService.getSecteur(idSecteur);
+		UserEntity userConnecte =(UserEntity) httpSession.getAttribute("userConnection");
+		if (userConnecte.getIdentifiant().equals(spotEntity.getUserEntity().getIdentifiant())) {
+			model.addAttribute("spot",spotEntity);
+			model.addAttribute("secteur",secteurEntity);
+			return "creationvoie";
+		}else {
+			return "redirect:/connectionutilisateur";
+		}
+		
+		
+		
+	}
+	
+	@PostMapping(value="/creationvoie")
+	public String recupererCreationsecteur(ModelMap model,@ModelAttribute("voieCreation") VoieEntity voieEntity) {
+		voieEntityService.creerNouvelVoie(voieEntity);
+		model.addAttribute("voie",voieEntity);
+		return "confirmationcreationvoie";
+	}
+	
 }

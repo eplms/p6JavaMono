@@ -18,4 +18,8 @@ public class VoieEntityService {
 	public VoieEntity getVoie(Long id) {
 		return voieRepository.findById(id).get();
 	}
+
+	public void creerNouvelVoie(VoieEntity voieEntity) {
+		voieRepository.save(voieEntity);
+	}
 }

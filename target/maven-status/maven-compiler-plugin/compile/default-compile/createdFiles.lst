@@ -12,7 +12,9 @@ com/emmanuel/plumas/controllers/Accueil.class
 com/emmanuel/plumas/models/UserEntity.class
 com/emmanuel/plumas/consumers/ISecteurEntityRepository.class
 com/emmanuel/plumas/controllers/Localisation.class
+com/emmanuel/plumas/business/VoieEntityService.class
 com/emmanuel/plumas/configuration/CustomSpringConfiguration.class
+com/emmanuel/plumas/consumers/IVoieEntityRepository.class
 com/emmanuel/plumas/business/LieuEntityService.class
 com/emmanuel/plumas/models/VoieEntity.class
 com/emmanuel/plumas/models/LongueurEntity.class

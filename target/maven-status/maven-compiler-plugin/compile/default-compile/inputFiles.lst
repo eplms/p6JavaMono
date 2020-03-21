@@ -3,8 +3,10 @@
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/models/LieuEntity.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/controllers/Localisation.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/consumers/IUserEntityRepository.java
+/Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/business/VoieEntityService.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/controllers/ConnectionUtilisateur.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/configuration/ApplicationConfiguration.java
+/Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/consumers/IVoieEntityRepository.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/consumers/ISecteurEntityRepository.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/consumers/ILieuEntityRepository.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/business/LieuEntityService.java

@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,28 +25,28 @@ public class VoieEntity implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	private long id;
 	private String nom;
-	private String hauteur;
+	private int hauteur;
 	private String cotation;
 	@Column(name="nbrepoints")
-	private String nbrePoints;
+	private int nbrePoints;
 	
-	/*
+	
 	@ManyToOne
 	@JoinColumn(name="id_secteur")
 	private SecteurEntity secteurEntity;
-	*/
+	
 		
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL )
 	@JoinColumn(name="id_voie")
 	private Set<LongueurEntity> longueurEntities;
 	
-	// Setters et getters clés étrangères
-  	/*public SecteurEntity getSecteurEntity() {
+	//Setters et getters clés étrangères
+  	public SecteurEntity getSecteurEntity() {
 		return secteurEntity;
 	}
 	public void setSecteurEntity(SecteurEntity secteurEntity) {
 		this.secteurEntity = secteurEntity;
-	} */
+	} 
 	public Set<LongueurEntity> getLongueurEntities() {
 		return longueurEntities;
 	}
@@ -66,10 +67,10 @@ public class VoieEntity implements Serializable{
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public String getHauteur() {
+	public int getHauteur() {
 		return hauteur;
 	}
-	public void setHauteur(String hauteur) {
+	public void setHauteur(int hauteur) {
 		this.hauteur = hauteur;
 	}
 	public String getCotation() {
@@ -78,10 +79,10 @@ public class VoieEntity implements Serializable{
 	public void setCotation(String cotation) {
 		this.cotation = cotation;
 	}
-	public String getNbrePoints() {
+	public int getNbrePoints() {
 		return nbrePoints;
 	}
-	public void setNbrePoints(String nbrePoints) {
+	public void setNbrePoints(int nbrePoints) {
 		this.nbrePoints = nbrePoints;
 	}
 	
