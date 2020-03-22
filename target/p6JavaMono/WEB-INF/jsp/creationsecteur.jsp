@@ -10,7 +10,7 @@
 	
 	<h2>Formulaire de création de secteur</h2>
  	<p>Spot auquel appartient le secteur : ${spot.nom}</p>
-	<form:form method="post" action="creationsecteur" ModelAttribute="secteurCreation">
+	<form:form method="post" action="creationsecteur" modelAttribute="secteurCreation">
 		<table>
 			<tr>
 				<td><form:label path="nom"/>Nom du secteur</td>

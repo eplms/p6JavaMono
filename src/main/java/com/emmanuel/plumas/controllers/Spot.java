@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.emmanuel.plumas.business.LieuEntityService;
+import com.emmanuel.plumas.business.LongueurEntityService;
 import com.emmanuel.plumas.business.SecteurEntityService;
 import com.emmanuel.plumas.business.SpotEntityService;
 import com.emmanuel.plumas.business.UserEntityService;
 import com.emmanuel.plumas.business.VoieEntityService;
 import com.emmanuel.plumas.models.LieuEntity;
+import com.emmanuel.plumas.models.LongueurEntity;
 import com.emmanuel.plumas.models.SecteurEntity;
 import com.emmanuel.plumas.models.SpotEntity;
 import com.emmanuel.plumas.models.UserEntity;
@@ -52,6 +54,9 @@ public class Spot {
 	@Qualifier("VoieEntityService")
 	private VoieEntityService voieEntityService;
 	
+	@Autowired
+	@Qualifier("LongueurEntityService")
+	private LongueurEntityService longueurEntityService;
 	
 	@ModelAttribute("spotCreation")
 	public SpotEntity setSpotCreation() {
@@ -68,6 +73,10 @@ public class Spot {
 		return new VoieEntity();
 	}
 	
+	@ModelAttribute("longueurCreation")
+	public LongueurEntity setLongueurCreation()	{
+		return new LongueurEntity();
+	}
 	@GetMapping(value="/spot")
 	public String afficherListeSpots(ModelMap model) {
 			TreeSet <SpotEntity> listeSpot= spotEntityService.getAllSpot();
@@ -165,27 +174,38 @@ public class Spot {
 	
 	
 	@GetMapping(value="/creationvoie")
-	public String afficherFormulaireCreationVoie(HttpSession httpSession, ModelMap model,@RequestParam("idspot")Long idSpot, @RequestParam("idsecteur") Long idSecteur) {
-		SpotEntity spotEntity=spotEntityService.getSpot(idSpot);
+	public String afficherFormulaireCreationVoie(HttpSession httpSession, ModelMap model, @RequestParam("idsecteur") Long idSecteur) {
 		SecteurEntity secteurEntity=secteurEntityService.getSecteur(idSecteur);
 		UserEntity userConnecte =(UserEntity) httpSession.getAttribute("userConnection");
-		if (userConnecte.getIdentifiant().equals(spotEntity.getUserEntity().getIdentifiant())) {
-			model.addAttribute("spot",spotEntity);
+		if (userConnecte.getIdentifiant().equals(secteurEntity.getSpotEntity().getUserEntity().getIdentifiant())) {
 			model.addAttribute("secteur",secteurEntity);
 			return "creationvoie";
 		}else {
 			return "redirect:/connectionutilisateur";
 		}
-		
-		
-		
 	}
-	
 	@PostMapping(value="/creationvoie")
-	public String recupererCreationsecteur(ModelMap model,@ModelAttribute("voieCreation") VoieEntity voieEntity) {
+	public String recupererCreationVoie(ModelMap model,@ModelAttribute("voieCreation") VoieEntity voieEntity) {
 		voieEntityService.creerNouvelVoie(voieEntity);
 		model.addAttribute("voie",voieEntity);
 		return "confirmationcreationvoie";
 	}
+	@GetMapping(value="/creationlongueur")
+	public String afficherFormulaireCreationLongueur(HttpSession httpSession,ModelMap model,@RequestParam("idvoie") Long idVoie) {
+		VoieEntity voieEntity=voieEntityService.getVoie(idVoie);
+		UserEntity userConnecte=(UserEntity) httpSession.getAttribute("userConnection");
+		if(userConnecte.getIdentifiant().equals(voieEntity.getSecteurEntity().getSpotEntity().getUserEntity().getIdentifiant())){
+			model.addAttribute("voie",voieEntity);
+			return "creationlongueur";
+		}else {
+			return "redirect:/connectionutilisateur";
+		}
+	}
 	
+	@PostMapping(value="/creationlongueur")
+	public String recupererCreationLongueur(ModelMap model,@ModelAttribute("longueurCreation") LongueurEntity longueurEntity) {
+		longueurEntityService.creerNouvelleLongueur(longueurEntity);
+		model.addAttribute("longueur",longueurEntity);
+		return "confirmationcreationlongueur";
+	}
 }
