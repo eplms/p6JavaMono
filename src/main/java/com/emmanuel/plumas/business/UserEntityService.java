@@ -20,23 +20,6 @@ public class UserEntityService {
 		return userEntity;
 	}
 
-/* Première version de la vérification de la vérification d'user
-	public Boolean verifierUserEnregistre(UserEntity utilisateurConnecte) {
-		boolean utilisateurExistantBase =false;
-		List<UserEntity> allUser=(List<UserEntity>) userRepository.findAll();
-		for(UserEntity userEntity:allUser){
-			if((userEntity.getIdentifiant().contentEquals(utilisateurConnecte.getIdentifiant())&&
-					(userEntity.getPassword().contentEquals(utilisateurConnecte.getPassword())))){
-						utilisateurExistantBase=true;
-						return utilisateurExistantBase;
-			}else {
-				utilisateurExistantBase=false;
-			}
-		}
-		return utilisateurExistantBase;
-	}
-	
-*/
 	public Boolean verifierUserEnregistre(UserEntity userEntity) {
 		boolean utilisateurExistantBase =false;
 		UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userEntity.getIdentifiant(), userEntity.getPassword());
@@ -62,6 +45,15 @@ public class UserEntityService {
 	public UserEntity getUserByIdentifiantAndPassword(UserEntity userEntity) {
 		UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userEntity.getIdentifiant(), userEntity.getPassword());
 		return utilisateurBase;
+	}
+
+	public boolean verifierDroitAdministrateurUserEnregistre(UserEntity userConnecte) {
+		Boolean droitAdministrateur=false;
+		UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userConnecte.getIdentifiant(), userConnecte.getPassword());
+		if (utilisateurBase.getDroitAdministrateur()) {
+			droitAdministrateur=true;
+		}
+		return droitAdministrateur;
 	}
 	
 	

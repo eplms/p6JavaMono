@@ -14,6 +14,35 @@
 	<p>Voici le détail du spot :  ${spot.nom}</p>
 	<fmt:formatDate value="${spot.dateCreation}" var="dateFormatee" 
                 type="date" pattern="dd-MM-yyyy" />
+	
+	<c:if test="${spot.tagOfficiel == true}">
+		<p> Le spot est officiellement reconnu par la communauté WeClimb !<p>
+	</c:if>
+	<c:if test="${spot.tagOfficiel==false }">
+		<p>Le spot n'est pas encore officiellement reconnu par la communauté WeClimb !</p>
+	</c:if>
+	
+	<!-- Tester si utilisateur connecté est administrateur -->
+	<!-- Si utilisateur a les droits administrateurs créer une checkbox pour rendre le spot officiel -->
+	
+	<c:if test="${userConnection.droitAdministrateur == true}">
+		<p> Cocher la case puis valider pour changer le statut du spot<p> 
+		<form:form method="post" action="detailspot" modelAttribute="spotCreation">
+	 		<table>
+	 			<tr>
+	 				<td><form:label path="tagOfficiel"> Spot officiel</form:label></td> 
+	 				<td><form:checkbox path="tagOfficiel"/>Officiel</td>
+ 				</tr>
+ 				<tr>
+					<td><form:hidden path="id" value="${spot.id}"/></td>
+				</tr>
+				<tr>
+					<td><button type="submit">Valider le changement de statut du spot</button></td>
+				</tr>
+	 		</table>
+		</form:form>
+	</c:if>
+	
 	<p>Date de création du spot : ${dateFormatee}</p>
 	
 	<p>Créateur du spot : ${spot.userEntity.identifiant}</p>

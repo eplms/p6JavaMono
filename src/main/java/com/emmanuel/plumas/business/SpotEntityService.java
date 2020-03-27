@@ -32,4 +32,11 @@ public class SpotEntityService {
 		spotRepository.save(spotEntity);
 	}
 	
+	public SpotEntity upDateSpot(SpotEntity spotEntity) {
+		SpotEntity spot=getSpot(spotEntity.getId());
+		spot.setTagOfficiel(spotEntity.getTagOfficiel());
+		spotRepository.save(spot);
+		return spot;
+	}
+	
 }

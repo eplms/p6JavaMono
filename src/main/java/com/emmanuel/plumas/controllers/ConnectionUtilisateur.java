@@ -35,9 +35,14 @@ public class ConnectionUtilisateur {
 	}
 	
 	@PostMapping("/connectionutilisateur")
-	public String recupererConnectionUtilisateur(@ModelAttribute("userConnection") UserEntity userConnecte,ModelMap model) {	
+	public String recupererConnectionUtilisateur(HttpSession httpSession,@ModelAttribute("userConnection") UserEntity userConnecte,ModelMap model) {	
 		boolean utilisateurEnregistre = userEntityService.verifierUserEnregistre(userConnecte);
+		boolean utilisateurAdministrateur=userEntityService.verifierDroitAdministrateurUserEnregistre(userConnecte);
 		if (utilisateurEnregistre) {
+			if(utilisateurAdministrateur) {
+				userConnecte.setDroitAdministrateur(true);
+				httpSession.setAttribute("userConnection",userConnecte);
+			}
 			return "connectionreussie";
 		} else {
 			model.addAttribute("message1","Identifiant et/ou mot de passe incorrect !");

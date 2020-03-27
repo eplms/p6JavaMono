@@ -93,6 +93,17 @@ public class Spot {
 	     return "detailspot";
 	}
 	
+	// Création methode @PostMapping pour transformer le spot avec le tag officiel
+	@PostMapping(value="/detailspot")
+	public String officialiserSpot(ModelMap model, @ModelAttribute("spotCreation") SpotEntity spotEntity) {
+		//Changer le statut du spot et récupérer le spot incluant les modifications
+		SpotEntity spot=spotEntityService.upDateSpot(spotEntity);
+		//transmettre le spot mis à jour après changement de statut
+		model.addAttribute("spot",spot);
+		return "detailspot";
+	}
+	
+	
 	@GetMapping(value="/detailsecteur")
 	public String afficherDetailSecteur(ModelMap model, @RequestParam("id") String idSecteur) {
 	     SecteurEntity secteurEntity= secteurEntityService.getSecteur(new Long(idSecteur));

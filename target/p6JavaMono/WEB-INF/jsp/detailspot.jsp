@@ -14,6 +14,17 @@
 	<p>Voici le détail du spot :  ${spot.nom}</p>
 	<fmt:formatDate value="${spot.dateCreation}" var="dateFormatee" 
                 type="date" pattern="dd-MM-yyyy" />
+	
+	<!-- Tester si utilisateur connecté est administrateur -->
+	<!-- Si utilisateur a les droits administrateurs créer une checkbox pour rendre le spot officiel -->
+	<!-- 
+	<c:if test="${userConnection.droitAdministateur }">
+		<form:form method="post" action="detailspot" modelAttribute="spotModification">
+	 
+		</form:form>
+	</c:if>
+	 -->
+	
 	<p>Date de création du spot : ${dateFormatee}</p>
 	
 	<p>Créateur du spot : ${spot.userEntity.identifiant}</p>
