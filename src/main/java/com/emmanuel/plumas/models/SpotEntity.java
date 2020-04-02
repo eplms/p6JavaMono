@@ -43,6 +43,11 @@ public class SpotEntity implements Serializable,Comparable<SpotEntity>{
 	@JoinColumn(name="id_spot")
 	private Set<SecteurEntity> secteurEntities; 
 	
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_spot")
+	private Set<CommentaireEntity> commentaireEntities; 
+	
+	
 	//getters et setters clés étrangère
 	public UserEntity getUserEntity() {
 		return userEntity;
@@ -61,6 +66,12 @@ public class SpotEntity implements Serializable,Comparable<SpotEntity>{
 	}
 	public void setSecteurEntities(Set<SecteurEntity> secteurEntities) {
 		this.secteurEntities = secteurEntities;
+	}
+	public Set<CommentaireEntity> getCommentaireEntities() {
+		return commentaireEntities;
+	}
+	public void setCommentaireEntities(Set<CommentaireEntity> commentaireEntities) {
+		this.commentaireEntities = commentaireEntities;
 	}
 	
 	
@@ -94,6 +105,7 @@ public class SpotEntity implements Serializable,Comparable<SpotEntity>{
 		// TODO Auto-generated method stub
 		return this.getId().compareTo(o.getId());
 	}
+	
 	
 	
 	
