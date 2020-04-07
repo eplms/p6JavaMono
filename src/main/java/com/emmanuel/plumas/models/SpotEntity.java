@@ -43,7 +43,7 @@ public class SpotEntity implements Serializable,Comparable<SpotEntity>{
 	@JoinColumn(name="id_spot")
 	private Set<SecteurEntity> secteurEntities; 
 	
-	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_spot")
 	private Set<CommentaireEntity> commentaireEntities; 
 	

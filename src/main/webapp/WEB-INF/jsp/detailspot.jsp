@@ -102,25 +102,25 @@
 		
 		
 		
-			<!-- Affichage des commentaires -->	
-			<h2>Commentaires</h2>
-			<c:if test="${!empty spot.commentaireEntities}">
-				<c:forEach items="${spot.commentaireEntities}" var="commentaire">
-						<p>commentaire laissé par :${commentaire.userEntity.identifiant }</p>
-						<p>le :${commentaire.dateCommentaire} </p>
-						<p>${commentaire.contenu}</p>
-						<c:if test="${userConnection.droitAdministrateur == true}">
-							<p>Supprimer le commentaire</p>
-						</c:if>
-				</c:forEach>
-			<!-- S'il n'y a pas de message -->
-				<!-- Afficher le message : il n'y a pas de commentaires -->
-			</c:if>
-			
-			
-			<c:if test="${empty spot.commentaireEntities}">
-				<p>Il n'y a aucun commentaire pour ce spot</p>
-			</c:if>
+		<!-- Affichage des commentaires -->	
+		<h2>Commentaires</h2>
+		<c:if test="${!empty spot.commentaireEntities}">
+			<c:forEach items="${spot.commentaireEntities}" var="commentaire">
+					<p>commentaire laissé par :${commentaire.userEntity.identifiant }</p>
+					<p>le :${commentaire.dateCommentaire} </p>
+					<p>${commentaire.contenu}</p>
+					<c:if test="${userConnection.droitAdministrateur == true}">
+						<a href="/p6JavaMono/deleteComment?idComment=${commentaire.id}&idSpot=${commentaire.spotEntity.id}">Supprimer le commentaire</a>
+					</c:if>
+			</c:forEach>
+		<!-- S'il n'y a pas de message -->
+			<!-- Afficher le message : il n'y a pas de commentaires -->
+		</c:if>
+		
+		
+		<c:if test="${empty spot.commentaireEntities}">
+			<p>Il n'y a aucun commentaire pour ce spot</p>
+		</c:if>
 		
 		
 	</body>

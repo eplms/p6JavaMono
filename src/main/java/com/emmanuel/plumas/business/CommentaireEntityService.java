@@ -12,7 +12,11 @@ public class CommentaireEntityService {
 
 	@Autowired
 	@Qualifier("ICommentaireEntityRepository")
-	private ICommentaireEntityRepository commentaireRepository;
-	
+	private  ICommentaireEntityRepository commentaireRepository;
+
+	public void supprimerCommentaire(Long id) {
+		commentaireRepository.deleteById(id);
+		
+	}
 	
 }

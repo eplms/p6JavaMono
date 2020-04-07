@@ -79,7 +79,6 @@ public class SpotController {
 			//retour au formulaire de connection si l'utilisateu n'est pas connecté
 			return "redirect:/connectionutilisateur";
 		}
-		
 	}
 	
 	@PostMapping(value="/creation")
