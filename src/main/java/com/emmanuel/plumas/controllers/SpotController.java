@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.emmanuel.plumas.business.LieuEntityService;
 import com.emmanuel.plumas.business.SpotEntityService;
 import com.emmanuel.plumas.business.UserEntityService;
+import com.emmanuel.plumas.models.CommentaireEntity;
 import com.emmanuel.plumas.models.LieuEntity;
 import com.emmanuel.plumas.models.SpotEntity;
 import com.emmanuel.plumas.models.UserEntity;
@@ -42,6 +43,11 @@ public class SpotController {
 	@ModelAttribute("spotCreation")
 	public SpotEntity setSpotCreation() {
 		return new SpotEntity();
+	}
+	
+	@ModelAttribute("creationCommentaire")
+	public CommentaireEntity setCommentaireEntity() {
+		return new CommentaireEntity();
 	}
 	
 	@GetMapping(value="/spot")

@@ -104,23 +104,50 @@
 		
 		<!-- Affichage des commentaires -->	
 		<h2>Commentaires</h2>
+		<!-- Affichage de la zone de saisie de commentaire i utilisateur connecté -->
+		<c:if test="${!empty userConnection }">
+			<h3> Saisie d'un nouveau commentaire</h3>
+			<form:form method="post" action="ajouterCommentaire" modelAttribute="creationCommentaire">
+				<table>
+					
+					<tr>
+						<td><form:label path="contenu"/>Votre commentaire</td>
+						<td><form:textarea path="contenu" rows="5" cols="30"></form:textarea></td>
+					</tr>
+					<tr>
+						<td><form:hidden path="userEntity.identifiant" value="${userConnection.identifiant}"/></td>
+						<td><form:hidden path="userEntity.password" value="${userConnection.password}"/></td>
+					</tr>
+					<tr>
+						<td><form:hidden path="spotEntity.id" value="${spot.id}"/></td>
+					</tr>
+					<tr>
+						<td><button type="submit">Ajouter le commentaire</button></td>
+					</tr>
+				</table>
+			</form:form>
+			
+		</c:if>
+		
+		
+		
 		<c:if test="${!empty spot.commentaireEntities}">
+			<h3>Commentaires précédents</h3>
 			<c:forEach items="${spot.commentaireEntities}" var="commentaire">
 					<p>commentaire laissé par :${commentaire.userEntity.identifiant }</p>
 					<p>le :${commentaire.dateCommentaire} </p>
+					<p>à :${commentaire.heureCommentaire }</p>
 					<p>${commentaire.contenu}</p>
 					<c:if test="${userConnection.droitAdministrateur == true}">
 						<a href="/p6JavaMono/deleteComment?idComment=${commentaire.id}&idSpot=${commentaire.spotEntity.id}">Supprimer le commentaire</a>
 					</c:if>
 			</c:forEach>
-		<!-- S'il n'y a pas de message -->
-			<!-- Afficher le message : il n'y a pas de commentaires -->
-		</c:if>
-		
-		
+		</c:if>	
+		<!-- S'il n'y a pas de message Afficher le message : il n'y a pas de commentaires -->
 		<c:if test="${empty spot.commentaireEntities}">
 			<p>Il n'y a aucun commentaire pour ce spot</p>
 		</c:if>
+		
 		
 		
 	</body>

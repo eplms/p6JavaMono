@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.emmanuel.plumas.consumers.ICommentaireEntityRepository;
+import com.emmanuel.plumas.models.CommentaireEntity;
 
 @Service
 @Qualifier("CommentaireEntityService")
@@ -16,6 +17,11 @@ public class CommentaireEntityService {
 
 	public void supprimerCommentaire(Long id) {
 		commentaireRepository.deleteById(id);
+		
+	}
+
+	public void ajouterCommentaire(CommentaireEntity commentaireEntity) {
+		commentaireRepository.save(commentaireEntity);
 		
 	}
 	
