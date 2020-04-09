@@ -33,11 +33,15 @@ public class CommentaireController {
 	@Qualifier("UserEntityService")
 	private UserEntityService userService;
 	
+	private CommentaireEntity commentaire=new CommentaireEntity();
+	
 	@ModelAttribute("creationCommentaire")
 	public CommentaireEntity setCommentaireEntity() {
-		return new CommentaireEntity();
+		/* modelAttribute n'est plus une nouvelle instance à chaque fois */
+		return commentaire;
 	}
 
+	
 	
 	@GetMapping(value="/deleteComment")
 	public String supprimerCommentaire(ModelMap model,@RequestParam("idComment") String idCommentaire, @RequestParam("idSpot") String idSpot) {
@@ -51,7 +55,27 @@ public class CommentaireController {
 		commentaireEntity.setUserEntity(userEntity);
 		commentaireEntity.setDateCommentaire(new Date());
 		commentaireEntity.setHeureCommentaire(LocalTime.now());
-		commentaireService.ajouterCommentaire(commentaireEntity);
+		commentaireService.sauvegarderCommentaire(commentaireEntity);
+		return "redirect:/detailspot?id="+commentaireEntity.getSpotEntity().getId();
+	}
+	
+	@GetMapping(value="/updateComment")
+	public String demandeModificationCommentaire(ModelMap model,@RequestParam("idComment") String idCommentaire) {
+		CommentaireEntity commentaireEntity=commentaireService.recupererCommentaire(new Long(idCommentaire)); 
+		/* valeur par défaut du modelAttribute pour préaffichage dans la modification*/
+		commentaire.setId(commentaireEntity.getId());
+		commentaire.setContenu(commentaireEntity.getContenu());
+		commentaire.setDateCommentaire(commentaireEntity.getDateCommentaire());
+		commentaire.setHeureCommentaire(commentaireEntity.getHeureCommentaire());
+		commentaire.setSpotEntity(commentaireEntity.getSpotEntity());
+		commentaire.setUserEntity(commentaireEntity.getUserEntity());
+		model.addAttribute("commentaire", commentaireEntity);
+		return "updatecomment";
+	}
+	
+	@PostMapping(value="/updateComment")
+	public String modifierCommentaire(ModelMap model, @ModelAttribute("creationCommentaire") CommentaireEntity commentaireEntity) {
+		commentaireService.sauvegarderCommentaire(commentaireEntity);
 		return "redirect:/detailspot?id="+commentaireEntity.getSpotEntity().getId();
 	}
 	

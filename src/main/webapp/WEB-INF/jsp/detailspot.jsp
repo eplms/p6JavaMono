@@ -100,8 +100,6 @@
 			</table>
 		</c:forEach>
 		
-		
-		
 		<!-- Affichage des commentaires -->	
 		<h2>Commentaires</h2>
 		<!-- Affichage de la zone de saisie de commentaire i utilisateur connecté -->
@@ -109,7 +107,6 @@
 			<h3> Saisie d'un nouveau commentaire</h3>
 			<form:form method="post" action="ajouterCommentaire" modelAttribute="creationCommentaire">
 				<table>
-					
 					<tr>
 						<td><form:label path="contenu"/>Votre commentaire</td>
 						<td><form:textarea path="contenu" rows="5" cols="30"></form:textarea></td>
@@ -126,11 +123,9 @@
 					</tr>
 				</table>
 			</form:form>
-			
 		</c:if>
 		
-		
-		
+		<!-- Affichage de la liste des commentaires -->
 		<c:if test="${!empty spot.commentaireEntities}">
 			<h3>Commentaires précédents</h3>
 			<c:forEach items="${spot.commentaireEntities}" var="commentaire">
@@ -140,6 +135,7 @@
 					<p>${commentaire.contenu}</p>
 					<c:if test="${userConnection.droitAdministrateur == true}">
 						<a href="/p6JavaMono/deleteComment?idComment=${commentaire.id}&idSpot=${commentaire.spotEntity.id}">Supprimer le commentaire</a>
+						<a href="/p6JavaMono/updateComment?idComment=${commentaire.id}">Modifier le commentaire</a>
 					</c:if>
 			</c:forEach>
 		</c:if>	

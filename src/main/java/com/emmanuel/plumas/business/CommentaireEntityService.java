@@ -15,14 +15,16 @@ public class CommentaireEntityService {
 	@Qualifier("ICommentaireEntityRepository")
 	private  ICommentaireEntityRepository commentaireRepository;
 
-	public void supprimerCommentaire(Long id) {
-		commentaireRepository.deleteById(id);
-		
+	public void supprimerCommentaire(Long idCommentaire) {
+		commentaireRepository.deleteById(idCommentaire);
 	}
 
-	public void ajouterCommentaire(CommentaireEntity commentaireEntity) {
+	public void sauvegarderCommentaire(CommentaireEntity commentaireEntity) {
 		commentaireRepository.save(commentaireEntity);
-		
+	}
+
+	public CommentaireEntity recupererCommentaire(Long idCommentaire) {
+		return commentaireRepository.findById(idCommentaire).get();
 	}
 	
 }
