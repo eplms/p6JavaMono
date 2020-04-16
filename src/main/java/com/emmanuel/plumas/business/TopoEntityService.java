@@ -1,7 +1,6 @@
 package com.emmanuel.plumas.business;
 
-import java.util.TreeSet;
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -18,9 +17,13 @@ public class TopoEntityService {
 	private ITopoEntityRepository topoRepository;
 
 	
-	public TreeSet<TopoEntity> getTopoBySpotId(Long idSpot) {
-		TreeSet<TopoEntity> topoEntitiesOrdonned= (TreeSet<TopoEntity>) topoRepository.findBySpotEntities_Id(idSpot);
+	public List<TopoEntity> getTopoBySpotId(Long idSpot) {
+		List<TopoEntity> topoEntitiesOrdonned= (List<TopoEntity>) topoRepository.findBySpotEntities_Id(idSpot);
 		return topoEntitiesOrdonned;
 	}
 	
+	public List<TopoEntity> getAllTopos(){
+		List<TopoEntity> topoEntities= (List<TopoEntity>) topoRepository.findAll();
+		return topoEntities;
+	}
 }

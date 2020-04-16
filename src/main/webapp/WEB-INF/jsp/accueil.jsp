@@ -20,6 +20,7 @@
 			<td><a href="/p6JavaMono/spot">Liste des spots</a></td>	
 		</tr>
 	</table>
+	<a href="/p6JavaMono/listeTopos">Liste des topos</a>
 	<a href="/p6JavaMono/deconnection">Deconnection</a>	
 </body>
 </html>
