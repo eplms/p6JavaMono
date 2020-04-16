@@ -12,8 +12,14 @@ com/emmanuel/plumas/models/UserEntity.class
 com/emmanuel/plumas/consumers/ISecteurEntityRepository.class
 com/emmanuel/plumas/configuration/CustomSpringConfiguration.class
 com/emmanuel/plumas/business/LongueurEntityService.class
+com/emmanuel/plumas/models/CommentaireEntity.class
 com/emmanuel/plumas/business/LieuEntityService.class
 com/emmanuel/plumas/models/VoieEntity.class
+com/emmanuel/plumas/consumers/ITopoEntityRepository.class
+com/emmanuel/plumas/controllers/TopoController.class
+com/emmanuel/plumas/business/CommentaireEntityService.class
+com/emmanuel/plumas/business/TopoEntityService.class
+com/emmanuel/plumas/models/TopoEntity.class
 com/emmanuel/plumas/business/UserEntityService.class
 com/emmanuel/plumas/configuration/ApplicationConfiguration.class
 com/emmanuel/plumas/controllers/SecteurController.class
@@ -22,6 +28,8 @@ com/emmanuel/plumas/consumers/ILieuEntityRepository.class
 com/emmanuel/plumas/controllers/LongueurController.class
 com/emmanuel/plumas/business/VoieEntityService.class
 com/emmanuel/plumas/consumers/IVoieEntityRepository.class
-com/emmanuel/plumas/controllers/AccueilController.class
 com/emmanuel/plumas/models/LongueurEntity.class
+com/emmanuel/plumas/controllers/IndexController.class
 com/emmanuel/plumas/business/SpotEntityService.class
+com/emmanuel/plumas/controllers/CommentaireController.class
+com/emmanuel/plumas/consumers/ICommentaireEntityRepository.class

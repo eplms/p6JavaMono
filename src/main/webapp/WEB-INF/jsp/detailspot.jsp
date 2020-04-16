@@ -65,6 +65,8 @@
 			</c:when>			
 		</c:choose>
 		
+		<p><a href="/p6JavaMono/listeTopos?idSpot=${spot.id}">Consulter la liste des topos pour ce spot</a></p>
+		
 		<!-- Affichage des secteurs, des voies et des longueurs -->
 		<c:forEach items="${spot.secteurEntities}" var="secteur">
 			<h2><a href="/p6JavaMono/detailsecteur?id=${secteur.id}">Secteur : ${secteur.nom }</a></h2>    

@@ -32,7 +32,7 @@ public class UserEntity implements Serializable {
 	
 	@OneToMany(mappedBy="userEntity", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<SpotEntity> spotEntities;
-		
+	
 	
 	public Long getId() {
 		return id;
@@ -69,5 +69,12 @@ public class UserEntity implements Serializable {
 		return "UserEntity [id=" + id + ", identifiant=" + identifiant + ", password=" + password
 				+ ", droitAdministrateur=" + droitAdministrateur + ", adresseMail=" + adresseMail + "]";
 	}
+	public List<SpotEntity> getSpotEntities() {
+		return spotEntities;
+	}
+	public void setSpotEntities(List<SpotEntity> spotEntities) {
+		this.spotEntities = spotEntities;
+	}
+	
 	
 }

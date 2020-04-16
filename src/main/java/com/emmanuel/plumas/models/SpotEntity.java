@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.lang.Comparable;
 import java.util.Date;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,8 +45,7 @@ public class SpotEntity implements Serializable,Comparable<SpotEntity>{
 	@OneToMany(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_spot")
 	private Set<CommentaireEntity> commentaireEntities; 
-	
-	
+	 
 	//getters et setters clés étrangère
 	public UserEntity getUserEntity() {
 		return userEntity;
@@ -73,8 +71,7 @@ public class SpotEntity implements Serializable,Comparable<SpotEntity>{
 	public void setCommentaireEntities(Set<CommentaireEntity> commentaireEntities) {
 		this.commentaireEntities = commentaireEntities;
 	}
-	
-	
+	 
 	//getters et setters clé primaire et attributs
 	public Long getId() {
 		return id;
@@ -105,8 +102,4 @@ public class SpotEntity implements Serializable,Comparable<SpotEntity>{
 		// TODO Auto-generated method stub
 		return this.getId().compareTo(o.getId());
 	}
-	
-	
-	
-	
 }
