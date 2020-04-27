@@ -14,6 +14,7 @@ com/emmanuel/plumas/configuration/CustomSpringConfiguration.class
 com/emmanuel/plumas/business/LongueurEntityService.class
 com/emmanuel/plumas/models/CommentaireEntity.class
 com/emmanuel/plumas/business/LieuEntityService.class
+com/emmanuel/plumas/formulaire/Formulaire.class
 com/emmanuel/plumas/models/VoieEntity.class
 com/emmanuel/plumas/consumers/ITopoEntityRepository.class
 com/emmanuel/plumas/controllers/TopoController.class

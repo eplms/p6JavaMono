@@ -1,35 +1,52 @@
 package com.emmanuel.plumas.controllers;
 
+import java.util.Date;
 import java.util.List;
 //import java.util.TreeSet;
+import java.util.TreeSet;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.emmanuel.plumas.business.SpotEntityService;
 import com.emmanuel.plumas.business.TopoEntityService;
+import com.emmanuel.plumas.business.UserEntityService;
+import com.emmanuel.plumas.formulaire.FormulaireEntity;
+import com.emmanuel.plumas.models.SpotEntity;
 import com.emmanuel.plumas.models.TopoEntity;
+import com.emmanuel.plumas.models.UserEntity;
 
 @Controller
 public class TopoController {
 
 	@Autowired
 	@Qualifier("SpotEntityService")
-	private SpotEntityService spotEntityService; 
+	private SpotEntityService spotService; 
 	
 	@Autowired
 	@Qualifier("TopoEntityService")
 	private TopoEntityService topoService;
 	
+	@Autowired
+	@Qualifier("UserEntityService")
+	private UserEntityService userService;
+	
+	@ModelAttribute("formulaireTopoCreation")
+	public FormulaireEntity setFormulaireTopo(){
+		return new FormulaireEntity();
+	}
 	
 	@GetMapping(value="/listeToposBis")
 	public String afficherListeToposBis (ModelMap model, @RequestParam("idSpot")String idSpot) {
-		model.addAttribute("spot",spotEntityService.getSpot(new Long(idSpot)));
+		model.addAttribute("spot",spotService.getSpot(new Long(idSpot)));
 		List<TopoEntity> topoEntities=topoService.getTopoBySpotId(new Long(idSpot));		
 		model.addAttribute("topos",topoEntities);
 		return "listetoposbis";
@@ -40,5 +57,42 @@ public class TopoController {
 		List<TopoEntity> topoEntities=topoService.getAllTopos();
 		model.addAttribute("topos", topoEntities);
 		return "listetopos";
+	}
+	
+	@GetMapping(value="/creationTopo")
+	public String afficherCreationTopo(ModelMap model, HttpSession httpSession) {
+		if (httpSession.getAttribute("userConnection")!=null) {
+			TreeSet<SpotEntity> spotEntities =(TreeSet<SpotEntity>) spotService.getAllSpot();			
+			//List<String> nomSpots=spotService.getAllNom();
+			//model.addAttribute("nomSpots", nomSpots);
+			model.addAttribute("spots",spotEntities);
+			return "creationtopo";
+		}else {
+			//retour au formulaire de connection si l'utilisateu n'est pas connecté
+			return "redirect:/connectionutilisateur";
+		}
+	}
+		
+	@PostMapping(value="/creationTopo")
+	public String creerTopo(ModelMap model,@ModelAttribute ("formulaireTopoCreation")FormulaireEntity formulaire, HttpSession httpSession) {
+		TopoEntity topoEntity= new TopoEntity();
+
+		UserEntity userEntity=(UserEntity) httpSession.getAttribute("userConnection");
+		userEntity=userService.getUserByIdentifiantAndPassword(userEntity);
+		topoEntity.setUserEntity(userEntity);
+		
+		topoEntity.setNom(formulaire.getNom());
+		topoEntity.setDescription(formulaire.getDescription());
+	
+		topoEntity.setSpotEntities(spotService.getSpotsById(formulaire.getId()));
+		
+		topoEntity.setDateParution(new Date());;
+		topoEntity.setDisponible(true);	
+		
+		topoEntity.setSpotEntities(topoEntity.getSpotEntities());
+		
+		topoService.sauvegarderTopo(topoEntity);
+		model.addAttribute("topo",topoEntity);
+		return "confirmationcreationtopo";	
 	}
 }

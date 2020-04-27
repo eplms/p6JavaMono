@@ -26,4 +26,8 @@ public class TopoEntityService {
 		List<TopoEntity> topoEntities= (List<TopoEntity>) topoRepository.findAll();
 		return topoEntities;
 	}
+	
+	public void sauvegarderTopo(TopoEntity topoEntity) {
+		topoRepository.save(topoEntity);
+	}
 }

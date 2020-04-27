@@ -10,4 +10,6 @@ import com.emmanuel.plumas.models.SpotEntity;
 @Qualifier("ISpotEntityRepository")
 public interface ISpotEntityRepository extends CrudRepository<SpotEntity, Long>{
 
+	//List<SpotEntity> findAllById(List<Long> list);
+
 }

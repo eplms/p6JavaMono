@@ -19,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="topo")
-public class TopoEntity implements Serializable, Comparable<TopoEntity>{
+public class TopoEntity implements Serializable,Comparable<TopoEntity>{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -76,15 +76,16 @@ public class TopoEntity implements Serializable, Comparable<TopoEntity>{
 	}
 	
 	/* Getter et setter clé étrangère*/
+	
 	public Set<SpotEntity> getSpotEntities() {
 		return spotEntities;
 	}
 	public void setSpotEntities(Set<SpotEntity> spotEntities) {
 		this.spotEntities = spotEntities;
 	}
+	
 	@Override
 	public int compareTo(TopoEntity o) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	public UserEntity getUserEntity() {
@@ -93,5 +94,6 @@ public class TopoEntity implements Serializable, Comparable<TopoEntity>{
 	public void setUserEntity(UserEntity userEntity) {
 		this.userEntity = userEntity;
 	}
+	
 	
 }

@@ -1,5 +1,6 @@
 package com.emmanuel.plumas.business;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -38,5 +39,34 @@ public class SpotEntityService {
 		spotRepository.save(spot);
 		return spot;
 	}
+	/*
+	public TreeSet<SpotEntity> getSpotsById(List<Long> id) {
+		List<SpotEntity> spotEntities =(List<SpotEntity>) spotRepository.findAllById(id);
+		TreeSet<SpotEntity> spotEntitiesOrdonned = new TreeSet<SpotEntity>(spotEntities);
+		return spotEntitiesOrdonned;
+	}
+	*/
 	
+	public TreeSet<SpotEntity> getSpotsById(List<Long> id) {
+		List<SpotEntity> allSpotEntities =(List<SpotEntity>) spotRepository.findAll();
+		List<SpotEntity> spotEntities = new ArrayList<SpotEntity>();
+		for(int i=0;i<allSpotEntities.size();i++) {
+			for(int j=0;j<id.size();j++) {
+				if(allSpotEntities.get(i).getId()==id.get(j)) {
+					spotEntities.add(allSpotEntities.get(i));
+				}
+			}
+		}
+		TreeSet<SpotEntity> spotEntitiesOrdonned = new TreeSet<SpotEntity>(spotEntities);
+		return spotEntitiesOrdonned;
+	}
+	
+	public ArrayList<String> getAllNom(){
+		List<SpotEntity> spotEntities =(List<SpotEntity>) spotRepository.findAll();
+		ArrayList<String> nomSpots= new ArrayList<String> ();
+		for(int i=0;i<spotEntities.size();i++) {
+			nomSpots.add(spotEntities.get(i).getNom());
+		}
+		return nomSpots;
+	}
 }
