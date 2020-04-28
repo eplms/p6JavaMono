@@ -30,4 +30,9 @@ public class TopoEntityService {
 	public void sauvegarderTopo(TopoEntity topoEntity) {
 		topoRepository.save(topoEntity);
 	}
+
+	public TopoEntity getTopoById(Long idTopo) {
+		TopoEntity topoEntity=topoRepository.findById(idTopo).get();
+		return topoEntity;
+	}
 }

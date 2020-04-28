@@ -17,13 +17,29 @@
           			<th>Nom du topo</th>
           			<th>Description</th>
           			<th>Rédacteur du topo</th>
-          			<th>Spot apparaissant sur le topo</th>
+          			<th>Disponibilité du topo</th>
+          			<th></th>
+          			<th>Spot(s) apparaissant sur le topo</th>
           		</tr>
 				<c:forEach var="topo" items="${topos}" >    
 		       		<tr>
 						<td><c:out value="${topo.nom}"/></td>
 			          	<td><c:out value="${topo.description}"/></td>
 			          	<td><c:out value="${topo.userEntity.identifiant}"/></td>
+		          		<c:choose>
+		          			<c:when test="${topo.disponible}">
+		          				<td>Disponible</td>
+		          			</c:when>
+		          			<c:when test="${!topo.disponible}">
+		          				<td>Indisponible</td>
+		          			</c:when>
+		          		</c:choose>
+			          	<c:if test="${(topo.userEntity.identifiant eq userConnection.identifiant) && (topo.userEntity.password eq userConnection.password) }">
+			          		<td><a href="/p6JavaMono/detailtopo?idTopo=${topo.id}">Modifier le statut du topo</a></td>
+			          	</c:if>
+			          	<c:if test="${topo.userEntity.identifiant ne userConnection.identifiant }">
+			          		<td></td>
+			          	</c:if>
 			          	<c:forEach var="spot" items="${topo.spotEntities}">
 			          		<td><c:out value="${spot.nom}"/></td>
 			          	</c:forEach>

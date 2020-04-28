@@ -44,6 +44,11 @@ public class TopoController {
 		return new FormulaireEntity();
 	}
 	
+	@ModelAttribute("topoModification")
+	public TopoEntity setModificationTopo() {
+		return new TopoEntity();
+	}
+	
 	@GetMapping(value="/listeToposBis")
 	public String afficherListeToposBis (ModelMap model, @RequestParam("idSpot")String idSpot) {
 		model.addAttribute("spot",spotService.getSpot(new Long(idSpot)));
@@ -94,5 +99,21 @@ public class TopoController {
 		topoService.sauvegarderTopo(topoEntity);
 		model.addAttribute("topo",topoEntity);
 		return "confirmationcreationtopo";	
+	}
+	
+	@GetMapping(value="/detailtopo")
+	public String afficherDetailTopo(ModelMap model, @RequestParam("idTopo") String idTopo) {
+		TopoEntity topoEntity=topoService.getTopoById(new Long(idTopo));
+		model.addAttribute("topo",topoEntity);
+		return "detailtopo";
+	}
+	
+	@PostMapping(value="/detailtopo")
+	public String afficherTopoModifie(ModelMap model,@ModelAttribute("topoModification")TopoEntity topo) {
+		TopoEntity topoEntity=topoService.getTopoById(new Long(topo.getId()));
+		topoEntity.setDisponible(topo.getDisponible());
+		topoService.sauvegarderTopo(topoEntity);
+		model.addAttribute("topo",topoEntity);
+		return "detailtopo";
 	}
 }
