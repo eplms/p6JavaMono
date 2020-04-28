@@ -25,7 +25,9 @@
 		 				<td><form:radiobutton path="disponible" value="true"/>Disponible</td>
 		 				<td><form:radiobutton path="disponible" value="false"/>Indisponible</td>
 	 				</tr>
+	 				<tr>
 	 					<td><form:hidden path="id" value="${topo.id}"/></td>
+	 				</tr>
 					<tr>
 						<td><button type="submit">Valider le changement de statut du topo</button></td>
 					</tr>

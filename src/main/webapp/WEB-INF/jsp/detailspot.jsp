@@ -30,8 +30,8 @@
 			<form:form method="post" action="detailspot" modelAttribute="spotCreation">
 		 		<table>
 		 			<tr>
-		 				<td><form:label path="tagOfficiel"> Spot officiel</form:label></td> 
-		 				<td><form:checkbox path="tagOfficiel"/>Officiel</td>
+		 				<td><form:radiobutton path="tagOfficiel" value="true"/>Officiel</td>
+		 				<td><form:radiobutton path="tagOfficiel" value="false"/>Non officiel</td>
 	 				</tr>
 	 				<tr>
 						<td><form:hidden path="id" value="${spot.id}"/></td>

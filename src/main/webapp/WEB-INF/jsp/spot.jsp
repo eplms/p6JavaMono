@@ -20,7 +20,15 @@
 		<tr>
 			<td><a href= "/p6JavaMono/detailspot?id=${spot.id}"><c:out value="${spot.nom}"/></a></td>
 			<td><c:out value="${spot.lieuEntity.ville}"/></td>
-			<td><c:out value="${spot.tagOfficiel}"/></td>
+			<c:choose>
+				<c:when test="${spot.tagOfficiel }">
+					<td>Officiel</td>
+				</c:when>
+				<c:when test="${!spot.tagOfficiel }">
+					<td>Non Officiel</td>
+				</c:when>
+			</c:choose>	
+				
 		</tr>
 		
 		</c:forEach>
