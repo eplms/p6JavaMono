@@ -34,10 +34,10 @@
 		<tr>
 			<td>Réservation</td>
 			<c:if test="${empty userConnection }">
-				<td> La gestion des réservations est réservée aux utilisateurs inscrits et connectés./td>
+				<td> La gestion des réservations est réservée aux utilisateurs inscrits et connectés.</td>
 			</c:if>
 			<c:if test="${!empty userConnection}">
-				<td><a href="/p6JavaMono/gestionreservation">Deconnection</a>	</td>
+				<td><a href="/p6JavaMono/gestionreservation?idUser=${userConnection.identifiant}">Mes réservations</a></td>
 			</c:if>
 		</tr>
 	</table>

@@ -17,7 +17,7 @@
 		<p> Nom : ${topo.nom}</p>
 		<p> Description : ${topo.description}</p>
 		
-		<p>Le propriétaire du topo a reçu une notification pour votre demande de réservation.<p>
+		<p>Le propriétaire du topo sera notifié de votre demande de réservation.<p>
 				
 		<h2>Les informations pour contacter le propriétaire du topo</h2>
 		<p>Propriétaire du topo : ${topo.userEntity.identifiant }</p>

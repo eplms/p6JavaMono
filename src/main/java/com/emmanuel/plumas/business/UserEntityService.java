@@ -46,6 +46,11 @@ public class UserEntityService {
 		UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userEntity.getIdentifiant(), userEntity.getPassword());
 		return utilisateurBase;
 	}
+	
+	public UserEntity getUserByIdentifiant(String identifiant) {
+		UserEntity utilisateurBase=userRepository.findByIdentifiant(identifiant);
+		return utilisateurBase;
+	}
 
 	public boolean verifierDroitAdministrateurUserEnregistre(UserEntity userConnecte) {
 		Boolean droitAdministrateur=false;

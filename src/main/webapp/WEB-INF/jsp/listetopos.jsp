@@ -42,7 +42,7 @@
 			          		<td></td>
 			          	</c:if>
 			          	<c:if test="${(topo.disponible) && (userConnection.identifiant ne topo.userEntity.identifiant)}">
-			          		<td><a href="/p6JavaMono/demandereservationtopo?idTopo=${topo.id}">Réserver le topo</a>
+			          		<td><a href="/p6JavaMono/demandereservationtopo?idTopo=${topo.id}&identifiantUtilisateur=${userConnection.identifiant}">Réserver le topo</a>
 			          	</c:if>
 			          	<c:if test="${(!topo.disponible)||(userConnection.identifiant eq topo.userEntity.identifiant)}">
 			          		<td></td>
