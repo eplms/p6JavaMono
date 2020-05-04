@@ -37,7 +37,7 @@
 				<td> La gestion des réservations est réservée aux utilisateurs inscrits et connectés.</td>
 			</c:if>
 			<c:if test="${!empty userConnection}">
-				<td><a href="/p6JavaMono/gestionreservation?idUser=${userConnection.identifiant}">Mes réservations</a></td>
+				<td><a href="/p6JavaMono/gestionreservation">Mes réservations</a></td>
 			</c:if>
 		</tr>
 	</table>

@@ -23,13 +23,19 @@
 					<th>Nom du demandeur</th>
 					<th>Mail du demandeur</th>
 					<th></th>
+					<th></th>
 				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				<tr>
+				<c:forEach var="reservation" items="${reservationsProprietaires}" >
+					<c:if test="${reservation.statutReservation eq 'en attente'}">
+						<tr>
+							<td><c:out value="${reservation.topoEntity.nom}"/></td>
+							<td><c:out value="${reservation.userEntity.identifiant}"/></td>
+							<td><c:out value="${reservation.userEntity.adresseMail}"/></td>
+							<td><a href="">Valider</a></td>
+							<td><a href="">Refuser</a></td>
+						<tr>
+					</c:if>
+				</c:forEach>
 		</table>
 		
 		<h2>Vos topos en cours de réservation</h2>

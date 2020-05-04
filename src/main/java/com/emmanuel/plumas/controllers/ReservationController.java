@@ -1,5 +1,7 @@
 package com.emmanuel.plumas.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.emmanuel.plumas.business.ReservationEntityService;
 import com.emmanuel.plumas.business.TopoEntityService;
+import com.emmanuel.plumas.business.UserEntityService;
+import com.emmanuel.plumas.models.ReservationEntity;
 import com.emmanuel.plumas.models.TopoEntity;
+import com.emmanuel.plumas.models.UserEntity;
 
 @Controller
 public class ReservationController {
@@ -24,6 +29,10 @@ public class ReservationController {
 	@Qualifier("ReservationEntityService")
 	private ReservationEntityService reservationService;
 	
+	@Autowired
+	@Qualifier("UserEntityService")
+	private UserEntityService userService;
+	
 	@GetMapping(value="/demandereservationtopo")
 	public String afficherDemandeReservationTopo(ModelMap model, @RequestParam ("idTopo") String idTopo, @RequestParam("identifiantUtilisateur") String identifiantUser) {
 		TopoEntity topoEntity=topoService.getTopoById(new Long(idTopo));
@@ -33,11 +42,13 @@ public class ReservationController {
 	}
 	
 	@GetMapping(value="/gestionreservation")
-	public String afficherGestionReservation(ModelMap model,HttpSession httpSession,@RequestParam("iduser") String identifiantUser) {
-		
-		//ReservationEntity reservationProprioEntity=reservationService.getAllReservationByTopo();
+	public String afficherGestionReservation(ModelMap model,HttpSession httpSession) {
+		UserEntity userEntity =(UserEntity) httpSession.getAttribute("userConnection");
+		userEntity = userService.getUserByIdentifiant(userEntity.getIdentifiant());
+		List<ReservationEntity> reservationsProprietaires=reservationService.getReservationByOwner(userEntity.getId());
 		model.addAttribute("utilisateur",httpSession.getAttribute("userConnection"));
-		//model.addAttribute("reservationProprietaire",reservationProprioEntity);
+		model.addAttribute("reservationsProprietaires",reservationsProprietaires);
+		model.addAttribute("reservationDemandeur");
 		return "gestionreservation";
 	}
 	

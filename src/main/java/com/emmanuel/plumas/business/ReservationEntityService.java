@@ -1,5 +1,8 @@
 package com.emmanuel.plumas.business;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -29,6 +32,20 @@ public class ReservationEntityService {
 		reservationEntity.setUserEntity(userService.getUserByIdentifiant(idUser));
 		reservationEntity.setStatutReservation("en attente");
 		reservationRepository.save(reservationEntity);
+	}
+
+	public List<ReservationEntity> getReservationByOwner(Long id) {
+		List<ReservationEntity> reservationsEntities=(List<ReservationEntity>) reservationRepository.findAll();
+		List<ReservationEntity> reservationsOwnerEntities=new ArrayList<ReservationEntity> ();
+		
+		for(ReservationEntity reservationEntity : reservationsEntities) {	 
+			if(reservationEntity.getTopoEntity().getUserEntity().getId()==id){
+				reservationEntity.setTopoEntity(topoService.getTopoByUserId(id));
+				reservationsOwnerEntities.add(reservationEntity);
+			}
+		}
+		
+		return reservationsOwnerEntities;
 	}
 	
 	

@@ -35,4 +35,10 @@ public class TopoEntityService {
 		TopoEntity topoEntity=topoRepository.findById(idTopo).get();
 		return topoEntity;
 	}
+
+	public TopoEntity getTopoByUserId(Long id) {
+		TopoEntity topoEntity=topoRepository.findByUserEntityId(id);
+		
+		return topoEntity;
+	}
 }

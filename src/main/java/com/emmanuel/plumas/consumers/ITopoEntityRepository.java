@@ -17,5 +17,7 @@ public interface ITopoEntityRepository extends CrudRepository<TopoEntity,Long>{
 	
 	@Query("select t from TopoEntity t join t.spotEntities s where s.id=:Id")
 	public List<TopoEntity> findBySpotEntities_Id(@Param("Id")Long Id);
+
+	public TopoEntity findByUserEntityId(Long id);
 	
 }
