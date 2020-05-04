@@ -2,7 +2,6 @@ package com.emmanuel.plumas.models;
 
 import java.io.Serializable;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +31,6 @@ public class UserEntity implements Serializable {
 	
 	@OneToMany(mappedBy="userEntity", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<SpotEntity> spotEntities;
-	
 	
 	public Long getId() {
 		return id;

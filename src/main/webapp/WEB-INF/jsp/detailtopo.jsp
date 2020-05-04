@@ -18,21 +18,24 @@
 				<p>Topo indisponible</p>
 			</c:when>
 		</c:choose>	
-		<p> Cocher la case puis valider pour changer le statut du topo<p> 
-			<form:form method="post" action="detailtopo" modelAttribute="topoModification">
-		 		<table>
-		 			<tr>
-		 				<td><form:radiobutton path="disponible" value="true"/>Disponible</td>
-		 				<td><form:radiobutton path="disponible" value="false"/>Indisponible</td>
-	 				</tr>
-	 				<tr>
-	 					<td><form:hidden path="id" value="${topo.id}"/></td>
-	 				</tr>
-					<tr>
-						<td><button type="submit">Valider le changement de statut du topo</button></td>
-					</tr>
-		 		</table>
-			</form:form>
+		<c:if test="${topo.userEntity.identifiant eq userConnection.identifiant}">
+			<p> Cocher la case puis valider pour changer le statut du topo<p> 
+				<form:form method="post" action="detailtopo" modelAttribute="topoModification">
+			 		<table>
+			 			<tr>
+			 				<td><form:radiobutton path="disponible" value="true"/>Disponible</td>
+			 				<td><form:radiobutton path="disponible" value="false"/>Indisponible</td>
+		 				</tr>
+		 				<tr>
+		 					<td><form:hidden path="id" value="${topo.id}"/></td>
+		 				</tr>
+						<tr>
+							<td><button type="submit">Valider le changement de statut du topo</button></td>
+						</tr>
+			 		</table>
+				</form:form>
+		</c:if>	
+				
 		<p>Liste des spots figurant sur le topo : </p>
 		<c:forEach items="${topo.spotEntities}" var="spot">
 			<p><c:out value="${spot.nom}"/></p>

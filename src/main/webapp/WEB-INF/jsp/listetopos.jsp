@@ -18,12 +18,13 @@
           			<th>Description</th>
           			<th>Rédacteur du topo</th>
           			<th>Disponibilité du topo</th>
-          			<th></th>
+          			<th>Modification du statut du topo</th>
+          			<th>Réservation du topo</th>
           			<th>Spot(s) apparaissant sur le topo</th>
           		</tr>
 				<c:forEach var="topo" items="${topos}" >    
 		       		<tr>
-						<td><c:out value="${topo.nom}"/></td>
+						<td><a href="/p6JavaMono/detailtopo?idTopo=${topo.id}"><c:out value="${topo.nom}"/></a></td>
 			          	<td><c:out value="${topo.description}"/></td>
 			          	<td><c:out value="${topo.userEntity.identifiant}"/></td>
 		          		<c:choose>
@@ -37,7 +38,13 @@
 			          	<c:if test="${(topo.userEntity.identifiant eq userConnection.identifiant) && (topo.userEntity.password eq userConnection.password) }">
 			          		<td><a href="/p6JavaMono/detailtopo?idTopo=${topo.id}">Modifier le statut du topo</a></td>
 			          	</c:if>
-			          	<c:if test="${topo.userEntity.identifiant ne userConnection.identifiant }">
+			          	<c:if test="${(topo.userEntity.identifiant ne userConnection.identifiant) || (topo.userEntity.password ne userConnection.password) }">
+			          		<td></td>
+			          	</c:if>
+			          	<c:if test="${(topo.disponible) && (userConnection.identifiant ne topo.userEntity.identifiant)}">
+			          		<td><a href="/p6JavaMono/demandereservationtopo?idTopo=${topo.id}">Réserver le topo</a>
+			          	</c:if>
+			          	<c:if test="${(!topo.disponible)||(userConnection.identifiant eq topo.userEntity.identifiant)}">
 			          		<td></td>
 			          	</c:if>
 			          	<c:forEach var="spot" items="${topo.spotEntities}">

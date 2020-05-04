@@ -31,6 +31,15 @@
 				<td><a href="/p6JavaMono/creationTopo">Ajout de topos</a></td>
 			</c:if>
 		</tr>
+		<tr>
+			<td>Réservation</td>
+			<c:if test="${empty userConnection }">
+				<td> La gestion des réservations est réservée aux utilisateurs inscrits et connectés./td>
+			</c:if>
+			<c:if test="${!empty userConnection}">
+				<td><a href="/p6JavaMono/gestionreservation">Deconnection</a>	</td>
+			</c:if>
+		</tr>
 	</table>
 	
 </body>

@@ -91,7 +91,7 @@ public class TopoController {
 	
 		topoEntity.setSpotEntities(spotService.getSpotsById(formulaire.getId()));
 		
-		topoEntity.setDateParution(new Date());;
+		topoEntity.setDateParution(new Date());
 		topoEntity.setDisponible(true);	
 		
 		topoEntity.setSpotEntities(topoEntity.getSpotEntities());
@@ -109,11 +109,18 @@ public class TopoController {
 	}
 	
 	@PostMapping(value="/detailtopo")
-	public String afficherTopoModifie(ModelMap model,@ModelAttribute("topoModification")TopoEntity topo) {
+	public String afficherTopoModifie(HttpSession httpSession, ModelMap model,@ModelAttribute("topoModification")TopoEntity topo) {
+		UserEntity userEntity=(UserEntity) httpSession.getAttribute("userConnection");
 		TopoEntity topoEntity=topoService.getTopoById(new Long(topo.getId()));
-		topoEntity.setDisponible(topo.getDisponible());
-		topoService.sauvegarderTopo(topoEntity);
-		model.addAttribute("topo",topoEntity);
-		return "detailtopo";
+		if ((userEntity.getPassword().contentEquals(topoEntity.getUserEntity().getPassword()))  & (userEntity.getIdentifiant().contentEquals(topoEntity.getUserEntity().getIdentifiant()))){	
+			topoEntity.setDisponible(topo.getDisponible());
+			topoService.sauvegarderTopo(topoEntity);
+			model.addAttribute("topo",topoEntity);
+			return "detailtopo";
+		} else {
+			return "redirect:/connectionutilisateur";
+		}
 	}
+	
+	
 }
