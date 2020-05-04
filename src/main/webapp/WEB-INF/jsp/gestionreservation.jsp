@@ -39,6 +39,27 @@
 		</table>
 		
 		<h2>Vos topos en cours de réservation</h2>
+		<table>
+				<tr>
+					<th>Nom du topo</th>
+					<th>Nom du demandeur</th>
+					<th>Mail du demandeur</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<c:forEach var="reservation" items="${reservationsProprietaires}" >
+					<c:if test="${reservation.statutReservation eq 'reserve'}">
+						<tr>
+							<td><c:out value="${reservation.topoEntity.nom}"/></td>
+							<td><c:out value="${reservation.userEntity.identifiant}"/></td>
+							<td><c:out value="${reservation.userEntity.adresseMail}"/></td>
+						<tr>
+					</c:if>
+				</c:forEach>
+		</table>
+		
+		
+		
 		
 		<h2>Les topos qui vous sont prêtés</h2>
 		
