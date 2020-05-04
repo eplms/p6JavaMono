@@ -62,7 +62,15 @@
 		
 		
 		<h2>Les topos qui vous sont prêtés</h2>
-		
+		<table>
+				<tr>
+					<th>Nom du topo</th>
+					<th>Nom du propriétaire</th>
+					<th>Mail du propriétaire</th>
+					<th></th>
+					<th></th>
+				</tr>
+		</table>
 		
 	</body>
 </html>

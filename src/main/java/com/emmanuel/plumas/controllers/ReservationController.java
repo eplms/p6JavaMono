@@ -44,11 +44,11 @@ public class ReservationController {
 	@GetMapping(value="/gestionreservation")
 	public String afficherGestionReservation(ModelMap model,HttpSession httpSession) {
 		UserEntity userEntity =(UserEntity) httpSession.getAttribute("userConnection");
-		userEntity = userService.getUserByIdentifiant(userEntity.getIdentifiant());
+		userEntity = userService.getUserByIdentifiantAndPassword(userEntity);
 		List<ReservationEntity> reservationsProprietaires=reservationService.getReservationByOwner(userEntity.getId());
-		model.addAttribute("utilisateur",httpSession.getAttribute("userConnection"));
+		model.addAttribute("utilisateur",userEntity);
 		model.addAttribute("reservationsProprietaires",reservationsProprietaires);
-		model.addAttribute("reservationDemandeur");
+		//model.addAttribute("reservationDemandeur");
 		return "gestionreservation";
 	}
 	
