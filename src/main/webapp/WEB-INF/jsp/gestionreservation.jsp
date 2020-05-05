@@ -32,7 +32,7 @@
 							<td><c:out value="${reservation.userEntity.identifiant}"/></td>
 							<td><c:out value="${reservation.userEntity.adresseMail}"/></td>
 							<td><a href="/p6JavaMono/validationreservationtopo?idReservation=${reservation.id}">Valider</a></td>
-							<td><a href="">Refuser</a></td>
+							<td><a href="/p6JavaMono/refusreservationtopo?idReservation=${reservation.id}">Refuser</a></td>
 						<tr>
 					</c:if>
 				</c:forEach>
@@ -79,6 +79,27 @@
 					</c:if>
 				</c:forEach>
 		</table>
+		
+		<h2>Les prêts qui vous ont été refusés</h2>
+		<table>
+				<tr>
+					<th>Nom du topo</th>
+					<th>Nom du propriétaire</th>
+					<th>Mail du propriétaire</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<c:forEach var="reservation" items="${reservationsDemandeurs}" >
+					<c:if test="${reservation.statutReservation eq 'refuse'}">
+						<tr>
+							<td><c:out value="${reservation.topoEntity.nom}"/></td>
+							<td><c:out value="${reservation.topoEntity.userEntity.identifiant}"/></td>
+							<td><c:out value="${reservation.topoEntity.userEntity.adresseMail}"/></td>
+						<tr>
+					</c:if>
+				</c:forEach>
+		</table>
+		
 		
 	</body>
 </html>

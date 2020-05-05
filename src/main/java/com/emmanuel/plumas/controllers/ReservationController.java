@@ -70,6 +70,18 @@ public class ReservationController {
 		return "validationreservationtopo";
 	}
 	
+	@GetMapping(value="/refusreservationtopo")
+	public String refuserReservationTopo(ModelMap model, @RequestParam("idReservation")String idReservation) {
+		ReservationEntity reservationEntity=reservationService.getReservationById(new Long(idReservation));
+
+		//Passer la réservation en mode refuse
+		reservationEntity.setStatutReservation("refuse");
+		reservationService.sauvegarderReservation(reservationEntity);
+				
+		model.addAttribute("reservation",reservationEntity);
+		return "refusreservationtopo";
+	}
+	
 	
 	@GetMapping(value="/cloturepret")
 	public String cloreReservationTopo(ModelMap model, @RequestParam("idReservation") String idReservation) {

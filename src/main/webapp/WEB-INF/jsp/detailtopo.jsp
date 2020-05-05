@@ -5,6 +5,8 @@
 		<title>WeClimb</title>
 	</head>
 	<body>
+		<p><a href="/p6JavaMono/">Revenir à la page d'accueil</a></p>
+		<p><a href="/p6JavaMono/listeTopos">Revenir à la liste des topos</a></p>
 		<p>Détail du topo</p>
 		<p> Nom : ${topo.nom}</p>
 		<p> Description : ${topo.description}</p>
@@ -40,7 +42,7 @@
 		<c:forEach items="${topo.spotEntities}" var="spot">
 			<p><c:out value="${spot.nom}"/></p>
 		</c:forEach>
-		<p><a href="/p6JavaMono/">Revenir à la page d'accueil</a></p>
+		
 	
 	</body>
 </html>
