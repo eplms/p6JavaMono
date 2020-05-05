@@ -53,7 +53,7 @@
 							<td><c:out value="${reservation.topoEntity.nom}"/></td>
 							<td><c:out value="${reservation.userEntity.identifiant}"/></td>
 							<td><c:out value="${reservation.userEntity.adresseMail}"/></td>
-							<td><a href="p6JavaMono/finalisationpret?idReservation=${reservation.id}">Fin du prêt</a></td>
+							<td><a href="/p6JavaMono/cloturepret?idReservation=${reservation.id}">Fin du prêt</a></td>
 						<tr>
 					</c:if>
 				</c:forEach>

@@ -71,9 +71,19 @@ public class ReservationController {
 	}
 	
 	
-	@GetMapping(value="/finalisationpret")
-	public String finaliserReservationTopo(ModelMap model, @RequestParam("idReservation") String idReservation) {
+	@GetMapping(value="/cloturepret")
+	public String cloreReservationTopo(ModelMap model, @RequestParam("idReservation") String idReservation) {
+		ReservationEntity reservationEntity=reservationService.getReservationById(new Long(idReservation));
+		// Passer le topo en disponible
+		TopoEntity topoEntity = topoService.getTopoById(reservationEntity.getTopoEntity().getId());
+		topoEntity.setDisponible(true);
+		topoService.sauvegarderTopo(topoEntity);
 		
-		return "confirmationfinalisationpret";
+		//Passer la réservation en mode close
+		reservationEntity.setStatutReservation("close");
+		reservationService.sauvegarderReservation(reservationEntity);
+		model.addAttribute("reservation",reservationEntity);
+		
+		return "confirmationcloturepret";
 	}
 }
