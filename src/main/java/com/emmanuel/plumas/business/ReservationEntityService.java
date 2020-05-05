@@ -49,13 +49,15 @@ public class ReservationEntityService {
 	
 	public List<ReservationEntity> getReservationByBorrower(Long id){
 		List<ReservationEntity> reservationsBorrowerEntities=reservationRepository.findByUserEntityId(id);
-	/*	List<ReservationEntity> reservationsBorrowerEntities=new ArrayList<ReservationEntity>();
-		for(ReservationEntity reservationEntity : reservationsEntities) {
-			reservationEntity.setTopoEntity(topoService.getTopoById(reservationEntity.getTopoEntity().getId()));
-			reservationsBorrowerEntities.add(reservationEntity);
-		}
-	*/	
 		return reservationsBorrowerEntities;
+	}
+
+	public ReservationEntity getReservationById(Long id) {
+		return reservationRepository.findById(id).get();
+	}
+
+	public void sauvegarderReservation(ReservationEntity reservationEntity) {
+		reservationRepository.save(reservationEntity);
 	}
 	
 	

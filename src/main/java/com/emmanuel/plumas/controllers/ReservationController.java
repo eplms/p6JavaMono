@@ -53,4 +53,27 @@ public class ReservationController {
 		return "gestionreservation";
 	}
 	
+	@GetMapping(value="/validationreservationtopo")
+	public String validerReservationTopo(ModelMap model, @RequestParam("idReservation")String idReservation) {
+		ReservationEntity reservationEntity=reservationService.getReservationById(new Long(idReservation));
+		
+		// Passer le topo en indisponible
+		TopoEntity topoEntity = topoService.getTopoById(reservationEntity.getTopoEntity().getId());
+		topoEntity.setDisponible(false);
+		topoService.sauvegarderTopo(topoEntity);
+		
+		//Passer la réservation en mode reserve
+		reservationEntity.setStatutReservation("reserve");
+		reservationService.sauvegarderReservation(reservationEntity);
+		
+		model.addAttribute("reservation",reservationEntity);
+		return "validationreservationtopo";
+	}
+	
+	
+	@GetMapping(value="/finalisationpret")
+	public String finaliserReservationTopo(ModelMap model, @RequestParam("idReservation") String idReservation) {
+		
+		return "confirmationfinalisationpret";
+	}
 }

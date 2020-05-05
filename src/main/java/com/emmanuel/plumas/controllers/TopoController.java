@@ -114,6 +114,7 @@ public class TopoController {
 		TopoEntity topoEntity=topoService.getTopoById(new Long(topo.getId()));
 		if ((userEntity.getPassword().contentEquals(topoEntity.getUserEntity().getPassword()))  & (userEntity.getIdentifiant().contentEquals(topoEntity.getUserEntity().getIdentifiant()))){	
 			topoEntity.setDisponible(topo.getDisponible());
+				/* Rajout de la suppression des réservations lorsque le topo est à nouveau disponible */
 			topoService.sauvegarderTopo(topoEntity);
 			model.addAttribute("topo",topoEntity);
 			return "detailtopo";

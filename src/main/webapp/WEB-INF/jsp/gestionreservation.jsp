@@ -31,7 +31,7 @@
 							<td><c:out value="${reservation.topoEntity.nom}"/></td>
 							<td><c:out value="${reservation.userEntity.identifiant}"/></td>
 							<td><c:out value="${reservation.userEntity.adresseMail}"/></td>
-							<td><a href="">Valider</a></td>
+							<td><a href="/p6JavaMono/validationreservationtopo?idReservation=${reservation.id}">Valider</a></td>
 							<td><a href="">Refuser</a></td>
 						<tr>
 					</c:if>
@@ -44,7 +44,7 @@
 					<th>Nom du topo</th>
 					<th>Nom du demandeur</th>
 					<th>Mail du demandeur</th>
-					<th></th>
+					<th>Clôture du prêt</th>
 					<th></th>
 				</tr>
 				<c:forEach var="reservation" items="${reservationsProprietaires}" >
@@ -53,6 +53,7 @@
 							<td><c:out value="${reservation.topoEntity.nom}"/></td>
 							<td><c:out value="${reservation.userEntity.identifiant}"/></td>
 							<td><c:out value="${reservation.userEntity.adresseMail}"/></td>
+							<td><a href="p6JavaMono/finalisationpret?idReservation=${reservation.id}">Fin du prêt</a></td>
 						<tr>
 					</c:if>
 				</c:forEach>
