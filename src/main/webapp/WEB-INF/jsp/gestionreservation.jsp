@@ -58,9 +58,7 @@
 				</c:forEach>
 		</table>
 		
-		
-		
-		
+				
 		<h2>Les topos qui vous sont prêtés</h2>
 		<table>
 				<tr>
@@ -70,6 +68,15 @@
 					<th></th>
 					<th></th>
 				</tr>
+				<c:forEach var="reservation" items="${reservationsDemandeurs}" >
+					<c:if test="${reservation.statutReservation eq 'reserve'}">
+						<tr>
+							<td><c:out value="${reservation.topoEntity.nom}"/></td>
+							<td><c:out value="${reservation.topoEntity.userEntity.identifiant}"/></td>
+							<td><c:out value="${reservation.topoEntity.userEntity.adresseMail}"/></td>
+						<tr>
+					</c:if>
+				</c:forEach>
 		</table>
 		
 	</body>

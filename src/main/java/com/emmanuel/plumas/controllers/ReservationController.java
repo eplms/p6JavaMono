@@ -1,7 +1,6 @@
 package com.emmanuel.plumas.controllers;
 
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +45,11 @@ public class ReservationController {
 		UserEntity userEntity =(UserEntity) httpSession.getAttribute("userConnection");
 		userEntity = userService.getUserByIdentifiantAndPassword(userEntity);
 		List<ReservationEntity> reservationsProprietaires=reservationService.getReservationByOwner(userEntity.getId());
+		List<ReservationEntity> reservationsDemandeurs=reservationService.getReservationByBorrower(userEntity.getId());
 		model.addAttribute("utilisateur",userEntity);
 		model.addAttribute("reservationsProprietaires",reservationsProprietaires);
-		//model.addAttribute("reservationDemandeur");
+		model.addAttribute("reservationsDemandeurs",reservationsDemandeurs);
+		
 		return "gestionreservation";
 	}
 	
