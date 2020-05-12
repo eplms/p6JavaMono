@@ -35,9 +35,24 @@ public class ReservationController {
 	@GetMapping(value="/demandereservationtopo")
 	public String afficherDemandeReservationTopo(ModelMap model, @RequestParam ("idTopo") String idTopo, @RequestParam("identifiantUtilisateur") String identifiantUser) {
 		TopoEntity topoEntity=topoService.getTopoById(new Long(idTopo));
-		reservationService.sauvegarderReservation(new Long(idTopo), identifiantUser);
+		// rechercher une réservation avec ce topo et cet identifiant utilisateur
+		
+		ReservationEntity reservationEntity=null;
+		reservationEntity=reservationService.getReservationAttenteByTopoAndByBorrower(idTopo,identifiantUser);
+		if(reservationEntity!=null) {
+			return "redirect:/reservationfaite?idTopo="+idTopo;
+		}else {
+			reservationService.sauvegarderReservation(new Long(idTopo), identifiantUser);
+			model.addAttribute("topo",topoEntity);
+			return "demandereservationtopo";
+		}
+	}
+	
+	@GetMapping(value="/reservationfaite")
+	public String afficherReservationDejaFaite(ModelMap model, @RequestParam("idTopo") String idTopo) {
+		TopoEntity topoEntity=topoService.getTopoById(new Long(idTopo));
 		model.addAttribute("topo",topoEntity);
-		return "demandereservationtopo";
+		return "reservationfaite";
 	}
 	
 	@GetMapping(value="/gestionreservation")

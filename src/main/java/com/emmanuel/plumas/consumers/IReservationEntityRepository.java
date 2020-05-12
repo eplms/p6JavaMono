@@ -13,7 +13,5 @@ import com.emmanuel.plumas.models.ReservationEntity;
 public interface IReservationEntityRepository extends CrudRepository<ReservationEntity,Long>{
 
 	List<ReservationEntity> findByUserEntityId(Long id);
-
 	List<ReservationEntity> findByTopoEntityId(Long id);
-
 }

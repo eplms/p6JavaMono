@@ -39,7 +39,7 @@
 			          		<td><a href="/p6JavaMono/detailtopo?idTopo=${topo.id}">Modifier le statut du topo</a></td>
 			          	</c:if>
 			          	<c:if test="${(topo.disponible) && (userConnection.identifiant ne topo.userEntity.identifiant)}">
-			          		<td><a href="/p6JavaMono/demandereservationtopo?idTopo=${topo.id}&idUtilisateur=${userConnection.identifiant}">Réserver le topo</a>
+			          		<td><a href="/p6JavaMono/demandereservationtopo?idTopo=${topo.id}&identifiantUtilisateur=${userConnection.identifiant}">Réserver le topo</a>
 			          	</c:if>
 			        </tr>
 		        </c:forEach>

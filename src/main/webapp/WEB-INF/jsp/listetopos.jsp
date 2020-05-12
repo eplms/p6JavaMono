@@ -10,8 +10,8 @@
 			<a href="/p6JavaMono/">Revenir à la page d'accueil</a>
 		</header>
 		<h1>Bienvenue sur WeClimb, le site de l'escalade</h1>	
-	 	
-		<c:if test="${!empty topos}">
+	 		 	
+		<c:if test="${!empty topos}">  	
 		  	<table>
 		  		<tr>
           			<th>Nom du topo</th>

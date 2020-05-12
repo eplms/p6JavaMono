@@ -66,4 +66,17 @@ public class ReservationEntityService {
 	}
 	
 	
+	
+	public ReservationEntity getReservationAttenteByTopoAndByBorrower(String idTopo, String identifiantUser) {
+		List<ReservationEntity> reservationEntities=reservationRepository.findByTopoEntityId(new Long(idTopo));
+		ReservationEntity reservationE=null;
+		for(ReservationEntity reservationEntity:reservationEntities) {
+			if((reservationEntity.getUserEntity().getIdentifiant().equals(identifiantUser)) && (reservationEntity.getStatutReservation().contentEquals("en attente"))) {
+				reservationE=reservationEntity;
+			}
+		}
+		return reservationE;
+	}
+	
+	
 }
