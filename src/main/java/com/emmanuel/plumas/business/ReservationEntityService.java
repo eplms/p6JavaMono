@@ -59,6 +59,11 @@ public class ReservationEntityService {
 	public void sauvegarderReservation(ReservationEntity reservationEntity) {
 		reservationRepository.save(reservationEntity);
 	}
+
+	public List<ReservationEntity> getReservationByTopo(Long id) {
+		List <ReservationEntity> reservationEntities=reservationRepository.findByTopoEntityId(id);
+		return reservationEntities;
+	}
 	
 	
 }

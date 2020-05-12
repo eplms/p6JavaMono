@@ -6,6 +6,7 @@
 </head>
 <body>
 	<header>
+		<p><a href="/p6JavaMono/">Revenir à l'accueil</a></p>
 		<p><a href="/p6JavaMono/spot">Revenir à la liste des spots</a></p>
 		<p><a href="/p6JavaMono/detailspot?id=${voie.secteurEntity.spotEntity.id}">Revenir au spot</a></p>
 		<p><a href="/p6JavaMono/detailsecteur?id=${voie.secteurEntity.id}">Revenir au secteur</a></p>

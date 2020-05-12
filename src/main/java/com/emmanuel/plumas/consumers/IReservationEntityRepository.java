@@ -14,4 +14,6 @@ public interface IReservationEntityRepository extends CrudRepository<Reservation
 
 	List<ReservationEntity> findByUserEntityId(Long id);
 
+	List<ReservationEntity> findByTopoEntityId(Long id);
+
 }

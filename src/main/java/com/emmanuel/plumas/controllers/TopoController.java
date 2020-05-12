@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.emmanuel.plumas.business.ReservationEntityService;
 import com.emmanuel.plumas.business.SpotEntityService;
 import com.emmanuel.plumas.business.TopoEntityService;
 import com.emmanuel.plumas.business.UserEntityService;
 import com.emmanuel.plumas.formulaire.FormulaireEntity;
+import com.emmanuel.plumas.models.ReservationEntity;
 import com.emmanuel.plumas.models.SpotEntity;
 import com.emmanuel.plumas.models.TopoEntity;
 import com.emmanuel.plumas.models.UserEntity;
@@ -38,6 +40,10 @@ public class TopoController {
 	@Autowired
 	@Qualifier("UserEntityService")
 	private UserEntityService userService;
+	
+	@Autowired
+	@Qualifier("ReservationEntityService")
+	private ReservationEntityService reservationService;
 	
 	@ModelAttribute("formulaireTopoCreation")
 	public FormulaireEntity setFormulaireTopo(){
@@ -113,6 +119,19 @@ public class TopoController {
 		UserEntity userEntity=(UserEntity) httpSession.getAttribute("userConnection");
 		TopoEntity topoEntity=topoService.getTopoById(new Long(topo.getId()));
 		if ((userEntity.getPassword().contentEquals(topoEntity.getUserEntity().getPassword()))  & (userEntity.getIdentifiant().contentEquals(topoEntity.getUserEntity().getIdentifiant()))){	
+			
+			//Passage des réservations en close
+			if(topo.getDisponible()) {
+				List<ReservationEntity> reservationEntities=reservationService.getReservationByTopo(topoEntity.getId());
+				for (ReservationEntity reservationEntity : reservationEntities) {
+					if(reservationEntity.getStatutReservation().contentEquals("reserve")) {
+						reservationEntity.setStatutReservation("close");
+						reservationService.sauvegarderReservation(reservationEntity);
+					}
+				}
+			}
+			
+			//sauvegarde du topo avec la nouvelle disponibilité
 			topoEntity.setDisponible(topo.getDisponible()); 
 			topoService.sauvegarderTopo(topoEntity);
 			model.addAttribute("topo",topoEntity);

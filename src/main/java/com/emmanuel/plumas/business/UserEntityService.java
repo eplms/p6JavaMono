@@ -22,7 +22,9 @@ public class UserEntityService {
 
 	public Boolean verifierUserEnregistre(UserEntity userEntity) {
 		boolean utilisateurExistantBase =false;
+		//Chercher l'user sur la base de son identifiant sans le mdp
 		UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userEntity.getIdentifiant(), userEntity.getPassword());
+		// checkpwd vérifiacatin entre la saisie du mdp et le modp crypté en base
 		if(utilisateurBase!=null) {
 			utilisateurExistantBase =true;
 		}
@@ -38,6 +40,7 @@ public class UserEntityService {
 		return creationUtilisateurPossible;
 	}
 	public void creerNouvelUser(UserEntity userEntity) {
+		// hpwd pour enregioster en base le mpd crypté
 		userEntity.setDroitAdministrateur(false);
 		userRepository.save(userEntity);
 	}
