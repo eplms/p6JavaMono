@@ -9,7 +9,7 @@
 	<p> Votre mail est ${userConnection.adresseMail}.</p>
 	
 	<p>Accédez à la liste des spots en cliquant sur le lien suivant : </p>
-	<p><a href="spot"> Liste des spots</a></p>
+	<p><a href="listespot"> Liste des spots</a></p>
 
 </body>
 </html>

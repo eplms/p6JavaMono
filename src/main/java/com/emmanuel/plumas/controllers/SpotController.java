@@ -50,12 +50,12 @@ public class SpotController {
 		return new CommentaireEntity();
 	}
 	
-	@GetMapping(value="/spot")
+	@GetMapping(value="/listespot")
 	public String afficherListeSpots(ModelMap model) {
 			TreeSet <SpotEntity> listeSpot= spotEntityService.getAllSpot();
 			model.addAttribute("listeSpot",listeSpot);
 			//spécifie le nom de la jsp à retourner en String, ici spot.jsp
-			return "spot";
+			return "listespot";
 	}
 		
 	@GetMapping(value="/detailspot")

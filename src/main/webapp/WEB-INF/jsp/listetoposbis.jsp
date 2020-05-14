@@ -7,7 +7,7 @@
 	<body>
 		<header>
 			<a href="/p6JavaMono/detailspot?id=${spot.id}">Revenir au detail du spot</a>
-			<a href="/p6JavaMono/spot">Revenir à la liste des spots</a>
+			<a href="/p6JavaMono/listespot">Revenir à la liste des spots</a>
 			<a href="/p6JavaMono/">Revenir à la page d'accueil</a>
 		</header>
 		<h1>Bienvenue sur WeClimb, le site de l'escalade</h1>	
