@@ -2,6 +2,7 @@ package com.emmanuel.plumas.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import com.emmanuel.plumas.consumers.IUserEntityRepository;
@@ -22,10 +23,14 @@ public class UserEntityService {
 
 	public Boolean verifierUserEnregistre(UserEntity userEntity) {
 		boolean utilisateurExistantBase =false;
+		// avant mise en place de la sécurité
+		//UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userEntity.getIdentifiant(), userEntity.getPassword());
+		
 		//Chercher l'user sur la base de son identifiant sans le mdp
-		UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userEntity.getIdentifiant(), userEntity.getPassword());
-		// checkpwd vérifiacatin entre la saisie du mdp et le modp crypté en base
-		if(utilisateurBase!=null) {
+		UserEntity utilisateurBase= userRepository.findByIdentifiant(userEntity.getIdentifiant());
+		
+		// checkpwd vérification entre la saisie du mdp et le modp crypté en base
+		if(utilisateurBase!=null && BCrypt.checkpw(userEntity.getPassword(), utilisateurBase.getPassword())) {
 			utilisateurExistantBase =true;
 		}
 		return utilisateurExistantBase;	
@@ -41,6 +46,7 @@ public class UserEntityService {
 	}
 	public void creerNouvelUser(UserEntity userEntity) {
 		// hpwd pour enregioster en base le mpd crypté
+		userEntity.setPassword(BCrypt.hashpw(userEntity.getPassword(),BCrypt.gensalt()));
 		userEntity.setDroitAdministrateur(false);
 		userRepository.save(userEntity);
 	}
@@ -49,7 +55,7 @@ public class UserEntityService {
 		UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userEntity.getIdentifiant(), userEntity.getPassword());
 		return utilisateurBase;
 	}
-	
+
 	public UserEntity getUserByIdentifiant(String identifiant) {
 		UserEntity utilisateurBase=userRepository.findByIdentifiant(identifiant);
 		return utilisateurBase;
@@ -57,7 +63,10 @@ public class UserEntityService {
 
 	public boolean verifierDroitAdministrateurUserEnregistre(UserEntity userConnecte) {
 		Boolean droitAdministrateur=false;
-		UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userConnecte.getIdentifiant(), userConnecte.getPassword());
+		
+		//UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userConnecte.getIdentifiant(), userConnecte.getPassword());
+		
+		UserEntity utilisateurBase=userRepository.findByIdentifiant(userConnecte.getIdentifiant());
 		if (utilisateurBase.getDroitAdministrateur()) {
 			droitAdministrateur=true;
 		}
