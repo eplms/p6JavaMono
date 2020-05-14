@@ -1,6 +1,7 @@
 package com.emmanuel.plumas.controllers;
 
 import java.util.Date;
+import java.util.List;
 import java.util.TreeSet;
 
 import javax.servlet.http.HttpSession;
@@ -42,6 +43,11 @@ public class SpotController {
 	
 	@ModelAttribute("spotCreation")
 	public SpotEntity setSpotCreation() {
+		return new SpotEntity();
+	}
+	
+	@ModelAttribute("spotRecherche")
+	public SpotEntity setSpotRecherche() {
 		return new SpotEntity();
 	}
 	
@@ -115,5 +121,16 @@ public class SpotController {
 		model.addAttribute("spotentity", spotEntity);
 		return "confirmationcreationspot";
 	}
-		
+	
+	@GetMapping(value="/recherchespot")
+	public String afficherFormulaireRechercheSpot() {
+		return "recherchespot";
+	}
+	
+	@PostMapping(value="/recherchespot")
+	public String rechercheSpot(ModelMap model,@ModelAttribute("spotRecherche") SpotEntity spotEntity) {
+		List<SpotEntity> spotEntities=spotEntityService.getSpotByNameOrVille(spotEntity.getNom(),spotEntity.getLieuEntity().getVille());
+		model.addAttribute("spots", spotEntities);
+		return  "listespotsrecherches";
+	}
 }

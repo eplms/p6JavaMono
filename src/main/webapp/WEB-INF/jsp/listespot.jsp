@@ -9,6 +9,8 @@
 	<c:if test="${!empty userConnection.identifiant}">
 			<p>vous êtes connecté en tant que : ${userConnection.identifiant}</p>
 	</c:if>
+	<p><a href="/p6JavaMono/recherchespot">Rechercher un spot</a></p>
+	
 	<p>Voici les spots répertoriés :</p>
 	<table>
 		<tr>

@@ -6,7 +6,7 @@
 </head>
 <body>
 	<header>
-		<p><a href="/p6JavaMono/spot">Revenir à la liste des spots</a></p>
+		<p><a href="/p6JavaMono/listespot">Revenir à la liste des spots</a></p>
 		<p><a href="/p6JavaMono/detailspot?id=${secteur.spotEntity.id}">Revenir au spot</a></p>
 	</header>
 	<h2>Secteur ${secteur.nom}</h2>
@@ -16,13 +16,13 @@
 			<c:when test=" ${empty userConnection}">
 				<p>Vous n'êtes pas connecté</p>
 				<p><a href="/p6JavaMono/connectionutilisateur">Me connecter</a></p>
-				<p><a href="/p6JavaMono/spot">Revenir à la liste des spots</a></p>			
+				<p><a href="/p6JavaMono/listespot">Revenir à la liste des spots</a></p>			
 			</c:when>
 			<c:when test="${userConnection.identifiant ne secteur.spotEntity.userEntity.identifiant}">
 				<p>Vous devez être connecté en tant créateur du spot pour pouvoir ajouter un secteur</p>
 				<p><a href="/p6JavaMono/connectionutilisateur">Me connecter avec un autre compte</a></p>
 				<p><a href="/p6JavaMono/detailspot?id=${secteur.spotEntity.id}">Revenir au spot</a></p>
-				<p><a href="/p6JavaMono/spot">Revenir à la liste des spots</a></p>
+				<p><a href="/p6JavaMono/listespot">Revenir à la liste des spots</a></p>
 			</c:when>
 			<c:when test="${userConnection.identifiant eq secteur.spotEntity.userEntity.identifiant}">
 				<p>Vous êtes connecté en tant que ${userConnection.identifiant }</p>

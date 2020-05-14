@@ -6,7 +6,7 @@
 	</head>
 <body>
 	<header>
-		<a href="/p6JavaMono/spot">Revenir à la liste des spots</a>
+		<a href="/p6JavaMono/listespot">Revenir à la liste des spots</a>
 		<a href="/p6JavaMono/">Revenir à la page d'accueil</a>
 	</header>
 	<h1>Bienvenue sur WeClimb, le site de l'escalade</h1>	
@@ -52,7 +52,7 @@
 			<c:when test="${empty userConnection}">
 				<p>Vous n'êtes pas connecté</p>
 				<p><a href="/p6JavaMono/connectionutilisateur">Me connecter</a></p>
-				<p><a href="/p6JavaMono/spot">Revenir à la liste des spots</a></p>
+				<p><a href="/p6JavaMono/listespot">Revenir à la liste des spots</a></p>
 			</c:when>
 			<c:when test="${userConnection.identifiant eq spot.userEntity.identifiant}">
 				<p> Vous êtes connecté en tant que : ${userConnection.identifiant}</p>
@@ -61,7 +61,7 @@
 			<c:when test="${userConnection.identifiant ne spot.userEntity.identifiant}">
 				<p>Vous devez être connecté en tant créateur du spot pour pouvoir ajouter un secteur</p>
 				<p><a href="/p6JavaMono/connectionutilisateur">Me connecter avec un autre compte</a></p>
-				<p><a href="/p6JavaMono/spot">Revenir à la liste des spots</a></p>
+				<p><a href="/p6JavaMono/listespot">Revenir à la liste des spots</a></p>
 			</c:when>			
 		</c:choose>
 		

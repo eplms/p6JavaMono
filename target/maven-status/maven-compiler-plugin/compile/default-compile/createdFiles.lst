@@ -29,6 +29,7 @@ com/emmanuel/plumas/formulaire/FormulaireEntity.class
 com/emmanuel/plumas/models/SecteurEntity.class
 com/emmanuel/plumas/business/ReservationEntityService.class
 com/emmanuel/plumas/consumers/IReservationEntityRepository.class
+com/emmanuel/plumas/business/MigrationData.class
 com/emmanuel/plumas/consumers/ILieuEntityRepository.class
 com/emmanuel/plumas/controllers/LongueurController.class
 com/emmanuel/plumas/business/VoieEntityService.class

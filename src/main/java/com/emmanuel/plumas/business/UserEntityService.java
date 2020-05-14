@@ -52,8 +52,8 @@ public class UserEntityService {
 	}
 	
 	public UserEntity getUserByIdentifiantAndPassword(UserEntity userEntity) {
-		UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userEntity.getIdentifiant(), userEntity.getPassword());
-		return utilisateurBase;
+		UserEntity utilisateurBase=userRepository.findByIdentifiant(userEntity.getIdentifiant());
+		return utilisateurBase;	
 	}
 
 	public UserEntity getUserByIdentifiant(String identifiant) {
@@ -71,8 +71,5 @@ public class UserEntityService {
 			droitAdministrateur=true;
 		}
 		return droitAdministrateur;
-	}
-	
-	
-
+	}	
 }

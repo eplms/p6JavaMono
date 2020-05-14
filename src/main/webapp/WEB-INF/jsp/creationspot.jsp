@@ -19,7 +19,7 @@
 						<td><form:label path="lieuEntity.ville"/>Ville</td>
 						<td><form:input path="lieuEntity.ville"/></td>
 					</tr>
-					 
+				<!--  -->	 
 					<tr>
 						<td><form:label path="lieuEntity.codePostal"/>Code Postal</td>
 						<td><form:input path="lieuEntity.codePostal"/></td>

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.emmanuel.plumas.consumers.ISpotEntityRepository;
+import com.emmanuel.plumas.models.LieuEntity;
 import com.emmanuel.plumas.models.SpotEntity;
 
 @Service
@@ -18,6 +19,10 @@ public class SpotEntityService {
 	@Autowired
 	@Qualifier("ISpotEntityRepository")
 	private ISpotEntityRepository spotRepository;
+	
+	@Autowired
+	@Qualifier("LieuEntityService")
+	private LieuEntityService lieuService;
 	
 	public SpotEntity getSpot(long id) {
 		return spotRepository.findById(id).get();
@@ -68,5 +73,11 @@ public class SpotEntityService {
 			nomSpots.add(spotEntities.get(i).getNom());
 		}
 		return nomSpots;
+	}
+
+	public List<SpotEntity> getSpotByNameOrVille(String nom, String ville) {
+		LieuEntity lieuEntity=lieuService.getLieuByVille(ville);
+		List<SpotEntity> spotEntities=spotRepository.findByNomOrLieuEntity(nom,lieuEntity);
+		return spotEntities;
 	}
 }

@@ -33,6 +33,7 @@
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/models/CommentaireEntity.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/models/UserEntity.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/controllers/LieuController.java
+/Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/business/MigrationData.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/consumers/ITopoEntityRepository.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/controllers/ReservationController.java
 /Users/Emmanuel/git/p6JavaMono/src/main/java/com/emmanuel/plumas/models/LongueurEntity.java

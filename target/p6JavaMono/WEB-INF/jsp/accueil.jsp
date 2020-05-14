@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<td>Spots</td>
-			<td><a href="/p6JavaMono/spot">Liste des spots</a></td>	
+			<td><a href="/p6JavaMono/listespot">Liste des spots</a></td>	
 		</tr>
 		<tr>
 			<td>Topos</td>

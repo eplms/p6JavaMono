@@ -33,5 +33,9 @@ public class LieuEntityService {
 	
 	public void creerNouveauLieu(LieuEntity lieuEntity) {
 		lieuRepository.save(lieuEntity);		
-	}	
+	}
+	
+	public LieuEntity getLieuByVille(String ville) {
+		return lieuRepository.findByVille(ville);
+	}
 }
