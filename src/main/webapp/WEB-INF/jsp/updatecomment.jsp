@@ -41,7 +41,7 @@
 							<div class="form-group">	
 								<p><form:textarea path="contenu" class="form-control" rows="4"></form:textarea></p>
 							</div>
-							<td><button type="submit" class="btn btn-info form-control">Modifier le commentaire</button></td>	
+							<button type="submit" class="btn btn-info form-control">Modifier le commentaire</button>	
 						</form:form>
 				</div>	
 			</div>

@@ -12,6 +12,14 @@
 			<div class="row jumbotron">
 				<h1>Liste des topos</h1>	
 	 		 </div>
+	 		 <div class="row">
+				<div class="col text-center">
+					<c:if test="${!empty userConnection}">
+						<a href="/p6JavaMono/creationTopo" class="btn btn-outline-info">Créer un topo</a>
+					</c:if>
+				</div>
+			</div>	
+	 		 
 			<c:if test="${!empty topos}">  
 				<div class="row">	
 					<div class="col">
