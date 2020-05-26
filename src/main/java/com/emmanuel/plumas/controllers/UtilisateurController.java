@@ -45,8 +45,8 @@ public class UtilisateurController {
 			}
 			return "connectionreussie";
 		} else {
-			model.addAttribute("message1","Identifiant et/ou mot de passe incorrect !");
-			model.addAttribute("message2","Veuillez saisir à nouveau votre identifiant et votre mot de passe");
+			model.addAttribute("messageincorrect1","Identifiant et/ou mot de passe incorrect !");
+			model.addAttribute("messageincorrect2","Veuillez saisir à nouveau votre identifiant et votre mot de passe");
 			return "formulaireconnection";
 		}			
 	}
@@ -73,8 +73,8 @@ public class UtilisateurController {
 			userEntityService.creerNouvelUser(userCreation);
 			return "inscriptionreussie";
 		} else {
-			model.addAttribute("message1","l'Identifiant et/ou l'email existe déjà ");
-			model.addAttribute("message2"," Veuillez saisir à nouveau identifiant, mot de passe et mail");
+			model.addAttribute("messageuserexistant1","l'Identifiant et/ou l'email existe déjà ");
+			model.addAttribute("messageuserexistant2"," Veuillez saisir à nouveau identifiant, mot de passe et mail");
 			return "formulaireinscription";
 		}
 	}

@@ -1,38 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>WeClimb</title>
-</head>
-<body>
-<h1>Bienvenue sur WeClimb, le site de l'escalade</h1>
-	
-	<h2>Formulaire d'inscription  :</h2>
-	<c:if test="${!empty message1}">
-		<p>${message1}:${message2} </p>
-		<p>Si vous êtes déjà inscrit sur notre site, vous pouvez vous connecter en cliquant sur le lien suivant</p>
-		<p><a href="connectionutilisateur">Aller sur la page de connection</a></p>
-	</c:if>
-	
-	<form:form method="post" action="inscription" modelAttribute="userConnection">
-		<table>
-			<tr>
-				<td><form:label path="identifiant"/>Identifiant</td>
-				<td><form:input path="identifiant"/></td>
-			</tr>
-			<tr>
-				<td><form:label path="password"/>Mot de passe</td>
-				<td><form:password path="password"/></td>
-			</tr>
-			<tr>
-				<td><form:label path="adresseMail"/>Adresse Mail</td>
-				<td><form:input path="adresseMail"/></td>
-			</tr>
-			<tr>
-       			 <td><button type="submit">Login</button></td>
-      		</tr>
-		</table>	
-	</form:form>
-	<a href="/p6JavaMono/">Revenir à la page d'accueil</a>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">		
+		<title>WeClimb</title>
+	</head>
+	<body>
+		<%@include file="menunavigation.jsp" %>
+		<div class="container-extand-md">
+			<div class="row jumbotron">
+				<div class="col">
+					<h1>Formulaire d'inscription</h1>
+				</div>	
+			</div>
+			
+			<div class="row">
+				<div class="col text-center">
+					<c:if test="${!empty messageuserexistant1}">
+						<p>${messageuserexistant1}:${messageuserexistant2} </p>
+						<p>Si vous êtes déjà inscrit sur notre site, vous pouvez vous connecter en cliquant sur le lien suivant</p>
+						<p><a href="connectionutilisateur">Aller sur la page de connection</a></p>
+					</c:if>
+				</div>	
+			</div>
+			
+			<div class="row">
+				<div class="col-6">
+					<form:form method="post" action="inscription" modelAttribute="userConnection">
+						
+							<div class="form-group">
+								<p><form:label path="identifiant"/>Identifiant</p>
+								<p><form:input path="identifiant" class="form-control" placeholder="Saisissez votre identifiant"/></p>
+							</div>
+							<div class="form-group">
+								<p><form:label path="password"/>Mot de passe</p>
+								<p><form:password path="password" class="form-control" placeholder="Saisissez le mot de passe de votre choix"/></p>
+							</div>
+							<div class="form-group">
+								<p><form:label path="adresseMail"/>Adresse Mail</p>
+								<p><form:input path="adresseMail" class="form-control" placeholder="Saisissez votre adresse mail"/></p>
+							</div>
+							
+				       		<p><button type="submit" class="btn btn-info">Inscription</button></p>				
+					</form:form>
+				</div>
+			</div>
+		</div>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	</body>
 </html>
