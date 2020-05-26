@@ -29,24 +29,28 @@
 			<div class="row">
 				<div class="col">		
 					<table class="table table-hover table-sm table-bordered">
-						<tr class="thead-light">
-							<th>Nom</th>
-							<th>Ville</th>
-							<th>Tag Officiel</th>
-						</tr>
-						<c:forEach items="${listeSpot}" var="spot">
+						<thead class="thead-light">
 							<tr>
-								<td><a href= "/p6JavaMono/detailspot?id=${spot.id}"><c:out value="${spot.nom}"/></a></td>
-								<td><c:out value="${spot.lieuEntity.ville}"/></td>
-								<c:choose>
-									<c:when test="${spot.tagOfficiel }">
-										<td>Officiel</td>
-									</c:when>
-									<c:when test="${!spot.tagOfficiel }">
-										<td>Non Officiel</td>
-									</c:when>
-								</c:choose>				
+								<th>Nom</th>
+								<th>Ville</th>
+								<th>Tag Officiel</th>
 							</tr>
+						</thead>
+						<c:forEach items="${listeSpot}" var="spot">
+							<tbody>
+								<tr>
+									<td><a href= "/p6JavaMono/detailspot?id=${spot.id}"><c:out value="${spot.nom}"/></a></td>
+									<td><c:out value="${spot.lieuEntity.ville}"/></td>
+									<c:choose>
+										<c:when test="${spot.tagOfficiel }">
+											<td>Officiel</td>
+										</c:when>
+										<c:when test="${!spot.tagOfficiel }">
+											<td>Non Officiel</td>
+										</c:when>
+									</c:choose>				
+								</tr>
+							</tbody>
 						</c:forEach>
 					</table>
 				</div>

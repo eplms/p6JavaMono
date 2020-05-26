@@ -19,33 +19,37 @@
 			  	<div class="row">
 			  		<div class="col">
 					  	<table class="table table-hover table-sm table-bordered">
-					  		<tr class="thead-light">
-			          			<th>Nom du topo</th>
-			          			<th>Description</th>
-			          			<th>Rédacteur du topo</th>
-			          			<th>Disponibilité du topo</th>
-			          			<th></th>
-			          		</tr>
-							<c:forEach var="topo" items="${topos}" >    
-					       		<tr>
-									<td><c:out value="${topo.nom}"/></td>
-						          	<td><c:out value="${topo.description}"/></td>
-						          	<td><c:out value="${topo.userEntity.identifiant}"/></td>
-						          	<c:choose>
-						          		<c:when test="${topo.disponible }">
-						          			<td>Disponible</td>
-						          		</c:when>
-						          		<c:when test="${!topo.disponible }">
-						          			<td>Indisponible</td>
-						          		</c:when>
-						          	</c:choose>
-						          	<c:if test="${(userConnection.identifiant eq topo.userEntity.identifiant)&&(userConnection.password eq topo.userEntity.password)}">
-						          		<td><a href="/p6JavaMono/detailtopo?idTopo=${topo.id}">Modifier le statut du topo</a></td>
-						          	</c:if>
-						          	<c:if test="${(topo.disponible) && (userConnection.identifiant ne topo.userEntity.identifiant)}">
-						          		<td><a href="/p6JavaMono/demandereservationtopo?idTopo=${topo.id}&identifiantUtilisateur=${userConnection.identifiant}">Réserver le topo</a>
-						          	</c:if>
-						        </tr>
+						  	<thead class="thead-light">	
+						  		<tr>
+				          			<th>Nom du topo</th>
+				          			<th>Description</th>
+				          			<th>Rédacteur du topo</th>
+				          			<th>Disponibilité du topo</th>
+				          			<th></th>
+				          		</tr>
+			          		</thead>
+							<c:forEach var="topo" items="${topos}" >
+								<tbody>    
+						       		<tr>
+										<td><c:out value="${topo.nom}"/></td>
+							          	<td><c:out value="${topo.description}"/></td>
+							          	<td><c:out value="${topo.userEntity.identifiant}"/></td>
+							          	<c:choose>
+							          		<c:when test="${topo.disponible }">
+							          			<td>Disponible</td>
+							          		</c:when>
+							          		<c:when test="${!topo.disponible }">
+							          			<td>Indisponible</td>
+							          		</c:when>
+							          	</c:choose>
+							          	<c:if test="${(userConnection.identifiant eq topo.userEntity.identifiant)&&(userConnection.password eq topo.userEntity.password)}">
+							          		<td><a href="/p6JavaMono/detailtopo?idTopo=${topo.id}">Modifier le statut du topo</a></td>
+							          	</c:if>
+							          	<c:if test="${(topo.disponible) && (userConnection.identifiant ne topo.userEntity.identifiant)}">
+							          		<td><a href="/p6JavaMono/demandereservationtopo?idTopo=${topo.id}&identifiantUtilisateur=${userConnection.identifiant}">Réserver le topo</a>
+							          	</c:if>
+							        </tr>
+						        </tbody>
 					        </c:forEach>
 				        </table>
 					</div>        

@@ -13,6 +13,7 @@
 		
 		<h2>Recherche de spot</h2>
 		
+		<p> Les spots affichés seront ceux correspondant au moins à l'un des deux critères !</p>
 		<form:form method="post" action="recherchespot" modelAttribute="spotRecherche">
 			<table>
 				<tr>
