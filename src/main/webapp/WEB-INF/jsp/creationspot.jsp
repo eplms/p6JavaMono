@@ -15,7 +15,7 @@
 			</div>
 			<div class="row">
 				<div class="col-6">
-					<div class="card">
+					<div class="card text-center">
 						<div class="card-header">
 							<h3>Formulaire de création de spot</h3>
 							<h5>Informations à saisir</h5>	
@@ -31,7 +31,7 @@
 							<div class="form-group">
 								<p><form:input path="lieuEntity.codePostal" class="form-control" placeholder="Code Postal"/></p>
 							</div>
-							<td><button type="submit" class="btn btn-info form-control">Créer le spot</button></td>
+							<button type="submit" class="btn btn-info form-control">Créer le spot</button>
 						</form:form>
 					</div>
 				</div>
