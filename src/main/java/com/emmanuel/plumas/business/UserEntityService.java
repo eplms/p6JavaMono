@@ -67,9 +67,11 @@ public class UserEntityService {
 		//UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userConnecte.getIdentifiant(), userConnecte.getPassword());
 		
 		UserEntity utilisateurBase=userRepository.findByIdentifiant(userConnecte.getIdentifiant());
-		if (utilisateurBase.getDroitAdministrateur()) {
-			droitAdministrateur=true;
-		}
+			if (utilisateurBase !=null) {
+				if (utilisateurBase.getDroitAdministrateur()) {
+					droitAdministrateur=true;
+				}
+			}	
 		return droitAdministrateur;
 	}	
 }
