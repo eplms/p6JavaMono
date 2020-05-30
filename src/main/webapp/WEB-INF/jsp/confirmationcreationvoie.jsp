@@ -2,17 +2,41 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<title>WeClimb</title>
 	</head>
 	<body>
-		<p>Vous venez de créer la voie suivante :</p>
-		<p> Nom : ${voie.nom}</p>
-		<p> hauteur : ${voie.hauteur}</p>
-		<p> cotation : ${voie.cotation}</p>
-		<p> nombre de points : ${voie.nbrePoints} </p>
-	</body>
+		<%@ include file="menunavigation.jsp" %>
+		<div class="container-expand-md">
+			<div class="row jumbotron">
+				<div class="col">
+					<h1>Création de la voie réussie !</h1>
+				</div>				
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<div class="card">
+						<div class="card-header">
+							<h3>Voie créé : ${voie.nom}</h3>
+						</div>
+						<ul class="list-group">
+							<li class="list-group-item"> hauteur : ${voie.hauteur}</li>
+							<li class="list-group-item">cotation : ${voie.cotation}</li>
+							<li class="list-group-item">nombre de points : ${voie.nbrePoints}</li>
+						</ul>
+						<button class="btn btn-outline-info btn-small"><a href="/p6JavaMono/detailsecteur?id=${voie.secteurEntity.id}">Revenir au secteur</a></button>
+						<button class="btn btn-outline-info btn-small"><a href="/p6JavaMono/detailspot?id=${voie.secteurEntity.spotEntity.id}">Revenir au spot</a></button>
+					</div>
+				</div>
+			</div>		
+		</div>
+		
+		
 	
-	<p><a href="/p6JavaMono/detailsecteur?id=${voie.secteurEntity.id}">Revenir au secteur</a></p>
-	<p><a href="/p6JavaMono/detailspot?id=${voie.secteurEntity.spotEntity.id}">Revenir au spot</a></p>
-	<p><a href="/p6JavaMono/">Revenir à la page d'accueil</a></p>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	</body>
 </html>

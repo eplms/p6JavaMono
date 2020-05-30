@@ -22,29 +22,26 @@
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">Utilisateurs</h5>
-								<ul class="list-group">
-									<c:if test="${empty userConnection }">
-										<li class="list-group-item"><a href="/p6JavaMono/connectionutilisateur">Connection</a></li>
-										<li class="list-group-item"><a href="/p6JavaMono/inscription">Inscription</a></li>
-									</c:if>
-									<c:if test="${!empty userConnection}">
-										<li class="list-group-item"><a href="/p6JavaMono/deconnection">Deconnection</a></li>	
-									</c:if>
-								</ul>	
+							<ul class="list-group">
+								<c:if test="${empty userConnection }">
+									<li class="list-group-item"><a href="/p6JavaMono/connectionutilisateur">Connection</a></li>
+									<li class="list-group-item"><a href="/p6JavaMono/inscription">Inscription</a></li>
+								</c:if>
+								<c:if test="${!empty userConnection}">
+									<li class="list-group-item"><a href="/p6JavaMono/deconnection">Deconnection</a></li>	
+								</c:if>
+							</ul>	
 						</div>
 					</div>
 				</div>
-				
 				<div class="col">
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">Spots</h5>
-							<div class="card-text">
-								<ul class="list-group">
-									<li class="list-group-item"><a href="/p6JavaMono/listespot">Liste des spots</a></li>
-									<li class="list-group-item"><a href="/p6JavaMono/recherchespot">Rechercher un spot</a></li>
-								</ul>
-							</div>
+							<ul class="list-group">
+								<li class="list-group-item"><a href="/p6JavaMono/listespot">Liste des spots</a></li>
+								<li class="list-group-item"><a href="/p6JavaMono/recherchespot">Rechercher un spot</a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
@@ -52,14 +49,12 @@
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">Topos</h5>
-							<div class="card-text">
-								<ul class="list-group">
-									<li class="list-group-item"><a href="/p6JavaMono/listeTopos">Liste des topos</a></li>
-									<c:if test="${!empty userConnection}">		
-										<li class="list-group-item"><a href="/p6JavaMono/creationTopo">Ajout de topos</a></li>
-									</c:if>
-								</ul>
-							</div>
+							<ul class="list-group">
+								<li class="list-group-item"><a href="/p6JavaMono/listeTopos">Liste des topos</a></li>
+								<c:if test="${!empty userConnection}">		
+									<li class="list-group-item"><a href="/p6JavaMono/creationTopo">Ajout de topos</a></li>
+								</c:if>
+							</ul>
 						</div>
 					</div>
 				</div>
@@ -67,21 +62,19 @@
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">Reservations</h5>
-							<div class="card-text">	
-								<c:if test="${empty userConnection }">
-									La gestion des réservations est réservée aux utilisateurs inscrits et connectés.
-								</c:if>
-								<c:if test="${!empty userConnection}">
-									<ul class="list-group">
-										<li class="list-group-item"><a href="/p6JavaMono/gestionreservation">Mes réservations</a></li>
-									</ul>
-								</c:if>
-							</div>
+							<c:if test="${empty userConnection }">
+								La gestion des réservations est réservée aux utilisateurs inscrits et connectés.
+							</c:if>
+							<c:if test="${!empty userConnection}">
+								<ul class="list-group">
+									<li class="list-group-item"><a href="/p6JavaMono/gestionreservation">Mes réservations</a></li>
+								</ul>
+							</c:if>
 						</div>
 					</div>
 				</div>
 			</div>
-		
+		</div>
 		<!-- footer -->	
 		<%@include file="footer.jsp" %>
 		<!-- Optional JavaScript -->

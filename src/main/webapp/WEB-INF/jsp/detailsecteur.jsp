@@ -15,6 +15,13 @@
 				<h1>Détail du secteur : ${secteur.nom}</h1>
 			</div>
 		</div>
+		
+		<div class="row">
+			<div class="col">
+				<button type="button" class="btn btn-outline-info btn-sm"><a href="/p6JavaMono/detailspot?id=${secteur.spotEntity.id}">Revenir au spot ${secteur.spotEntity.nom }</a></button>
+			</div>
+		</div>	
+		
 		<div class="row">
 			<div class="col">
 				<h2>Description du secteur</h2>
@@ -62,19 +69,17 @@
 				</table>
 			</div>	
 		</div>
-		<c:choose>
-			<c:when test="${userConnection.identifiant ne secteur.spotEntity.userEntity.identifiant}">
-				<p>Vous devez être connecté en tant créateur du spot pour pouvoir ajouter un secteur</p>
-			</c:when>
-			<c:when test="${userConnection.identifiant eq secteur.spotEntity.userEntity.identifiant}">
-				<p>Vous êtes connecté en tant que ${userConnection.identifiant }</p>
-				<p><a href="/p6JavaMono/creationvoie?idsecteur=${secteur.id}&idspot=${secteur.spotEntity.id}">Creer une voie sur ce secteur</a></p>
-			</c:when>
-		</c:choose>
-		
 		<div class="row">
 			<div class="col">
-				<button type="button" class="btn btn-outline-info btn-sm"><a href="/p6JavaMono/detailspot?id=${secteur.spotEntity.id}">Revenir au spot ${secteur.spotEntity.nom }</a></button>
+				<c:choose>
+					<c:when test="${userConnection.identifiant ne secteur.spotEntity.userEntity.identifiant}">
+						<p>Vous devez être connecté en tant créateur du spot pour pouvoir ajouter un secteur</p>
+					</c:when>
+					<c:when test="${userConnection.identifiant eq secteur.spotEntity.userEntity.identifiant}">
+						<p>Vous êtes connecté en tant que ${userConnection.identifiant }</p>
+						<button type="button" class="btn btn-outline-info btn-sm"><a href="/p6JavaMono/creationvoie?idsecteur=${secteur.id}&idspot=${secteur.spotEntity.id}">Creer une voie sur ce secteur</a></button>
+					</c:when>
+				</c:choose>
 			</div>
 		</div>		
 					

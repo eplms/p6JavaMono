@@ -83,6 +83,22 @@
 				</c:if>
 			</div>
 		</div>	
+		
+		<!-- Gestion des conditions de connection pour la créations de secteur -->
+		<div class="row">
+			<div class="col">
+				<c:if test="${userConnection.identifiant ne spot.userEntity.identifiant}">
+					<p>Vous devez être connecté en tant créateur du spot pour pouvoir ajouter un secteur</p>
+				</c:if>
+				<c:if test="${userConnection.identifiant eq spot.userEntity.identifiant}">
+					<button class="btn btn-outline-info btn-sm"><a href="/p6JavaMono/creationsecteur?idspot=${spot.id }">Ajouter un secteur</a></button>
+				</c:if>			
+			</div>
+		</div>
+		
+		
+		
+		
 		<div class="row">
 			<c:forEach items="${spot.secteurEntities}" var="secteur">	
 				<div class="col">
@@ -128,14 +144,7 @@
 			</c:forEach>
 		</div>
 			
-		<!-- Gestion des conditions de connection pour la créations de secteur -->
-		<div class="row">
-			<div class="col">
-				<c:if test="${userConnection.identifiant ne spot.userEntity.identifiant}">
-					<p>Vous devez être connecté en tant créateur du spot pour pouvoir ajouter un secteur</p>
-				</c:if>			
-			</div>
-		</div>	
+			
 			
 			
 			

@@ -37,7 +37,7 @@
 						</div>
 						<form:form method="post" action="creationvoie" modelAttribute="voieCreation">
 							<div class="form-group">
-								<p><form:input path="nom" class="form-control" placeholder="Nom du secteur"/></p>
+								<p><form:input path="nom" class="form-control" placeholder="Nom de la voie"/></p>
 							</div>
 							<div class="form-group">
 								<p><form:input path="hauteur" class="form-control" placeholder="Hauteur de la voie"/></p>
