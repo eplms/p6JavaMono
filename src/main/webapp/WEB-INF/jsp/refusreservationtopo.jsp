@@ -2,24 +2,45 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<title>WeClimb</title>
 	</head>
 	<body>
-		<header>
-			<a href="/p6JavaMono/listespot">Revenir à la liste des spots</a>
-			<a href="/p6JavaMono/listeTopos">Revenir à la Liste des topos</a>
-			<a href="/p6JavaMono/">Revenir à la page d'accueil</a>
-		</header>
-		<h1>Bienvenue sur WeClimb, le site de l'escalade</h1>	
-	 	
-	 	<h2>Vous venez de refuser la réservation du topo suivant:</h2>
-		<p> Nom du topo : ${reservation.topoEntity.nom }</p>
-		<p> Description : ${reservation.topoEntity.description }</p>
-				
-		<h2>Les informations pour contacter l'emprunteur du topo</h2>
-		<p>Emprunteur du topo : ${reservation.userEntity.identifiant }</p>
-		<p>Mail de contact: ${reservation.userEntity.adresseMail }</p>
+		<%@ include file="menunavigation.jsp" %>	
+		<div class="container-expand-md">
+			<div class="row jumbotron">
+				<div class="col">
+					<h1>Refus de réservation !</h1>
+				</div>
+			</div>
 		
+			<div class="row">
+				<div class="col">
+					<h2>Vous venez de refuser la réservation du topo suivant</h2>		
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-6">
+					<div class="card">
+						<div class="card-header">
+							<h2>${reservation.topoEntity.nom }</h2>					
+						</div>
+						<ul class="list-group">
+							<li class="list-group-item"> Description : ${reservation.topoEntity.description }</li>
+							<li class="list-group-item"> Emrpunteur du topo : ${reservation.userEntity.identifiant }</li>
+							<li class="list-group-item"> Mail de contact: ${reservation.userEntity.adresseMail }</li>
+						</ul>	
+					</div>
+				</div>
+			</div>
+		</div>
+			
 		
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	</body>
 </html>
