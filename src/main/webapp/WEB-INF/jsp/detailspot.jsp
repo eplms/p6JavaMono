@@ -109,10 +109,10 @@
 							<tr>
 								<th>Voie</th>
 								<th></th>
+								<th></th>
 								<th>Hauteur</th>
 								<th>Cotation</th>
 								<th>Nombre de Points</th>
-								<th></th>
 							</tr>
 						</thead>	
 						<c:forEach items="${secteur.voieEntities}" var="voie">
