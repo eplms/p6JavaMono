@@ -6,9 +6,6 @@
 		<title>WeClimb</title>
 	</head>
 	<body>
-		
-			
-
 		<div class="container-expand-md">
 			<%@include file="menunavigation.jsp" %>	
 			<div class="row jumbotron">
@@ -16,9 +13,14 @@
 					<h1>Liste des topos</h1>
 				</div>	
 	 		</div>
-	 			
-	 		<h2>Voici la liste des topos existant pour le spot : ${spot.nom } </h2>
-	 		<a href="/p6JavaMono/detailspot?id=${spot.id}">Revenir au detail du spot</a>
+	 		
+	 		<div class="row">
+				<div class="col">	
+	 				<h2>Voici la liste des topos existant pour le spot : ${spot.nom } </h2>
+	 				<a href="/p6JavaMono/detailspot?id=${spot.id}">Revenir au detail du spot</a>
+ 				</div>
+ 			</div>
+ 				
 			<c:if test="${!empty topos}">
 			  	<div class="row">
 			  		<div class="col">
