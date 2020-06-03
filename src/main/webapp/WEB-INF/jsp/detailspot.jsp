@@ -46,7 +46,6 @@
 						</c:if>
 						
 						<c:if test="${userConnection.droitAdministrateur == true}">
-							<p> Changer le statut du spot<p> 
 							<form:form method="post" action="detailspot" modelAttribute="spotCreation">
 								<div class="form-check-inline">
 						 				<div><form:radiobutton path="tagOfficiel" class="form-check-input" value="true"/>Officiel</div>

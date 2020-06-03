@@ -64,8 +64,6 @@ public class UserEntityService {
 	public boolean verifierDroitAdministrateurUserEnregistre(UserEntity userConnecte) {
 		Boolean droitAdministrateur=false;
 		
-		//UserEntity utilisateurBase=userRepository.findByIdentifiantAndPassword(userConnecte.getIdentifiant(), userConnecte.getPassword());
-		
 		UserEntity utilisateurBase=userRepository.findByIdentifiant(userConnecte.getIdentifiant());
 			if (utilisateurBase !=null) {
 				if (utilisateurBase.getDroitAdministrateur()) {

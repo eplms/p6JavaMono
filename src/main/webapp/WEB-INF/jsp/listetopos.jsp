@@ -50,18 +50,22 @@
 						          				<td>Indisponible</td>
 						          			</c:when>
 						          		</c:choose>
-							          	<c:if test="${(topo.userEntity.identifiant eq userConnection.identifiant) && (topo.userEntity.password eq userConnection.password) }">
-							          		<td><a href="/p6JavaMono/detailtopo?idTopo=${topo.id}">Modifier le statut du topo</a></td>
-							          	</c:if>
-							          	<c:if test="${(topo.userEntity.identifiant ne userConnection.identifiant) || (topo.userEntity.password ne userConnection.password) }">
-							          		<td></td>
-							          	</c:if>
-							          	<c:if test="${(topo.disponible) && (userConnection.identifiant ne topo.userEntity.identifiant)}">
-							          		<td><a href="/p6JavaMono/demandereservationtopo?idTopo=${topo.id}&identifiantUtilisateur=${userConnection.identifiant}">Réserver le topo</a>
-							          	</c:if>
-							          	<c:if test="${(!topo.disponible)||(userConnection.identifiant eq topo.userEntity.identifiant)}">
-							          		<td></td>
-							          	</c:if>
+							          	<c:choose>	
+							          		<c:when test="${(userConnection.identifiant eq topo.userEntity.identifiant)}">
+							          			<td><a href="/p6JavaMono/detailtopo?idTopo=${topo.id}">Modifier le statut du topo</a></td>
+							          		</c:when>
+							          		<c:when test="${(userConnection.identifiant ne topo.userEntity.identifiant)}">
+							          			<td>Modification impossible</td>
+							          		</c:when>
+							          	</c:choose>	
+							          	<c:choose>
+								          	<c:when test="${(topo.disponible) && (!empty userConnection) && (userConnection.identifiant ne topo.userEntity.identifiant)}">
+								          		<td><a href="/p6JavaMono/demandereservationtopo?idTopo=${topo.id}&identifiantUtilisateur=${userConnection.identifiant}">Réserver le topo</a></td>
+								          	</c:when>
+								          	<c:when test="${(empty userConnection)||(!topo.disponible)||(userConnection.identifiant eq topo.userEntity.identifiant)}">
+								          		<td>Réservation impossible</td>
+								          	</c:when>
+							          	</c:choose>
 							          	<!-- 
 							          	<c:forEach var="spot" items="${topo.spotEntities}">
 							          		<td><c:out value="${spot.nom}"/></td>

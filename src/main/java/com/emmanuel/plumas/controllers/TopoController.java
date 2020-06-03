@@ -64,8 +64,10 @@ public class TopoController {
 	}
 	
 	@GetMapping(value="/listeTopos")
-	public String afficherListeToposBis(ModelMap model) {
+	public String afficherListeTopos(ModelMap model) {
 		List<TopoEntity> topoEntities=topoService.getAllTopos();
+		// decrypter les mots de passe des userEntities
+		
 		model.addAttribute("topos", topoEntities);
 		return "listetopos";
 	}
@@ -118,8 +120,7 @@ public class TopoController {
 	public String afficherTopoModifie(HttpSession httpSession, ModelMap model,@ModelAttribute("topoModification")TopoEntity topo) {
 		UserEntity userEntity=(UserEntity) httpSession.getAttribute("userConnection");
 		TopoEntity topoEntity=topoService.getTopoById(new Long(topo.getId()));
-		if ((userEntity.getPassword().contentEquals(topoEntity.getUserEntity().getPassword()))  & (userEntity.getIdentifiant().contentEquals(topoEntity.getUserEntity().getIdentifiant()))){	
-			
+		if ((userEntity.getPassword().contentEquals(topoEntity.getUserEntity().getPassword()))&(userEntity.getIdentifiant().contentEquals(topoEntity.getUserEntity().getIdentifiant()))){	
 			//Passage des réservations en close
 			if(topo.getDisponible()) {
 				List<ReservationEntity> reservationEntities=reservationService.getReservationByTopo(topoEntity.getId());
@@ -130,7 +131,6 @@ public class TopoController {
 					}
 				}
 			}
-			
 			//sauvegarde du topo avec la nouvelle disponibilité
 			topoEntity.setDisponible(topo.getDisponible()); 
 			topoService.sauvegarderTopo(topoEntity);
