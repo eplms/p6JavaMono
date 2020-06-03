@@ -27,21 +27,21 @@
 							<thead>
 								<tr>
 									<th>Longueur</th>
-									<th></th>
 									<th>Hauteur</th>
 									<th>Cotation</th>
 									<th>Nombre de Points</th>	
 								</tr>
-							</thead>	
-							<c:forEach items="${voie.longueurEntities}" var="longueur">
-								<tr>
-									<td>${longueur.nom}</td>
-									<td></td>
-									<td>${longueur.hauteur}</td>
-									<td>${longueur.cotation}</td>
-									<td>${longueur.nbrePoints}</td>	
-								</tr>
-							</c:forEach>
+							</thead>
+							<tbody>	
+								<c:forEach items="${voie.longueurEntities}" var="longueur">
+									<tr>
+										<td>${longueur.nom}</td>
+										<td>${longueur.hauteur}</td>
+										<td>${longueur.cotation}</td>
+										<td>${longueur.nbrePoints}</td>	
+									</tr>
+								</c:forEach>
+							</tbody>	
 						</c:if>
 						<c:if test="${empty voie.longueurEntities}">
 							<h4>Cette voie n'inclut pas de longueurs</h4>

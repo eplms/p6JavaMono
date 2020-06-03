@@ -46,27 +46,29 @@
 								<th>Cotation</th>
 								<th>Nombre de Points</th>
 							</tr>
-						<thead>	
-						<c:forEach items="${secteur.voieEntities}" var="voie">
-							<tr>				
-								<td><a href="/p6JavaMono/detailvoie?id=${voie.id}">${voie.nom }</a></td>
-								<c:if test="${empty voie.longueurEntities}">
-									<td></td>
-									<td>${voie.hauteur }</td>
-									<td>${voie.cotation }</td>
-									<td>${voie.nbrePoints}</td>
-								</c:if>
-							</tr>
-							<c:forEach items="${voie.longueurEntities}" var="longueur">
+						</thead>	
+						<tbody>
+							<c:forEach items="${secteur.voieEntities}" var="voie">
 								<tr>				
-									<td></td>
-									<td>longueur : ${longueur.nom }</td>
-									<td>${longueur.hauteur }</td>
-									<td>${longueur.cotation }</td>
-									<td>${longueur.nbrePoints}</td>
-								</tr>	
-							</c:forEach>	
-						</c:forEach>
+									<td><a href="/p6JavaMono/detailvoie?id=${voie.id}">${voie.nom }</a></td>
+									<c:if test="${empty voie.longueurEntities}">
+										<td></td>
+										<td>${voie.hauteur }</td>
+										<td>${voie.cotation }</td>
+										<td>${voie.nbrePoints}</td>
+									</c:if>
+								</tr>
+								<c:forEach items="${voie.longueurEntities}" var="longueur">
+									<tr>				
+										<td></td>
+										<td>longueur : ${longueur.nom }</td>
+										<td>${longueur.hauteur }</td>
+										<td>${longueur.cotation }</td>
+										<td>${longueur.nbrePoints}</td>
+									</tr>	
+								</c:forEach>	
+							</c:forEach>
+						</tbody>	
 					</table>
 				</div>	
 			</div>
