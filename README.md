@@ -5,7 +5,7 @@ Projet 6 Parcours Développeur Java (Mono-module)
 Site communautaire autour de l'escalade
 
 # ENVIRONNEMENT
-JavaEE 8 - Maven - Spring Data Jpa - Spring MVC - Spring IoC
+JavaEE 8 - Maven - Spring Data Jpa - Spring MVC - Spring IoC -
 Optimisé pour TOMCAT 9.0
 
 # CLONAGE DU PROJET
