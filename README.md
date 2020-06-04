@@ -1,16 +1,16 @@
 # p6JavaMono
 Projet 6 Parcours Développeur Java (Mono-module)
 
-DESCRIPTION
+# DESCRIPTION
 Site communautaire autour de l'escalade
 
-ENVIRONNEMENT
+# ENVIRONNEMENT
 JavaEE 8 - Maven - Spring Data Jpa - Spring MVC - Spring IoC
 
-CLONAGE DU PROJET
+# CLONAGE DU PROJET
 Pour cloner le projet : https://github.com/eplms/p6JavaMono.git
 
-DEPLOIEMENT
+# DEPLOIEMENT
 1- Télécharger TOMCAT
 2- Dezipper TOMCAT
 3- Lancer TOMCAT
@@ -22,10 +22,10 @@ DEPLOIEMENT
 6- url de la page d'accueil :http://localhost:8080/p6JavaMono/
 
 
-VERSION
+# VERSION
 1.0
 
-AUTEUR
+# AUTEUR
 Emmanuel PLUMAS - Juin 2020
 
 
