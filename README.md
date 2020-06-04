@@ -18,7 +18,7 @@ Pour cloner le projet : https://github.com/eplms/p6JavaMono.git
 
 3- Lancer TOMCAT
 
-4- Pour installer avec Maven, saisir la commande suivante dans le dossier dans lequel vous avez chargé le code source: mvn clean puis mvn install
+4- Pour installer avec Maven, saisir la commande suivante sur mon repository: mvn install 
 
 5- Intégration du War obtenu dans Tomcat
 
