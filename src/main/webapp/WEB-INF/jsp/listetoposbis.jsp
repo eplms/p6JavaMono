@@ -61,7 +61,7 @@
 								          	<c:when test="${(!empty userConnection)&&(topo.disponible) && (userConnection.identifiant ne topo.userEntity.identifiant)}">
 								          		<td><a href="/p6JavaMono/demandereservationtopo?idTopo=${topo.id}&identifiantUtilisateur=${userConnection.identifiant}">Réserver le topo</a>
 								          	</c:when>
-								          	<c:when test="${(!topo.disponible) || (userConnection.identifiant ne topo.userEntity.identifiant)}">
+								          	<c:when test="${(!topo.disponible) || (userConnection.identifiant eq topo.userEntity.identifiant)}">
 								          		<td>Réservation impossible</td>
 								          	</c:when>
 								        </c:choose>  	

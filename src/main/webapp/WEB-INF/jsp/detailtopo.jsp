@@ -51,8 +51,8 @@
 								</c:when>
 							</c:choose>	
 						</ul>	
+						<!-- Changement de statut du topo -->
 						<c:if test="${topo.userEntity.identifiant eq userConnection.identifiant}">
-							<p>Changer le statut du topo</p>
 							<form:form method="post" action="detailtopo" modelAttribute="topoModification">
 								<div class="form-check-inline">
 				 					<div><form:radiobutton path="disponible" class="form-check-input" value="true"/>Disponible</div>

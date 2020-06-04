@@ -47,6 +47,8 @@ public class LongueurController {
 	
 	@PostMapping(value="/creationlongueur")
 	public String recupererCreationLongueur(ModelMap model,@ModelAttribute("longueurCreation") LongueurEntity longueurEntity) {
+		VoieEntity voieEntity=voieEntityService.getVoie(longueurEntity.getVoieEntity().getId());
+		longueurEntity.setVoieEntity(voieEntity);
 		longueurEntityService.creerNouvelleLongueur(longueurEntity);
 		model.addAttribute("longueur",longueurEntity);
 		return "confirmationcreationlongueur";

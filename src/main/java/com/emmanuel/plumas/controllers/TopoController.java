@@ -117,10 +117,8 @@ public class TopoController {
 	}
 	
 	@PostMapping(value="/detailtopo")
-	public String afficherTopoModifie(HttpSession httpSession, ModelMap model,@ModelAttribute("topoModification")TopoEntity topo) {
-		UserEntity userEntity=(UserEntity) httpSession.getAttribute("userConnection");
-		TopoEntity topoEntity=topoService.getTopoById(new Long(topo.getId()));
-		if ((userEntity.getPassword().contentEquals(topoEntity.getUserEntity().getPassword()))&(userEntity.getIdentifiant().contentEquals(topoEntity.getUserEntity().getIdentifiant()))){	
+	public String afficherTopoModifie(ModelMap model,@ModelAttribute("topoModification")TopoEntity topo) {
+		TopoEntity topoEntity=topoService.getTopoById(new Long(topo.getId()));	
 			//Passage des réservations en close
 			if(topo.getDisponible()) {
 				List<ReservationEntity> reservationEntities=reservationService.getReservationByTopo(topoEntity.getId());
@@ -136,9 +134,6 @@ public class TopoController {
 			topoService.sauvegarderTopo(topoEntity);
 			model.addAttribute("topo",topoEntity);
 			return "detailtopo";
-		} else {
-			return "redirect:/connectionutilisateur";
-		}
 	}
 	
 	
