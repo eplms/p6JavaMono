@@ -17,6 +17,7 @@ import com.emmanuel.plumas.models.SecteurEntity;
 import com.emmanuel.plumas.models.UserEntity;
 import com.emmanuel.plumas.models.VoieEntity;
 
+
 @Controller
 public class VoieController {
 
@@ -54,6 +55,8 @@ public class VoieController {
 	}
 	@PostMapping(value="/creationvoie")
 	public String recupererCreationVoie(ModelMap model,@ModelAttribute("voieCreation") VoieEntity voieEntity) {
+		SecteurEntity secteurEntity=secteurEntityService.getSecteur(voieEntity.getSecteurEntity().getId());
+		voieEntity.setSecteurEntity(secteurEntity);
 		voieEntityService.creerNouvelVoie(voieEntity);
 		model.addAttribute("voie",voieEntity);
 		return "confirmationcreationvoie";
