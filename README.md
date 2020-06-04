@@ -25,8 +25,8 @@ Pour cloner le projet : https://github.com/eplms/p6JavaMono.git
 1- Télécharger TOMCAT 9.0  
 2- Dezipper TOMCAT  
 3- Lancer TOMCAT en lançant (suivant le système d'exploitation)  
-	- bin/startup.bat  
-	- bin/startup.sh
+  * bin/startup.bat  
+  * bin/startup.sh
 
 ( Modifier les valeurs de DB dans persistance.xml) 
 
