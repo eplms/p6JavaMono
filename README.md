@@ -22,7 +22,7 @@ Pour cloner le projet : https://github.com/eplms/p6JavaMono.git
 
 5- Intégration du War obtenu dans Tomcat
 
-  a- Créer un "rôle" manager-gui (user: tomcat / password:tomcat) dans le fichier tomcat-usus.xml du dossier conf.
+  a- Créer un "rôle" manager-gui (user: tomcat / password:tomcat) dans le fichier tomcat-users.xml du dossier conf.
   
   b- Utiliser l'interface MANAGER de tomcat
   
