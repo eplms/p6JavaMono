@@ -6,12 +6,13 @@ Site communautaire autour de l'escalade
 
 # ENVIRONNEMENT
 JavaEE 8 - Maven - Spring Data Jpa - Spring MVC - Spring IoC
+Optimisé pour TOMCAT 9.0
 
 # CLONAGE DU PROJET
 Pour cloner le projet : https://github.com/eplms/p6JavaMono.git
 
 # DEPLOIEMENT
-1- Télécharger TOMCAT
+1- Télécharger TOMCAT 9.0
 
 2- Dezipper TOMCAT
 
