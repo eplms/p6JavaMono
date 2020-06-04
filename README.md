@@ -10,26 +10,29 @@ Maven
 Spring Data Jpa  
 Spring MVC  
 Spring IoC  
+Bootstrap  
 Optimisé pour TOMCAT 9.0
 
 # CLONAGE DU PROJET
 Pour cloner le projet : https://github.com/eplms/p6JavaMono.git
 
 # DEPLOIEMENT
-Télécharger postgresql
-Executer les scripts sql
+##### BDD (postgresql)
+1- Télécharger postgresql  
+2- Executer les scripts sql (dossier src/main/ressources/doc)
 
+##### Serveur (Tomcat 9.0)
+1- Télécharger TOMCAT 9.0  
+2- Dezipper TOMCAT  
+3- Lancer TOMCAT en lançant (suivant le système d'exploitation)  
+	- bin/startup.bat  
+	- bin/startup.sh
 
-1- Télécharger TOMCAT 9.0
+( Modifier les valeurs de DB dans persistance.xml) 
 
-2- Dezipper TOMCAT
+4- Récupérer le fichier war : dans le repository qui accueil le clone, saisir  mvn install
 
-3- Lancer TOMCAT
-
-Modifier les valeurs de DB dans persistance.xml
-4- Pour récupérer le fichier war avec Maven, saisir la commande suivante sur mon repository: mvn install (dans le clone du repository)
-
-5- Intégration du War obtenu dans Tomca -> positionner le fichier war dans le dossier webapps
+5- Copier le ficher war obtenu dans le dossier webapps de Tomcat
   
 6- url de la page d'accueil :http://localhost:8080/p6JavaMono/
 
