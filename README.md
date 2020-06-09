@@ -5,12 +5,13 @@ Projet 6 Parcours Développeur Java (Mono-module)
 Site communautaire autour de l'escalade
 
 # ENVIRONNEMENT
-JavaEE 8  
-Maven  
-Spring Data Jpa  
-Spring MVC  
-Spring IoC  
-Bootstrap  
+* JavaEE 8
+* Maven
+* Spring IoC
+* Spring Data Jpa
+* Spring MVC  
+* Bootstrap  
+
 Optimisé pour TOMCAT 9.0
 
 # CLONAGE DU PROJET
@@ -28,13 +29,15 @@ Pour cloner le projet : https://github.com/eplms/p6JavaMono.git
   * bin/startup.bat  
   * bin/startup.sh
 
-( Modifier les valeurs de DB dans persistance.xml) 
+##### paramètres de connection à la Base de Données
+Le user et le mot de passe de connection à la base de données par défaut sont renseignés dans le fichier persistence.xml  
+Pour les modifier, le chemin d'accès au fichier est dans le projet est :  
+		p6JavaMono/src/main/resources/META-INF/persistence.xml
 
-4- Récupérer le fichier war : dans le repository qui accueil le clone, saisir  mvn install
-
-5- Copier le ficher war obtenu dans le dossier webapps de Tomcat
-  
-6- url de la page d'accueil :http://localhost:8080/p6JavaMono/
+##### Lancement	
+1- Récupérer le fichier war : dans le repository qui accueil le clone, saisir  mvn install  
+2- Copier le ficher war obtenu dans le dossier webapps de Tomcat  
+3- url de la page d'accueil :http://localhost:8080/p6JavaMono/
 
 # VERSION
 1.0
