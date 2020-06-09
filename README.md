@@ -31,7 +31,7 @@ Pour cloner le projet : https://github.com/eplms/p6JavaMono.git
 
 ##### paramètres de connection à la Base de Données
 Le user et le mot de passe de connection à la base de données par défaut sont renseignés dans le fichier persistence.xml  
-Pour les modifier, le chemin d'accès au fichier est dans le projet est :  
+Pour les modifier, le chemin d'accès au fichier dans le projet est :  
 		p6JavaMono/src/main/resources/META-INF/persistence.xml
 
 ##### Lancement	
