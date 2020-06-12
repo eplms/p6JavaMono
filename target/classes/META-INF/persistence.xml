@@ -7,9 +7,6 @@
 	<persistence-unit name="WeClimbDB">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
-		<!--  Liste des classes mappées -->
-		<class>com.emmanuel.plumas.models.UserEntity</class>
-		
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/db_p6_weclimb"/>
